@@ -1,0 +1,1 @@
+{'date_high': '1491001200000', 'bad_data': 'true', 'date_low': '1262304000000', 'price_high': '26500000', 'price_low': '0', 'calcArea': 'country', 'area': 'ireland'}

@@ -1,0 +1,62 @@
+{% extends 'homepage/header.html' %}
+
+{% block content %}
+    {% load staticfiles %}
+    <link href="{% static 'homepage/css/data-style.css' %}" rel="stylesheet">
+
+    <div id="data">
+        <h2>Our Data</h2>
+
+        <div class="section">
+            <h4>Property Price Data</h4>
+            <p>All data used and featured on <a href="/">ippe.com</a> is public
+                and is taken from the <a href="https://www.propertypriceregister.ie/website/npsra/pprweb.nsf/page/ppr-home-en">Irish Residential Property Price Register</a> (RRPR).
+            </p>
+            <p>RPPR Data is updated approximately every two weeks, and is featured on this site the day after being made public.</p>
+            <hr>
+            <p>The Property Services Regulatory Authority (RPSA) who maintain the RPPR state the following:</p>
+            <p class="quote">"The PSRA does not in any way edit the data. It simply publishes, in a fully transparent manner, that which is filed."</p>
+            <p><a href="/">ippe.com</a> does undertake data cleaning in order to provide a clearer picture of the Irish property market. Data cleaning steps include:</p>
+            <ul>
+                <li>Removing all property sales marked as not at market price;</li>
+                <li>Removing commerical development sales and bulk sales of apartment blocks grouped in one transaction;</li>
+                <li>Removing duplicate (or near duplicate, indicators of typos) entries within a 1 month period;</li>
+                <li>Removing outliers where a property is sold for less than 2 standard deviations below the average price in an Electoral District; and</li>
+                <li>Removing outliers where a property is sold for more than 2 standard deviations above the average price in an Electoral District on a case
+                by case basis, where no evidence of house existance and a justification of the price can be found.</li>
+            </ul>
+            <p>At present, the RPPR contains over 250,000 property sale records, and while the above techniques cannot claim to remove all erroneous data, we believe it's a start
+            and provides a more accurate representation than the RPPR does alone. If you identify any potentially erroneous property information while using this site, please
+                <a href="/contact">contact us</a> or submit a bad data report by clicking on the property on the homepage and following the link.</p>
+            <p>All bad data reports submitted to us are reviewed approximately monthly and changes applied upon review.</p>
+        </div>
+
+        <div class="section">
+            <h4>Property Price Predictions</h4>
+            <p>All predictions made by the site are just that, predictions. The quality of any predictions made is directly influenced by the data quality of the RPPR.
+            Despite the above warning from the PSRA, the data quality is generally ok, and we do our best to improve it. Regardless, we acknowledge our
+            models are far from perfect, which is why we publish our margins of error, and encourage you to place all information available on this site in context.</p>
+            <p>Furthermore, predictions should be considered less as Property Price predictions, and more as Property Price Register predictions. That is,
+            the 'predicted' price is that which is predicted to appear on the RPPR if the house was sold. As such, for new houses, that includes VAT, but for all other
+            properties it does not include tax.</p>
+        </div>
+
+        <div class="section">
+            <h4>Risk Factors</h4>
+            <p>Risk factors are all indicative, and all depend heavily on the specifics of the locale. Hover over the risk buttons for a more
+                in-depth explanation of how risks are defined and potential pitfalls in the analysis techniques.</p>
+        </div>
+
+        <div class="section">
+            <h4>Demographic</h4>
+            <p>All demographic area comes from the CSO Small Area Statistics as part of the 2011 and 2016 Irish census. This information is available here:</p>
+            <ul>
+                <li><a href="http://www.cso.ie/en/census/census2011smallareapopulationstatisticssaps/">2011</a></li>
+                <li><a href="http://www.cso.ie/en/census/census2016reports/census2016smallareapopulationstatistics/">2016</a></li>
+            </ul>
+            <p>Statistics are mapped to Electoral Districts, the border coordinates are taken from <a href="https://www.townlands.ie/">townlands.ie</a>.
+                There are some situations where Electoral District names differ between the CSO and townlands.ie,
+                and hence geographic and demographic information may be misaligned.</p>
+        </div>
+
+{% endblock %}

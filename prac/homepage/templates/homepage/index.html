@@ -1,0 +1,44 @@
+{% extends 'homepage/header.html' %}
+
+{% block content %}
+    {% load staticfiles %}
+    <link href="{% static 'homepage/css/index-style.css' %}" rel="stylesheet">
+    <script src="{% static 'homepage/js/index.js' %}"></script>
+
+    <div class="main-col" id="m-left">
+        <div class="left-content" id="search">
+            {% include 'homepage/includes/search-snippet.html' %}
+            {% block search %}
+            {% endblock %}
+        </div>
+        <div class="left-content" id="map">
+            {% include 'homepage/includes/map-snippet.html' %}
+            {% block map %}
+            {% endblock %}
+            <hr>
+        </div>
+        <div class="left-content" id="graphs">
+            {% include 'homepage/includes/graphs-snippet.html' %}
+            {% block graphs %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="main-col" id="m-right">
+        <div class="right-content" id="analytics-header">
+            <hr id="aanaly">
+            <h3>Analytics</h3>
+        </div>
+        <div class="right-content" id="analytics">
+            <hr id="banaly">
+            {% include 'homepage/includes/analytics-snippet.html' %}
+            {% block analytics %}
+            {% endblock %}
+            <hr>
+        </div>
+        <div class="right-content" id="analytics-more">
+            {% include 'homepage/includes/more-snippet.html' %}
+            {% block more %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

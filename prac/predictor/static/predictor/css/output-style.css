@@ -1,0 +1,28 @@
+#output-data{
+    margin-top: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#output-data h3, h4{
+    margin-bottom: 15px;
+}
+
+#predicting{
+    margin-top: 40px;
+    margin-left: 40%;
+}
+
+.ld{
+    margin-top: 10px;
+    font-size: 40px;
+    margin-left: 48%;
+}
+
+#chart{
+    margin-top: 15px;
+}
+
+#lastp{
+    margin-bottom: 70px;
+}

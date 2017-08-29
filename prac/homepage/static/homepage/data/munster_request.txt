@@ -1,0 +1,1 @@
+{'price_high': '26500000', 'bad_data': 'true', 'area': 'Munster', 'date_low': '1262304000000', 'date_high': '1491001200000', 'price_low': '0', 'calcArea': 'region'}

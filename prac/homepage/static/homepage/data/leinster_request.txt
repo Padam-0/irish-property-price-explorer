@@ -1,0 +1,1 @@
+{'date_low': '1262304000000', 'area': 'Leinster', 'bad_data': 'true', 'price_low': '0', 'date_high': '1491001200000', 'calcArea': 'region', 'price_high': '26500000'}

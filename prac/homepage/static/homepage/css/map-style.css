@@ -1,0 +1,179 @@
+#map-area{
+    -webkit-flex: 1 0 90%;
+    flex: 1 0 90%;
+    margin-bottom: 1%;
+}
+
+#map-options{
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-align-items: center;
+    align-items: center;
+    padding-bottom: 3px;
+}
+
+#scale-wrap{
+    -webkit-flex: 1 0 50%;
+    flex: 1 0 50%;
+    display: none;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+#color-scale{
+    margin-left: 5px;
+    margin-right: 10px;
+    display: block;
+    width: 300px;
+    height: 1.2em;
+    background: linear-gradient(to left, #B32650, #74a9cf);
+}
+
+#map-options p{
+    margin-right: 1%;
+    margin-bottom: -1px;
+}
+
+.gm-style-iw > div > div{
+    rgb(5, 8, 78)
+    font-size: 1em;
+}
+
+.gm-style-iw > div > div p{
+    font-size: 1.2em;
+    margin-bottom: 3px;
+    text-transform: capitalize
+}
+
+#report-me{
+    font-size: 0.8em;
+    float: right;
+}
+
+.qtip.qtip-default.diaglogue.qtip-light.qtip-rounded.qtip-shadow.qtip-pos-c.qtip-modal.qtip-focus{
+    max-width: 25% !important;
+    font-size: 1em !important;
+}
+
+.qtip-titlebar{
+    color: black !important;
+    font-size: 1.2em !important;
+    width: 100% !important;
+    margin-bottom: 5px;
+}
+
+.e-cb-w{
+    display: -webkit-box !important;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox !important;  /* TWEENER - IE 10 */
+    display: -webkit-flex !important; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex !important;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    margin-right: 25%;
+    margin-left: 5%;
+}
+
+.e-cb{
+    width: 100%;
+    display: -webkit-box !important;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox !important;  /* TWEENER - IE 10 */
+    display: -webkit-flex !important; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex !important;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.e-cb p{
+    margin-bottom: 0;
+    margin-right: 10%;
+}
+
+.qtip-content input[type="text"], textarea{
+    width: 95%;
+    height: 4em;
+    resize: none;
+    margin-bottom: 5px;
+}
+
+.e-btn{
+    display: -webkit-box !important;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox !important;  /* TWEENER - IE 10 */
+    display: -webkit-flex !important; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex !important;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 30px;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.e-btn button{
+    -webkit-flex: 1 0 30%;
+    flex: 1 0 30%;
+    color: white !important;
+    border-width: 0;
+    border-radius: 4px;
+}
+
+#e-submit{
+    height: 100%;
+    background-color: rgb(5, 8, 78);
+    margin-right: 30%
+}
+
+#e-ok{
+    color: white !important;
+    border-width: 0;
+    border-radius: 4px;
+    width: 20%;
+    height: 1.4em;
+    background-color: rgb(5, 8, 78);
+    margin-left: 70%;
+}
+
+#e-thanks{
+    font-size: 1.2em;
+    margin-bottom: 14px;
+}
+
+#e-cancel{
+    height: 1.3em;
+    background-color: rgb(179, 38, 80);
+}
+
+#report-btn{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1100px) {
+    .qtip.qtip-default.diaglogue.qtip-light.qtip-rounded.qtip-shadow.qtip-pos-c.qtip-modal.qtip-focus {
+        width: 50% !important;
+        max-width: 50% !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .qtip.qtip-default.diaglogue.qtip-light.qtip-rounded.qtip-shadow.qtip-pos-c.qtip-modal.qtip-focus {
+        width: 75% !important;
+        max-width: 75% !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .qtip.qtip-default.diaglogue.qtip-light.qtip-rounded.qtip-shadow.qtip-pos-c.qtip-modal.qtip-focus {
+        width: 90% !important;
+        max-width: 90% !important;
+    }
+}

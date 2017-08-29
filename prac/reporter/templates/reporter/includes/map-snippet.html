@@ -1,0 +1,119 @@
+{% block map %}
+    {% load staticfiles %}
+    <link href="{% static 'reporter/css/map-style.css' %}" rel="stylesheet">
+    <link href="{% static 'riskdb/css/leaflet.css' %}" rel="stylesheet">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="{% static 'riskdb/js/leaflet.js' %}"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
+    <script src="{% static 'riskdb/js/eds.js' %}"></script>
+    <script src="{% static 'reporter/js/counties.js' %}"></script>
+    <script src="{% static 'reporter/js/regions.js' %}"></script>
+    <script src="{% static 'reporter/js/country.js' %}"></script>
+
+    <div id='map'></div>
+    <script>
+        var map;
+        var baselayer;
+        var edges;
+        var mapboxAccessToken = 'pk.eyJ1IjoicGFkYW0wIiwiYSI6ImNqNXBkb3BhcTBhNzEzM3FycGlpcmowNXEifQ.3LeTE_Gk06G6HosTFD0yBw';
+
+        function drawMap(){
+            loc = [53.416042, -8.2358495];
+            zoom = 6;
+
+            r = parseFloat(Cookies.get('right'));
+            l = parseFloat(Cookies.get('left'));
+            t = parseFloat(Cookies.get('top'));
+            b = parseFloat(Cookies.get('bottom'));
+
+            centroid = [(t - b)/2 + b, (r - l)/2 + l];
+
+            area_stat = 0;
+
+            if (Cookies.get('areaMain') == 'country'){
+                data = irl_data;
+                area_stat = 1
+            } else if (Cookies.get('areaMain') == 'region'){
+                for (var i = 0; i < prov_data['features'].length; i++){
+                    name = prov_data['features'][i]['properties']['name'];
+                    if (name == Cookies.get('areaSecond')){
+                        data = prov_data['features'][i]
+                    }
+                }
+                area_stat = 1
+            } else if (Cookies.get('areaMain') == 'county'){
+                for (var j = 0; j < cou_data['features'].length; j++){
+                    name = cou_data['features'][j]['properties']['name'];
+                    if (name == Cookies.get('areaSecond')){
+                        data = cou_data['features'][j]
+                    }
+                }
+                area_stat = 1;
+            } else if (Cookies.get('areaMain') == 'radius'){
+                var circle = L.circle(centroid, {
+                    fillColor: null,
+                    weight: 3,
+                    opacity: 1,
+                    color: 'black',
+                    dashArray: null,
+                    fillOpacity: 0,
+                    radius: Cookies.get('radius') * 1000
+                });
+                area_stat = 2;
+            } else {
+                var polygon = L
+                    .polygon([
+                        [t, l],
+                        [b, l],
+                        [b, r],
+                        [t, r]
+                    ], {
+                        fillColor: null,
+                        weight: 3,
+                        opacity: 1,
+                        color: 'black',
+                        dashArray: null,
+                        fillOpacity: 0
+                    })
+            }
+
+            map = L.map('map', { zoomControl:false })
+                .setView(loc, zoom);
+
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken, {
+                id: 'mapbox.light'
+            }).addTo(map);
+
+            map.scrollWheelZoom.disable();
+            map.dragging.disable();
+            map.doubleClickZoom.disable();
+
+            function style(feature) {
+                return {
+                    fillColor: null,
+                    weight: 3,
+                    opacity: 1,
+                    color: 'black',
+                    dashArray: null,
+                    fillOpacity: 0
+                };
+            }
+
+            if (area_stat == 1){
+                edges = L.geoJson(data, {style: {"fillOpacity": 0}})
+                    .addTo(map);
+                map.fitBounds(edges.getBounds());
+                baselayer = L.geoJson(data, {style: style})
+                    .addTo(map);
+            } else if (area_stat == 2){
+                circle.addTo(map);
+                map.fitBounds(circle.getBounds());
+            } else {
+                polygon.addTo(map);
+                map.fitBounds(polygon.getBounds());
+            }
+
+        }
+    </script>
+
+{% endblock %}

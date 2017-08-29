@@ -1,0 +1,50 @@
+#map{
+    z-index: 1;
+    height: 600px;
+    margin: 0 10% 0 10%;
+    flex: 1 0 80%;
+}
+
+.leaflet-popup-content-wrapper{
+    min-width: 282px;
+}
+
+.leaflet-popup-content{
+    font-family: Raleway, Helvetica, sans-serif !important;
+    padding-bottom: 15px;
+}
+
+.leaflet-popup-content p a{
+    cursor: pointer;
+}
+
+.leaflet-popup-content-wrapper p{
+    margin-top: 2px !important;
+    margin-bottom: 10px !important;
+    float: right;
+}
+
+.risk-btn-small{
+    flex: 0 0 160px;
+    width: 160px !important;
+    margin-left: 6px;
+    height: 1.6em;
+    text-align: center;
+    padding: 1px 4px 4px 4px;
+    cursor: default;
+}
+
+.btn-small-cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    flex-wrap: nowrap;
+}
+
+#small-btn-cont{
+    min-width: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}

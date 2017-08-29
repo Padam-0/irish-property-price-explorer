@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="ROBOTS" content="INDEX, FOLLOW">
+        <meta name="description" content="Explore Irish property and residential house prices.">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="IPPE: Explore and understand your housing market!">
+        <meta name="twitter:site" content="@padams02">
+        <meta name="twitter:description" content="Your gateway to understanding the Irish housing market with easy to use maps use maps, graphs and stats.">
+        <meta name="og:url" content="ippe.ie">
+        <meta name="og:title" content="IPPE: Explore and understand your housing market!">
+        <meta name="og:description" content="Your gateway to understanding the Irish housing market with easy to use maps, graphs and stats.">
+
+        <title>Irish Property Price Explorer</title>
+
+        <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'/>
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type='text/css'/>
+
+        {% load staticfiles %}
+        <meta name="twitter:image" content="{% static 'homepage/media/social.png' %}">
+        <meta name="og:image" content="{% static 'homepage/media/social.png' %}">
+
+        <link rel="icon" href="{% static 'homepage/media/favicon.ico' %}" />
+        <link href="{% static 'homepage/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'homepage/css/header-style.css' %}"  rel="stylesheet">
+        <link href="{% static 'homepage/css/nouislider.min.css' %}" rel="stylesheet">
+        <link href="{% static 'homepage/css/qtip.min.css' %}" rel="stylesheet">
+        <link href="{% static 'predictor/css/polyfill.css' %}" rel="stylesheet">
+        <script src="https://use.fontawesome.com/d4ab8b5599.js"></script>
+        <script src="{% static 'homepage/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'homepage/js/d3.min.js' %}"></script>
+        <script src="{% static 'homepage/js/nouislider.min.js' %}"></script>
+        <script src="{% static 'homepage/js/qtip.min.js' %}"></script>
+        <script src="{% static 'homepage/js/js.cookie.js' %}"></script>
+        <script src="{% static 'homepage/js/header.js' %}"></script>
+
+
+    </head>
+    <body>
+        <div id="header">
+            <div class="header-col" id="h-left">
+                <div class="header-row" id="oh-blue"></div>
+                <div class="header-row" id="oh-green"></div>
+            </div>
+            <div class="header-col" id="h-mid">
+                <div class="header-row" id="h-blue">
+                    <a href="/" id="header-link"><div id="subhead-left">
+                        <h1 id="apptitle">I<span class="title-small">RISH</span> P<span class="title-small">ROPERTY</span> P<span class="title-small">RICE</span> E<span class="title-small">XPLORER</span></h1>
+                        <p>Your gateway to the Irish property market</p>
+                    </div></a>
+                    <div id="subhead-right">
+                        <p id="ipw">In partnership with:</p>
+                        <a href="https://aib.ie/">
+                            <img src="{% static 'homepage/media/aib-logo-two.jpeg' %}"
+                                 id="AIB-img">
+                        </a>
+                    </div>
+                </div>
+                <div class="header-row" id="h-green"></div>
+            </div>
+            <div class="header-col" id="h-right">
+                <div class="header-row" id="oh-blue"></div>
+                <div class="header-row" id="oh-green"></div>
+            </div>
+
+        </div>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+        <div id="footer">
+            <a href="/">
+                <p>Property Price Explorer</p>
+            </a>
+            <div class="fsep">|</div>
+            <a href="{% url 'tableview:index' %}">
+                <p>View Properties</p>
+            </a>
+            <div class="fsep">|</div>
+            <a href="{% url 'reporter:index' %}">
+                <p>Demographic & Price History Reports</p>
+            </a>
+            <div class="fsep">|</div>
+            <a href="{% url 'predictor:index' %}">
+                <p>House Price Prediction</p>
+            </a>
+            <div class="fsep">|</div>
+            <a href="{% url 'riskdb:index' %}">
+                <p>Mortgage Risk Dashboard</p>
+            </a>
+            <div class="fsep">|</div>
+            <a href="/our-data">
+                <p>Our Data</p>
+            </a>
+            <div class="fsep">|</div>
+            <a href="/privacy-cookies">
+                <p>Privacy & Data Collection</p>
+            </a>
+            <div class="fsep">|</div>
+            <a href="/contact">
+                <p>Contact</p>
+            </a>
+        </div>
+        <div id="qtip-growl-container">
+
+        </div>
+    </body>
+    <script src="{% static 'predictor/js/datalist.polyfill.min.js' %}"></script>
+</html>

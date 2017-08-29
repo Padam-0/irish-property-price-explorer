@@ -1,0 +1,32 @@
+#privacy{
+    margin-left: 5%;
+    margin-right: 20%;
+    padding-bottom: 80px;
+    width: auto;
+}
+
+#privacy h2{
+    margin-bottom: 20px;
+}
+
+.section{
+    margin-top: 10px;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 930px) {
+    #privacy{
+        padding-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    #privacy{
+        margin-right: 5%;
+    }
+}

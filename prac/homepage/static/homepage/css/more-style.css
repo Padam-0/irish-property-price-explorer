@@ -1,0 +1,358 @@
+#ag-opt-top{
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+#calc-opt{
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding-top: 5px;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+}
+
+#calc-opt p{
+    -webkit-flex: 1 0 25%;
+    flex: 1 0 25%;
+    margin-right: 3%;
+    margin-bottom: 0;
+}
+
+.segmented-control{
+    -webkit-flex: 1 0 52%;
+    flex: 1 0 52%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+#dist-opt{
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 5px;
+}
+
+#dist-opt-left{
+    -webkit-flex: 1 1 40%;
+    flex: 1 1 40%;
+}
+
+#dist-opt-right{
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-flex: 1 1 35%;
+    flex: 1 1 35%;
+    margin-left: 14%;
+}
+
+#dist-opt-right p{
+    margin-bottom: 0;
+}
+
+#dist-opt-right{
+    padding-right: 6px;
+}
+
+#bad_data{
+    margin-left: 5px;
+}
+
+#radius{
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    -webkit-flex: 0 0 51%;
+    flex: 0 0 51%;
+}
+
+#radius p{
+    padding-top: 10px;
+    margin-right: 15%;
+    width: auto;
+}
+
+#radius div{
+    height: 30px;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-align-items: center;
+    align-items: center;
+    width: auto;
+}
+
+#radius div input:focus {
+    outline-color: cornflowerblue;
+}
+
+#radius-selector{
+    -webkit-flex: 0 0 70px;
+    flex: 0 0 70px;
+    width: 70px;
+    max-width: 70px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+#county{
+    display: none;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    -webkit-flex: 0 0 51%;
+    flex: 0 0 51%;
+}
+
+#county p{
+    padding-top: 10px;
+    margin-right: 15%;
+}
+
+#county div{
+    height: 30px;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+#county div input:focus {
+    outline-color: cornflowerblue;
+}
+
+#county-selector{
+    -webkit-flex: 0 0 110px;
+    flex: 0 0 110px;
+    width: 110px;
+    max-width: 110px;
+    margin-left: 3px;
+}
+
+#region{
+    display: none;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    -webkit-flex: 0 0 51%;
+    flex: 0 0 51%;
+}
+
+#region p{
+    padding-top: 10px;
+    margin-right: 15%;
+}
+
+#region div{
+    height: 30px;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+#region div input:focus {
+    outline-color: cornflowerblue;
+}
+
+#region-selector{
+    -webkit-flex: 0 0 110px;
+    flex: 0 0 110px;
+    width: 110px;
+    max-width: 110px;
+    margin-left: 3px;
+}
+
+#sliders{
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+}
+
+.slider-color{
+    background: rgb(179, 38, 80);
+}
+
+.default-color{
+    background: rgb(5, 8, 78);
+}
+
+#tSlider, #pSlider{
+    height: 9px;
+    margin-bottom: 4px;
+}
+
+.noUi-handle.noUi-handle-upper, .noUi-handle.noUi-handle-lower{
+    height: 18px;
+    background: rgb(5, 8, 78);
+}
+
+.noUi-handle.noUi-handle-upper::before, .noUi-handle.noUi-handle-lower::before{
+    height: 5px;
+}
+
+.noUi-handle.noUi-handle-upper::after, .noUi-handle.noUi-handle-lower::after{
+    height: 5px;
+}
+
+.slide{
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.slide-label{
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: space-between;
+    justify-content: space-around;
+}
+
+.slide-label > :first-child{
+    margin-right: 5px;
+}
+
+#recalc{
+    padding-top: 4px;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-justify-content: space-between;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+#rec-button{
+    background-color: rgb(5, 8, 78) !important;
+    color: white !important;
+    outline: none;
+    -webkit-flex: 1 0 70%;
+    flex: 1 0 70%;
+}
+
+#rec-button.btn-default:hover, #rec-button.btn-default:active, #rec-button.btn-default:focus{
+    background-color: white !important;
+    color: rgb(5, 8, 78) !important;
+    border-color: #ccc;
+}
+
+#more{
+    width: 100%;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+#hp-btn{
+    -webkit-flex: 1 0 45%;
+    flex: 1 0 45%;
+    margin-right: 5%
+}
+
+#rep-btn{
+    -webkit-flex: 1 0 45%;
+    flex: 1 0 45%;
+}
+
+.more-btn{
+    height: 100%;
+    border-width: 1px;
+    vertical-align: middle;
+    margin-top: 3px;
+}
+
+.more-btn.btn-default:hover, .more-btn.btn-default:active, .more-btn.btn-default:focus{
+    background-color: rgb(179, 38, 80) !important;
+    color: white !important;
+    border-color: white;
+}
+
+@media screen and (max-width: 1300px) {
+    #calc-opt p {
+        -webkit-flex: 1 0 15%;
+        flex: 1 0 15%;
+    }
+
+    #dist-opt-right{
+        margin-left: 8%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #calc-opt p {
+        -webkit-flex: 1 0 5%;
+        flex: 1 0 5%;
+    }
+
+    #dist-opt-right{
+        margin-left: 4%;
+    }
+}

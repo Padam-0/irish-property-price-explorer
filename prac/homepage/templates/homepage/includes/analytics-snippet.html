@@ -1,0 +1,83 @@
+{% block analytics %}
+    {% load staticfiles %}
+    <link href="{% static 'homepage/css/analytics-style.css' %}" rel="stylesheet">
+
+    <div id="analytics-content">
+        <div id="content-left">
+            <div class="a-cont">
+                <p>Average Sale Price<span id="ap-info-cont"><a href="#" class="agg-info" id="ap-info">
+                    <sup>[</sup>*<sup>]</sup></a> </span>:</p>
+            </div>
+            <div class="a-cont">
+            <p>Median Sale Price<span id="mp-info-cont"><a href="#" class="agg-info" id="mp-info">
+                    <sup>[</sup>*<sup>]</sup></a> </span>:</p>
+            </div>
+            <div class="a-cont">
+                <p>Price Range<span id="pr-info-cont"><a href="#" class="agg-info" id="pr-info">
+                    <sup>[</sup>*<sup>]</sup></a> </span>:</p>
+            </div>
+            <div class="a-cont">
+                <p>Average m<sup>2</sup><span id="am-info-cont"><a href="#" class="agg-info" id="am-info">
+                    <sup>[</sup>*<sup>]</sup></a> </span>:</p>
+            </div>
+            <div class="a-cont">
+                <p>Average Sale Date<span id="sd-info-cont"><a href="#" class="agg-info" id="sd-info">
+                    <sup>[</sup>*<sup>]</sup></a> </span>:</p>
+            </div>
+            <div class="a-cont">
+                <p>Sale Date Range<span id="dr-info-cont"><a href="#" class="agg-info" id="dr-info">
+                    <sup>[</sup>*<sup>]</sup></a> </span>:</p>
+            </div>
+            <div class="a-cont">
+                <p>Average Age of Resident <a href="#" class="agg-info" id="age-info">
+                <sup>[</sup>*<sup>]</sup></a>:</p>
+            </div>
+            <div class="a-cont">
+                <p><span id="estimated"></span>Population <a href="#" class="agg-info" id="pop-info">
+                    <sup>[</sup>*<sup>]</sup></a>:</p>
+            </div>
+            <div class="a-cont">
+                <p>Percentage of Homes Occupied <a href="#" class="agg-info" id="oc-info">
+                    <sup>[</sup>*<sup>]</sup></a>:</p>
+            </div>
+        </div>
+        <div id="content-right">
+            <div class="a-cont variable-qtip">
+                <p id="average_price"></p>
+            </div>
+            <div class="a-cont variable-qtip">
+                <p id="median_price"></p>
+            </div>
+            <div class="a-cont variable-qtip">
+                <p id="price_range"></p>
+            </div>
+            <div class="a-cont variable-qtip">
+                <p id="avg_size"></p>
+            </div>
+            <div class="a-cont variable-qtip">
+                <p id="avg_date"></p>
+            </div>
+            <div class="a-cont variable-qtip">
+                <p id="date_range"></p>
+            </div>
+            <div class="a-cont constant-qtip">
+                <p id="dem_age"></p>
+            </div>
+            <div class="a-cont constant-qtip">
+                <p id="pop"></p>
+            </div>
+            <div class="a-cont constant-qtip">
+                <p id="perc_oc"></p>
+            </div>
+        </div>
+    </div>
+    <div id="table">
+        <a href="{% url 'tableview:index' %}">
+            <button class="btn btn-default more-btn" id="tab-btn">
+                View properties <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </button>
+        </a>
+    </div>
+
+
+{% endblock %}

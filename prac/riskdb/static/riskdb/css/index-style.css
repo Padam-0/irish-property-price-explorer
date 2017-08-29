@@ -1,0 +1,669 @@
+#risk-content{
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+@-moz-document url-prefix() {
+    #risk-title{
+        flex: 1 0 33px;
+    }
+    #search{
+        flex: 0 0 59px;
+        max-height: 59px;
+        margin-bottom: 10px;
+    }
+
+    tspan{
+        font-weight:normal;
+    }
+
+    .last{
+        height: 370px !important;
+        max-height: 370px !important;
+    }
+
+    #cpleth{
+        margin-top: 15px;
+    }
+
+    #cp-cont{
+        margin-top: 60px;
+    }
+}
+
+#search{
+    -webkit-flex: 0 0 5%;
+    flex: 0 0 5%;
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+#risk-results{
+    -webkit-flex: 0 0;
+    flex: 0 0;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+}
+
+hr{
+    width: 100%;
+    height: 2px;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-color: cornflowerblue;
+}
+
+#ed-name{
+    margin-top: 1%;
+}
+
+.agg-info:focus, .agg-info:hover{
+    color: #23527c;
+    text-decoration: none;
+}
+
+.last{
+    height: 370px !important;
+    max-height: 370px !important;
+}
+
+#bottomhr{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.agg-info:focus{
+    outline: none;
+}
+
+.qtip-blue, .qtip-red{
+    font-size: 1em;
+    line-height: 1em;
+    color: #23527c;
+}
+
+.qtip-red{
+    color: #761c19;
+}
+
+#risks{
+    margin-top: 1%;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 2%;
+}
+
+.risks-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1%;
+}
+
+.risk-cont{
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.risk-cont p{
+    -webkit-flex: 1 0 50%;
+    flex: 1 0 50%;
+    margin-right: 5%;
+    margin-bottom: 0;
+}
+
+.risk-btn{
+    width: 170px;
+    outline: none;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    user-select: none;
+    cursor: pointer;
+    background-image: none;
+    border-radius: 4px;
+    overflow: visible;
+}
+
+#charts{
+    margin-top: 2%;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.chart-row{
+    width: 100%;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.single{
+    width: 100%;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-around !important;
+    justify-content: space-around !important;
+}
+
+.price{
+    width: 100%;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start !important;
+    justify-content: flex-start !important;
+    max-height: 520px;
+}
+
+#disclaimer{
+    padding-bottom: 20px;
+}
+
+.chart{
+    -webkit-flex: 1 0 35%;
+    flex: 1 0 35%;
+    max-width: 50%;
+}
+
+#pricechart{
+    margin-top: 20px;
+    max-width: 80% !important;
+    -webkit-flex: 1 0 !important;
+    flex: 1 0 !important;
+    width: 80% !important;
+    margin-left: 10%;
+    margin-right: 10%;
+    max-height: 400px;
+}
+
+#pchart{
+    max-height: 400px;
+}
+
+
+.chart-left{
+    margin-left: 2%;
+    margin-right: 1%;
+}
+
+.chart-right{
+    margin-left: 1%;
+    margin-right: 2%;
+}
+
+.chart > svg{
+    width: 100%;
+}
+
+#cp-cont{
+    height: 600px;
+    width: 100%;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+
+#cpleth{
+    -webkit-flex-direction: column !important;
+    flex-direction: column !important;
+    height: 700px !important;
+}
+
+#seg-control-cont{
+    width: 80%;
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: -30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#seg-control-cont p{
+    margin-bottom: 0;
+    -webkit-flex: 1 0 10%;
+    flex: 1 0 10%;
+    margin-right: 5%;
+}
+
+.segmented-control{
+    -webkit-flex: 1 0 85%;
+    flex: 1 0 85%;
+    height: 100%;
+    font-size: 0.8em;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.arc path {
+  stroke: #fff;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: left;
+    width: auto;
+    height: auto;
+    padding: 4px;
+    font-size: 12px;
+    color: white;
+    background: rgb(5, 8, 78);
+    border: none;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+#map{
+    max-height: 600px;
+    margin-top: 40px !important;
+    margin-bottom: 0 !important;;
+}
+
+@media screen and (max-width: 1200px) {
+    #pricechart{
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #pricechart{
+        height: 360px !important;
+    }
+    #pchart{
+        height: 360px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #pricechart{
+        height: 330px !important;
+    }
+    #pchart{
+        height: 330px;
+    }
+    .price{
+        margin-bottom: 10px;
+    }
+
+    .risks-row{
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    .risk-cont{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+    #charts{
+        margin-bottom: 0;
+    }
+
+    #pricechart{
+        height: 300px !important;
+        width: 550px !important;
+    }
+    #pchart{
+        height: 300px;
+        width: 550px !important;
+    }
+    .chart{
+        -webkit-flex: 1 0 100%;
+        flex: 1 0 100%;
+        max-width: 80%;
+    }
+    .chart-row{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 800px !important;
+        max-height: 800px !important;
+    }
+    .single, #mort-cont{
+        height: 380px !important;
+        max-height: 380px;
+        width: 100% !important;
+    }
+    .chart > svg{
+        max-height: 380px;
+    }
+
+    .price{
+        margin-bottom: 20px;
+        height: 375px !important;
+    }
+
+    .chart-left, .chart-right{
+        max-height: 380px;
+        height: 380px !important;
+        width: 100% !important;
+    }
+
+    #seg-control-cont{
+        width: 96%;
+        flex-direction: column;
+        flex: 0 0 65px;
+        justify-content: flex-start;align-items: flex-start;
+    }
+
+    .segmented-control{
+        width: 100%;
+    }
+
+    #map{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        flex: 1 0 96% !important;
+        margin-top: 15% !important;
+        height: 580px !important;
+    }
+
+    #cp-cont{
+        height: 620px !important;
+    }
+
+    #bottomhr{
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .chart-left, .chart-right{
+        height: 320px !important;
+        max-height: 320px !important;
+    }
+
+    #pricechart{
+        height: 270px !important;
+        margin-left: 0;
+        margin-right: 0;
+        width: 500px !important;
+    }
+    #pchart{
+        height: 270px;
+        width: 500px !important;
+    }
+
+    .chart-row{
+        height: 640px !important;
+        max-height: 640px !important;
+    }
+    .single, #mort-cont{
+        height: 320px !important;
+        max-height: 320px;
+    }
+    .chart > svg{
+        max-height: 320px;
+    }
+
+    .price{
+        margin-bottom: 30px;
+        height: 345px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #cpleth{
+        display: none;
+    }
+
+    #bottomhr{
+        display: none;
+    }
+
+    #pricechart{
+        height: 240px !important;
+        width: 500px !important;
+        margin-left: -50px;
+    }
+    #pchart{
+        height: 240px;
+        width: 500px !important;
+    }
+
+    .price{
+        margin-bottom: 40px;
+        height: 315px !important;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    #pricechart{
+        height: 240px !important;
+        width: 450px !important;
+    }
+    #pchart{
+        height: 240px;
+        width: 450px !important;
+    }
+
+    .price{
+        margin-bottom: 40px;
+        height: 315px !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    #pricechart{
+        height: 210px !important;
+        width: 400px !important;
+    }
+    #pchart{
+        height: 210px;
+        width: 400px !important;
+    }
+
+    .price{
+        margin-bottom: 60px;
+        height: 285px !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .chart-left, .chart-right{
+        height: 300px !important;
+        max-height: 300px !important;
+    }
+
+    #pricechart{
+        height: 210px !important;
+        width: 350px !important;
+    }
+    #pchart{
+        height: 210px;
+        width: 350px !important;
+    }
+
+    .chart-row{
+        height: 600px !important;
+        max-height: 600px !important;
+    }
+    .single, #mort-cont{
+        height: 300px !important;
+        max-height: 300px;
+    }
+    .chart > svg{
+        max-height: 300px;
+    }
+
+    .price{
+        margin-bottom: 60px;
+        height: 285px !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .chart-left, .chart-right{
+        height: 270px !important;
+        max-height: 270px !important;
+    }
+
+    #pricechart{
+        height: 180px !important;
+        width: 350px !important;
+    }
+    #pchart{
+        height: 180px;
+        width: 350px !important;
+    }
+
+    .chart-row{
+        height: 540px !important;
+        max-height: 540px !important;
+    }
+    .single, #mort-cont{
+        height: 270px !important;
+        max-height: 270px;
+    }
+    .chart > svg{
+        max-height: 270px;
+    }
+
+    .price{
+        margin-bottom: 60px;
+        height: 285px !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .chart-left, .chart-right{
+        height: 240px !important;
+        max-height: 240px !important;
+    }
+
+    #pricechart{
+        height: 150px !important;
+        width: 350px !important;
+    }
+    #pchart{
+        height: 150px;
+        width: 350px !important;
+    }
+
+    .chart-row{
+        height: 480px !important;
+        max-height: 480px !important;
+    }
+    .single, #mort-cont{
+        height: 240px !important;
+        max-height: 240px;
+    }
+    .chart > svg{
+        max-height: 240px;
+    }
+
+    .price{
+        margin-bottom: 60px;
+        height: 265px !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .chart-left, .chart-right{
+        height: 220px !important;
+        max-height: 220px !important;
+    }
+
+    #pricechart{
+        height: 150px !important;
+        width: 280px !important;
+    }
+    #pchart{
+        height: 150px;
+        width: 280px !important;
+    }
+
+    .chart-row{
+        height: 440px !important;
+        max-height: 440px !important;
+    }
+    .single, #mort-cont{
+        height: 220px !important;
+        max-height: 220px;
+    }
+    .chart > svg{
+        max-height: 220px;
+    }
+
+    .price{
+        margin-bottom: 60px;
+        height: 285px !important;
+    }
+}

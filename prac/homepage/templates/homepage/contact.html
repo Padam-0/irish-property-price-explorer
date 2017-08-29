@@ -1,0 +1,26 @@
+{% extends 'homepage/header.html' %}
+
+{% block content %}
+    {% load staticfiles %}
+    <link href="{% static 'homepage/css/contact-style.css' %}" rel="stylesheet">
+
+    <div id="contact">
+        <h2>Contact:</h2>
+
+        <div class="person">
+            <h4>Peter Adam:</h4>
+            <p>E-mail: <a href="mailto:peter.adam@ucdconnect.ie">peter.adam@ucdconnect.ie</a></p>
+            <p>Twitter: <a href="https://twitter.com/padams02">@Padams02</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/peteradam02/">peteradam02</a></p>
+            <p>Blog: <a href="https://medium.com/@padam0/">medium.com/@padam0/</a></p>
+        </div>
+
+        <div class="person">
+            <h4>Andy McSweeney:</h4>
+            <p>E-mail: <a href="mailto:andy.mcsweeney@ucdconnect.ie">andy.mcsweeney@ucdconnect.ie</a></p>
+            <p>Twitter: <a href="https://twitter.com/Mcsweena">@Mcsweena</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/mcsweeneyandy/">mcsweeneyandy</a></p>
+        </div>
+    </div>
+
+{% endblock %}

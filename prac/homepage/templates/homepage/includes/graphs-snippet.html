@@ -1,0 +1,649 @@
+{% block graphs %}
+    {% load staticfiles %}
+    <link href="{% static 'homepage/css/graph-style.css' %}" rel="stylesheet">
+    <div id="chart-L"></div>
+    <div id="chart-R"></div>
+
+    <script type="text/javascript">
+        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var pad_bot = 25;
+        var pad_l = 45;
+        var pad_r = 62;
+        var h = 140;
+        var w = 300;
+        var svgL = d3.select("div#chart-L");
+        var svgR = d3.select("div#chart-R");
+        var xAxisL = d3.axisBottom();
+        var xAxisR = d3.axisBottom();
+        var yAxisL = d3.axisLeft();
+        var yAxisR = d3.axisLeft();
+        var yScaleL = d3.scaleLinear();
+        var yScaleR = d3.scaleLinear();
+        var xScaleL = d3.scaleLinear();
+        var xScaleR = d3.scaleLinear();
+        var divL;
+        var divR;
+        var lineL = d3.line();
+
+        function drawGraphs(dict, av_array, lobf_coef){
+
+            var data_list = [];
+
+            for (var key in dict) {
+                for (var i=0; i < dict[key]; i++){
+                    data_list.push(key);
+                }
+            }
+
+            for (var i = 0; i < lobf_coef.length; i ++){
+                lobf_coef[i] = parseFloat(lobf_coef[i])
+            }
+
+            lobf = [];
+
+            for (var i = 0; i < av_array.length; i++){
+                lobf.push([av_array[i][0], lobf_coef[0] * Math.pow(av_array[i][0], 3) + lobf_coef[1] * Math.pow(av_array[i][0], 2) + av_array[i][0] * lobf_coef[2] + lobf_coef[3]])
+            }
+
+            svgL = svgL
+                .append("div")
+                .classed("svg-container", true) //container class to make it responsive
+                .append("svg")
+                //responsive SVG needs these 2 attributes and no width and height attr
+                .attr("preserveAspectRatio", "xMinYMin meet")
+                //class to make it responsive
+                .attr("viewBox", '0 0 300 150')
+                .classed("svg-content-responsive", true);
+
+            yMinL = 0;
+
+            yMaxL = d3.max(av_array, function (d) {
+                return d[1];
+            });
+
+            deltaYL = yMaxL * 0.1;
+
+            yScaleL = yScaleL
+                .domain([0, yMaxL + deltaYL])
+                .range([h - pad_bot, 15]);
+
+            yAxisL = yAxisL
+                .scale(yScaleL)
+                .ticks(5)
+                .tickFormat(function (d) {
+                    var val;
+                    if (d >= 1000000) {
+                        val = d / 1000000 + ' M'
+                    } else if (d == 0) {
+                        val = 0
+                    } else {
+                        val = d / 1000 + ' k'
+                    }
+                    return '€ ' + val
+                })
+                .tickSizeOuter(0);
+
+            xMinL = d3.min(av_array, function (d) {
+                if (d[1] > 0){
+                    return d[0];
+                }
+            });
+            xMaxL = d3.max(av_array, function (d) {
+                if (d[1] > 0){
+                    return d[0];
+                }
+            });
+
+            xScaleL = xScaleL
+                .domain([xMinL, xMaxL])
+                .range([pad_l, w - pad_r]);
+
+            xAxisL = xAxisL
+                .scale(xScaleL)
+                .tickFormat(function (d) {
+                    var dot = new Date(d);
+                    return monthNames[dot.getUTCMonth()] + '-' +
+                        String(dot.getUTCFullYear()).slice(2);
+                });
+
+            divL = d3.select("body").append("div")
+                        .attr("class", "tooltipL")
+                        .style("opacity", 0);
+
+            svgL.append("defs").append("clipPath")
+                .attr("id", "clip")
+              .append("rect")
+                .attr("transform", "translate(" + pad_l + ", 15)")
+                .attr("width", w - pad_l - pad_r)
+                .attr("height", h - pad_bot - 15);
+
+            lineL = lineL
+                .curve(d3.curveBundle.beta(0.5))
+                .x(function(d) { return xScaleL(d[0]); })
+                .y(function(d) { return yScaleL(d[1]); });
+
+            svgL.append("g")
+                .attr("clip-path", "url(#clip)")
+                .append("path")
+              .datum(lobf)
+              .attr('class', 'line')
+              .attr("fill", "none")
+              .attr("stroke", "#B32650")
+              .attr("stroke-linejoin", "round")
+              .attr("stroke-linecap", "round")
+              .attr("stroke-width", 2)
+              .attr("d", lineL);
+
+            svgL.selectAll("circle")
+                .data(av_array)
+                .enter()
+                .append("circle")
+                .attr("cx", function (d) {
+                    return xScaleL(d[0]);
+                })
+                .attr("cy", function (d) {
+                    return yScaleL(d[1]);
+                })
+                .attr("r", 2)
+                .style("fill", "#05084E")
+                .style("opacity", .4)
+                .on("mouseover", function(d) {
+                    d3.select(this)
+                        .style('opacity', 1)
+                        .attr('r', 3)
+                        .style("fill", "#B32650");
+                    divL.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    t = new Date(d[0]);
+                    divL.html('Week of ' + t.getDate() + '-' +
+                        monthNames[t.getUTCMonth()] + "-" +
+                        String(t.getUTCFullYear()) +
+                        "<br>Average Price: €" + thousandsDisplay(d[1]))
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+
+                })
+                .on("mouseout", function(d) {
+                    d3.select(this).style('opacity', 0.4).attr('r', 2).style
+                    ("fill", "#05084E");
+                    divL.transition()
+                         .duration(500)
+                         .style("opacity", 0);
+                });
+
+            // Add Title
+            svgL.append("text")
+               .attr("transform", "translate(" + (w / 2) + " , 0)")
+               .attr("dy", "1em")
+               .style("text-anchor", "middle")
+               .text("Sales History")
+               .style("font-size","0.75em");
+
+            // Add and format X-axis
+            svgL.append("g")
+                .attr("class", "l x axis")
+                .attr("transform", "translate(0," + (h - pad_bot) + ")")
+                .call(xAxisL)
+            .selectAll("text")
+                .attr("y", 6)
+                .attr("x", -3)
+                .style("font-size","0.6em")
+                .attr("transform", "rotate(45)")
+                .style("text-anchor", "start")
+                .style("font-family", "Raleway");
+
+            // Add and format X-axis label
+            svgL.append("text")
+               .attr("transform", "translate(" + (w - pad_r/2 - 2) + " ," +
+                   (h) + ")")
+               .style("text-anchor", "middle")
+               .text("Date of Sale")
+               .style("font-size","0.6em");
+
+            // Add and format Y-axis
+            svgL.append("g")
+                .attr("class", "l y axis")
+                .attr("transform", "translate(" + pad_l + ",0)")
+                .call(yAxisL)
+            .selectAll("text")
+                .style("font-size","0.6em")
+                .style("font-family", "Raleway");
+
+            // Add and format Y-axis label
+            svgL.append("text")
+               .attr("transform", "rotate(-90)")
+               .attr("y", 0)
+               .attr("x",0 - (h / 2))
+               .attr("dy", "1em")
+               .style("text-anchor", "middle")
+               .text("Average Weekly Price (€)")
+               .style("font-size","0.6em");
+
+            // HISTOGRAM
+            svgR = svgR
+                .append("div")
+                .classed("svg-container", true) //container class to make it responsive
+                .append("svg")
+                //responsive SVG needs these 2 attributes and no width and height attr
+                .attr("preserveAspectRatio", "xMinYMin meet")
+                //class to make it responsive
+                .attr("viewBox", '0 0 300 150')
+                .classed("svg-content-responsive", true);
+
+            xMaxR = d3.max(data_list, function (d) {
+                return d
+            });
+
+            xScaleR = xScaleR
+                .domain([0, xMaxR])
+                .rangeRound([pad_l, w - pad_r - 10]);
+
+            bins = d3.histogram()
+                .domain(xScaleR.domain())
+                .thresholds(xScaleR.ticks(20))
+                (data_list);
+
+            xAxisR = xAxisR
+                .scale(xScaleR)
+                .tickFormat(function (d) {
+                    var val;
+                    if (d >= 1000000) {
+                        val = d / 1000000 + ' M'
+                    } else if (d == 0) {
+                        val = 0
+                    } else {
+                        val = d / 1000 + ' k'
+                    }
+                    return '€ ' + val
+                })
+                .tickSizeOuter(0);
+
+            yMinR = 0;
+            yMaxR = d3.max(bins, function (d) {
+                return d.length;
+            });
+            deltaYR = (yMaxR - yMinR) * 0.01;
+
+            yScaleR = yScaleR
+                .domain([yMinR, yMaxR + deltaYR])
+                .range([h - pad_bot, 15]);
+
+            yAxisR = yAxisR
+                .scale(yScaleR)
+                .ticks(5)
+                .tickSizeOuter(0);
+
+            divR = d3.select("body").append("div")
+                .attr("class", "tooltipR")
+                .style("opacity", 0);
+
+            var bar = svgR.selectAll(".bar")
+                .data(bins)
+                .enter()
+                .append("g")
+                .attr("class", "bar")
+                .attr("transform", function (d) {
+                    return "translate" + "(" + xScaleR(d.x0) +
+                        "," + (yScaleR(d.length)) + ")";
+                })
+                .style("fill", "#05084E")
+                .on("mouseover", function (d) {
+                    d3.select(this).style("fill", "#B32650");
+                    divR.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    divR.html('€' + thousandsDisplay(d.x0) + " - €" +
+                        thousandsDisplay(d.x1) + "<br>Count: " + d.length)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 38) + "px");
+                })
+                .on("mouseout", function (d) {
+                    d3.select(this).style("fill", "#05084E");
+                    divR.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
+
+            bar.append("rect")
+                .attr("x", 1)
+                .attr("width", xScaleR(bins[0].x1) - xScaleR(bins[0].x0) - 1)
+                .attr("height", function (d) {
+                    return h - pad_bot - yScaleR(d.length);
+                });
+
+            // Add Title
+            svgR.append("text")
+                .attr("transform", "translate(" + (w / 2) + " , 0)")
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .text("Histogram of Sales")
+                .style("font-size", "0.75em");
+
+            // Add and format X-axis
+            svgR.append("g")
+                .attr("class", "r x axis")
+                .attr("transform", "translate(0," + (h - pad_bot) + ")")
+                .call(xAxisR)
+                .selectAll("text")
+                .attr("y", 6)
+                .attr("x", -3)
+                .style("font-size", "0.6em")
+                .attr("transform", "rotate(45)")
+                .style("text-anchor", "start")
+                .style("font-family", "Raleway");
+
+            // Add and format X-axis label
+            svgR.append("text")
+                .attr("transform", "translate(" + (w - pad_r / 2 - 5) + " ," +
+                    (h) + ")")
+                .style("text-anchor", "middle")
+                .text("Sale Price (€)")
+                .style("font-size", "0.6em");
+
+            // Add and format Y-axis
+            svgR.append("g")
+                .attr("class", "r y axis")
+                .attr("transform", "translate(" + pad_l + ",0)")
+                .call(yAxisR)
+                .selectAll("text")
+                .style("font-size", "0.6em")
+                .style("font-family", "Raleway");
+
+            // Add and format Y-axis label
+
+            svgR.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 5)
+                .attr("x", 0 - (h / 2))
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .text("Count")
+                .style("font-size", "0.6em");
+
+            svgL.append("text")
+                .attr("class", "ndd")
+                .attr("transform", "translate(" + (w / 2) + " ," + ((h - pad_bot) / 2) + ")")
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .text("No data to display...")
+                .style("opacity", 0)
+                .style('fill', "#B32650")
+                .style("font-size", "0.8em");
+
+            svgR.append("text")
+                .attr("class", "ndd")
+                .attr("transform", "translate(" + (w / 2) + " ," + ((h - pad_bot) / 2) + ")")
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .text("No data to display...")
+                .style("opacity", 0)
+                .style('fill', "#B32650")
+                .style("font-size", "0.8em");
+        }
+
+        function update_graphs(svgL, svgR, xAxisL, xAxisR, yAxisL, yAxisR, yScaleL, yScaleR, xScaleL, xScaleR, divL, divR, NDD, lineL){
+
+            if (NDD == true){
+                svgL.selectAll("circle").remove();
+                svgL.select(".ndd").transition().duration(1000).style("opacity", 1);
+                svgR.selectAll(".bar").remove();
+                svgR.select(".ndd").transition().duration(1000).style("opacity", 1);
+                svgL.select(".line").transition().duration(1000).style("opacity", 0);
+
+            } else {
+                svgL.select(".ndd").transition().duration(1000).style("opacity", 0);
+                svgR.select(".ndd").transition().duration(1000).style("opacity", 0);
+                svgL.select(".line").style("opacity", 1);
+
+
+                data_list = [];
+
+                for (var key in hist_dict) {
+                    for (var i=0; i < hist_dict[key]; i++){
+                        data_list.push(key);
+                    }
+                }
+
+                for (var i = 0; i < lobf_coef.length; i ++){
+                    lobf_coef[i] = parseFloat(lobf_coef[i])
+                }
+
+                lobf = [];
+
+                for (var i = 0; i < scatter_data.length; i++){
+                    lobf.push([scatter_data[i][0], lobf_coef[0] * Math.pow(scatter_data[i][0], 3) + lobf_coef[1] * Math.pow(scatter_data[i][0], 2) + scatter_data[i][0] * lobf_coef[2] + lobf_coef[3]])
+                }
+
+                yMinL = 0;
+                yMaxL = d3.max(scatter_data, function (d) {
+                    return d[1];
+                });
+                deltaYL = (yMaxL - yMinL) * 0.1;
+
+                yScaleL.domain([yMinL, yMaxL + deltaYL]);
+
+                xMinL = d3.min(scatter_data, function (d) {
+                    return d[0];
+                });
+                xMaxL = d3.max(scatter_data, function (d) {
+                    return d[0];
+                });
+                deltaXL = (xMaxL - xMinL) * 0.1;
+
+                xScaleL.domain([xMinL, xMaxL + deltaXL]);
+
+                //Update x-axis
+                svgL.select(".l.x.axis")
+                    .transition()
+                    .duration(1000)
+                    .call(xAxisL);
+
+                svgL.select(".l.x.axis")
+                    .selectAll("text")
+                    .style("font-size","0.6em")
+                    .attr("transform", "rotate(45)")
+                    .style("text-anchor", "start")
+                    .style("font-family", "Raleway");
+
+                //Update y-axis
+                svgL.select(".l.y.axis")
+                    .transition()
+                    .duration(1000)
+                    .call(yAxisL);
+
+                svgL.select(".l.y.axis")
+                    .selectAll("text")
+                    .style("font-size","0.6em")
+                    .style("font-family", "Raleway");
+
+                lineL.x(function(d) { return xScaleL(d[0]); })
+                    .y(function(d) { return yScaleL(d[1]); });
+
+                svgL.select(".line")
+                      .datum(lobf)
+                      .transition()
+                        .duration(1000)
+                        .ease(d3.easeLinear)
+                    .attr("d", lineL);
+
+                var circs = svgL.selectAll("circle").data(scatter_data);
+
+                circs.transition()
+                    .delay(function(d, i) {
+                        return i / scatter_data.length * 1000;   // <-- Where the magic happens
+                    })
+                    .duration(1000)
+                    .attr("cx", function (d) {
+                        return xScaleL(d[0]);
+                    })
+                    .attr("cy", function (d) {
+                        return yScaleL(d[1]);
+                    });
+
+                circs.exit()
+                    .transition()
+                    .style("opacity", 0)
+                    .duration(1000)
+                    .remove();
+
+                var newcircs = svgL.selectAll("circle")
+                    .data(scatter_data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function (d) {
+                        return xScaleL(d[0]);
+                    })
+                    .attr("cy", function (d) {
+                        return yScaleL(d[1]);
+                    })
+                    .attr("r", 2)
+                    .style("fill", "#05084E")
+                    .style('opacity', 0);
+
+                newcircs.transition()
+                    .delay(function(d, i) {
+                        return i / scatter_data.length * 1000;   // <-- Where the magic happens
+                    })
+                    .duration(1000)
+                    .style("opacity", .65);
+
+                newcircs.on("mouseover", function(d) {
+                    d3.select(this)
+                        .style('opacity', 1)
+                        .attr('r', 3)
+                        .style("fill", "#B32650");
+                    divL.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    t = new Date(d[0]);
+                    divL.html('Week of ' + t.getDate() + '-' +
+                        monthNames[t.getUTCMonth()] + "-" +
+                        String(t.getUTCFullYear()) +
+                        "<br>Average Price: €" + thousandsDisplay(d[1]))
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+
+                })
+                .on("mouseout", function(d) {
+                    d3.select(this).style('opacity', 0.65).attr('r', 2).style
+                    ("fill", "#05084E");
+                    divL.transition()
+                         .duration(500)
+                         .style("opacity", 0);
+                });
+
+                xMaxR = d3.max(data_list, function (d) {
+                    return parseInt(d)
+                });
+
+                xScaleR.domain([0, xMaxR]);
+
+                xAxisR.scale(xScaleR);
+
+                var bins = d3.histogram()
+                    .domain(xScaleR.domain())
+                    .thresholds(xScaleR.ticks(20))
+                    (data_list);
+
+                yMinR = 0;
+                yMaxR = d3.max(bins, function (d) {
+                    return d.length;
+                });
+                deltaYR = (yMaxR - yMinR) * 0.01;
+
+                yScaleR.domain([yMinR, yMaxR + deltaYR]);
+
+                yAxisR.scale(yScaleR);
+
+                var bars = svgR.selectAll(".bar").data(bins);
+
+                bars.transition()
+                    .duration(2000)
+                    .attr("transform", function (d) {
+                        return "translate" + "(" + xScaleR(d.x0) +
+                            "," + (yScaleR(d.length)) + ")";
+                    });
+
+                bars.select("rect")
+                    .transition()
+                    .duration(2000)
+                    .attr("height", function (d) {
+                        return h - pad_bot -
+                            yScaleR(d.length);
+                    })
+                    .attr("width", xScaleR(bins[0].x1) - xScaleR(bins[0].x0) - 1);
+
+                bars.exit()
+                    .transition()
+                    .style("opacity", 0)
+                    .duration(1000)
+                    .remove();
+
+                var newbars = svgR.selectAll(".bar")
+                    .data(bins)
+                    .enter()
+                    .append("g")
+                    .attr("class", "bar")
+                    .attr("transform", function (d) {
+                        return "translate" + "(" + xScaleR(d.x0) +
+                            "," + (yScaleR(d.length)) + ")";
+                    })
+                    .style("fill", "#05084E")
+                    .on("mouseover", function (d) {
+                        d3.select(this).style("fill", "#B32650");
+                        divR.transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                        divR.html('€' + thousandsDisplay(d.x0) + " - €" +
+                            thousandsDisplay(d.x1) + "<br>Count: " + d.length)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 38) + "px");
+                    })
+                    .on("mouseout", function (d) {
+                        d3.select(this).style("fill", "#05084E");
+                        divR.transition()
+                            .duration(500)
+                            .style("opacity", 0);
+                    });
+
+                newbars.append("rect")
+                    .transition()
+                    .duration(2000)
+                    .attr("x", 1)
+                    .attr("width", xScaleR(bins[0].x1) - xScaleR(bins[0].x0) - 1)
+                    .attr("height", function (d) {
+                        return h - pad_bot - yScaleR(d.length);
+                    });
+
+                //Update x-axis
+                svgR.select(".r.x.axis")
+                    .transition()
+                    .duration(2000)
+                    .call(xAxisR);
+
+                svgR.select(".r.x.axis")
+                    .selectAll("text")
+                    .style("font-size","0.6em")
+                    .attr("transform", "rotate(45)")
+                    .style("text-anchor", "start")
+                    .style("font-family", "Raleway");
+
+                //Update y-axis
+                svgR.select(".r.y.axis")
+                    .transition()
+                    .duration(2000)
+                    .call(yAxisR);
+
+                svgR.select(".r.y.axis")
+                    .selectAll("text")
+                    .style("font-size","0.6em")
+                    .style("font-family", "Raleway");
+            }
+        }
+
+    </script>
+
+{% endblock %}
+

@@ -1,0 +1,352 @@
+{% block choropleth %}
+    {% load staticfiles %}
+    <link href="{% static 'riskdb/css/cpleth-style.css' %}" rel="stylesheet">
+    <link href="{% static 'riskdb/css/leaflet.css' %}" rel="stylesheet">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="{% static 'riskdb/js/leaflet.js' %}"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
+    <script src="{% static 'riskdb/js/eds.js' %}"></script>
+    <script src="{% static 'riskdb/js/age_cp_data.js' %}"></script>
+    <script src="{% static 'riskdb/js/cso_ref.js' %}"></script>
+    <div id='map' ></div>
+    <script>
+        var h_popup;
+        var c_popup;
+        var map;
+        var geojson;
+        var baselayer;
+        var edges;
+        var mapboxAccessToken = 'pk.eyJ1IjoicGFkYW0wIiwiYSI6ImNqNXBkb3BhcTBhNzEzM3FycGlpcmowNXEifQ.3LeTE_Gk06G6HosTFD0yBw';
+
+        function drawChoropleth(reference){
+
+            map = L.map('map')
+                .setView([{{ lat }}, {{ lng }}], 13);
+
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken, {
+                id: 'mapbox.light',
+                minZoom: 7,
+                maxZoom: 13
+            }).addTo(map);
+
+            map.scrollWheelZoom.disable();
+
+            edges = L.geoJson(ed_data)
+                .addTo(map);
+
+            h_popup = L.popup();
+            c_popup = L.popup();
+
+            update_colors(map, h_popup, c_popup, reference);
+
+        }
+
+        function update_colors(map, h_popup, c_popup, ref_variable){
+
+            var color_variable;
+            switch (ref_variable){
+                case 'age':
+                    color_variable = age_ref;
+                    break;
+                case 'industry':
+                    color_variable = ind_ref;
+                    break;
+                case 'family':
+                    color_variable = fam_ref;
+                    break;
+                case 'occupation':
+                    color_variable = job_ref;
+                    break;
+                case 'skills':
+                    color_variable = prince_ref;
+                    break;
+                case 'occupancy':
+                    color_variable = occu_ref;
+                    break;
+                case 'ownership':
+                    color_variable = mort_ref;
+                    break;
+                case 'price':
+                    color_variable = pred_ref;
+                    break;
+            }
+
+            function getColor(id) {
+                if (id.indexOf('/') > 0) {
+                    id = id.slice(0, 6);
+                }
+
+                val = color_variable[id];
+
+                return val > 0.9 ? '#800026' :
+                    val > 0.75   ? '#BD0026' :
+                    val > 0.6    ? '#E31A1C' :
+                    val > 0.45   ? '#FC4E2A' :
+                    val > 0.3    ? '#FD8D3C' :
+                    val > 0.15   ? '#FEB24C' :
+                    val > 0      ? '#FED976' :
+                    val < -0.9   ? '#00AD17' :
+                    val < -0.75  ? '#24B838' :
+                    val < -0.6   ? '#48C459' :
+                    val < -0.45  ? '#6DD07A' :
+                    val < -0.3   ? '#91DB9B' :
+                    val < -0.15  ? '#B6E7BC' :
+                    val < 0      ? '#FFF' :
+                                   '#FFF';
+            }
+
+            function getborder(id){
+                if (id == '{{ edist_id }}'){
+                    return 'black'
+                } else {
+                    return 'white'
+                }
+            }
+
+            function getwidth(id){
+                if (id == '{{ edist_id }}'){
+                    return 5
+                } else {
+                    return null
+                }
+            }
+
+            function style(feature) {
+                return {
+                    fillColor: getColor(feature.properties.uid),
+                    weight: getwidth(feature.properties.uid),
+                    opacity: 1,
+                    color: getborder(feature.properties.uid),
+                    dashArray: null,
+                    fillOpacity: 0.4
+                };
+            }
+
+            baselayer = L.geoJson(ed_data, {style: style})
+                .addTo(map);
+            
+            function get_price_rl(id, variable){
+                if (id.indexOf('/') > 0) {
+                    id = id.slice(0, 6);
+                }
+                try{
+                    val = variable[id];
+                } catch(err){
+                    val = 'NEDTMP';
+                }
+
+                if (val == 'NEDTMP'){
+                    return "Not Applicable"
+                } else {
+                    if (val > 0.5) {
+                        return "Very Overvalued"
+                    } else if (val > 0) {
+                        return "Overvalued"
+                    } else if (val < -0.5) {
+                        return "Very Undervalued"
+                    } else if (val < 0) {
+                        return "Undervalued"
+                    } else {
+                        return "Within Margin of Error"
+                    }
+                }
+            }
+
+            function get_risk_level(id, variable) {
+                if (id.indexOf('/') > 0) {
+                    id = id.slice(0, 6);
+                }
+
+                val = variable[id];
+                
+                if (val > 0.66) {
+                    return "High"
+                } else if (val > 0.33) {
+                    return "Moderate High"
+                } else if (val < -0.66) {
+                    return "Low"
+                } else if (val < -0.33) {
+                    return "Moderate Low"
+                } else {
+                    return "Normal"
+                }
+            }
+
+            function get_ed_name(id) {
+                if (id.indexOf('/') > 0) {
+                    id = id.slice(0, 6);
+                }
+
+                return cso_ref[id];
+            }
+
+            function highlightFeature(e, feature) {
+                var layer = e.target;
+
+                layer.setStyle({
+                    weight: 5,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.7
+                });
+
+                if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                    layer.bringToFront();
+                }
+                
+                if (ref_variable == 'price'){
+                    h_popup
+                        .setLatLng(e.latlng)
+                        .setContent('<h4>' + get_ed_name(feature.properties.uid) + '</h4>'
+                            + '<div class="btn-small-cont">'
+                            + showArea[0].toUpperCase() + showArea.slice(1) +
+                            ' Risk Level: ' +
+                            '<div id="risk-btn-var" class="risk-btn risk-btn-small">' + get_price_rl(feature.properties.uid, color_variable) + '</div>' +
+                            '</div>' +
+                            '<p>Click map to see more...</p>')
+                        .openOn(map);
+    
+                    priceButtonFormat('#risk-btn-var', get_price_rl(feature.properties.uid, color_variable));
+                } else {
+                    h_popup
+                        .setLatLng(e.latlng)
+                        .setContent('<h4>' + get_ed_name(feature.properties.uid) + '</h4>'
+                            + '<div class="btn-small-cont">'
+                            + showArea[0].toUpperCase() + showArea.slice(1) +
+                            ' Risk Level: ' +
+                            '<div id="risk-btn-var" class="risk-btn risk-btn-small">' + get_risk_level(feature.properties.uid, color_variable) + '</div>' +
+                            '</div>' +
+                            '<p>Click map to see more...</p>')
+                        .openOn(map);
+    
+                    buttonFormat('#risk-btn-var', get_risk_level(feature.properties.uid, color_variable));
+                }
+            }
+
+            function more_tooltip(e, feature){
+                c_popup
+                    .setLatLng(e.latlng)
+                    .setContent('<h4>' + get_ed_name(feature.properties.uid) + '</h4>'
+                        + '<div id=small-btn-cont>'
+                            + '<div class="btn-small-cont">'
+                                + 'Price Risk Level: '
+                                + '<div id="risk-btn-small-pr" class="risk-btn risk-btn-small">'
+                                    + get_price_rl(feature.properties.uid, pred_ref)
+                                + '</div>'
+                            + '</div>'
+                            + '<div class="btn-small-cont">'
+                                + 'Age Risk Level: '
+                                + '<div id="risk-btn-small-age" class="risk-btn risk-btn-small">'
+                                    + get_risk_level(feature.properties.uid, age_ref)
+                                + '</div>'
+                            + '</div>'
+                            + '<div class="btn-small-cont">'
+                                + 'Industry Risk Level: '
+                                + '<div id="risk-btn-small-ind" class="risk-btn risk-btn-small">'
+                                    + get_risk_level(feature.properties.uid, ind_ref)
+                                + '</div>'
+                            + '</div>'
+                            + '<div class="btn-small-cont">'
+                                + 'Family Risk Level: '
+                                + '<div id="risk-btn-small-fam" class="risk-btn risk-btn-small">'
+                                    + get_risk_level(feature.properties.uid, fam_ref)
+                                + '</div>'
+                            + '</div>'
+                            + '<div class="btn-small-cont">'
+                                + 'Professional Risk Level: '
+                                + '<div id="risk-btn-small-job" class="risk-btn risk-btn-small">'
+                                    + get_risk_level(feature.properties.uid, job_ref)
+                                + '</div>'
+                            + '</div>'
+                            + '<div class="btn-small-cont">'
+                                + 'Skills Risk Level: '
+                                + '<div id="risk-btn-small-skills" class="risk-btn risk-btn-small">'
+                                    + get_risk_level(feature.properties.uid, prince_ref)
+                                + '</div>'
+                            + '</div>'
+                            + '<div class="btn-small-cont">'
+                                + 'Occupancy Risk Level: '
+                                + '<div id="risk-btn-small-occu" class="risk-btn risk-btn-small">'
+                                    + get_risk_level(feature.properties.uid, occu_ref)
+                                + '</div>'
+                            + '</div>'
+                            + '<div class="btn-small-cont">'
+                                + 'Ownership Risk Level: '
+                                + '<div id="risk-btn-small-mort" class="risk-btn risk-btn-small">'
+                                    + get_risk_level(feature.properties.uid, mort_ref)
+                                + '</div>'
+                            + '</div>'
+                        + '</div>' +
+                        '<p><a id="refresh-link">See full risk profile.<a><p>'
+                    )
+                    .openOn(map);
+
+                $('#refresh-link').click(function(){
+                    document.getElementById("id_address").value = get_ed_name(feature.properties.uid);
+                    document.getElementById('search-submit').click();
+                });
+
+                buttonFormat('#risk-btn-small-age', get_risk_level(feature.properties.uid, age_ref));
+                buttonFormat('#risk-btn-small-ind', get_risk_level(feature.properties.uid, ind_ref));
+                buttonFormat('#risk-btn-small-fam', get_risk_level(feature.properties.uid, fam_ref));
+                buttonFormat('#risk-btn-small-job', get_risk_level(feature.properties.uid, job_ref));
+                buttonFormat('#risk-btn-small-skills', get_risk_level(feature.properties.uid, prince_ref));
+                buttonFormat('#risk-btn-small-occu', get_risk_level(feature.properties.uid, occu_ref));
+                buttonFormat('#risk-btn-small-mort', get_risk_level(feature.properties.uid, mort_ref));
+                priceButtonFormat('#risk-btn-small-pr', get_price_rl(feature.properties.uid, pred_ref));
+            }
+
+            function resetHighlight(e) {
+                geojson.resetStyle(e.target);
+            }
+
+            function onEachFeature(feature, layer) {
+                layer.on({
+                    mouseout: resetHighlight
+                });
+
+                layer.on("mouseover", function (event) {
+                    highlightFeature(event, feature);
+
+                });
+
+                layer.on("click", function (event){
+                    more_tooltip(event, feature);
+
+                });
+            }
+
+            geojson = L.geoJson(ed_data, {
+                    style: style,
+                    onEachFeature: onEachFeature
+                }).addTo(map);
+        }
+
+        window.onload = function() {
+
+            if (parseInt('{{ status }}') === 1) {
+                drawChoropleth('price');
+            }
+
+            if (parseFloat('{{ age_stats.population }}') <= 1000){
+                $('#pop')
+                    .css('color', 'red')
+                    .html(pop + '<a href="#" class="agg-info" id="pop-info"> <sup>[</sup>*<sup>]</sup></a>');
+                $('#pop-info').qtip({
+                    content: {
+                        text: "Low population may lead to extreme results. <br/>Take this into account when exploring results."
+                    },
+                    style: {
+                        classes: 'qtip-red qtip-rounded'
+                    },
+                    position: {
+                        my: 'bottom left',
+                        at: 'top right',
+                        target: this
+                    }
+                });
+            }
+        }
+    </script>
+
+{% endblock %}

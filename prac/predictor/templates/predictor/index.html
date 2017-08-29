@@ -1,0 +1,20 @@
+{% extends 'homepage/header.html' %}
+
+{% block content %}
+
+    {% load staticfiles %}
+    <link href="{% static 'predictor/css/index-style.css' %}" rel="stylesheet">
+    <link href="{% static 'predictor/css/loading.css' %}" rel="stylesheet">
+    <div class="main-col" id="in-data">
+        {% include 'predictor/includes/input-snippet.html' %}
+        {% block in-data %}
+        {% endblock %}
+    </div>
+    <hr>
+    <div class="main-col" id="out-data">
+        <div id="output-data">
+
+        </div>
+    </div>
+
+{% endblock %}

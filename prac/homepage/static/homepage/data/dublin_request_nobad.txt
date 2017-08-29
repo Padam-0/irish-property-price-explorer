@@ -1,0 +1,1 @@
+{'bad_data': 'false', 'price_high': '26500000', 'calcArea': 'county', 'price_low': '0', 'date_high': '1491001200000', 'area': 'Dublin', 'date_low': '1262304000000'}
