@@ -1,3 +1,7 @@
+"""
+Generated static .js national average data from cached data
+"""
+
 import pandas as pd
 
 
@@ -8,10 +12,10 @@ def gen_natave_2011():
     age_total = age_df.values[0][-1]
     age_data = list(age_df.values[0] / age_total)[:-1]
 
-    age_labels = ['0 - 4', "5 - 9", "10 - 14", "15 - 19", "20 - 24", "25 - 29",
-                  "30 - 34", "35 - 39", "40 - 44", "45 - 49", "50 - 54",
-                  "55 - 59",
-                  "60 - 64", "65 - 69", "70 - 74", "75 - 79", "80 - 84", "85+"]
+    age_labels = ['0 - 4', "5 - 9", "10 - 14", "15 - 19", "20 - 24",
+                  "25 - 29", "30 - 34", "35 - 39", "40 - 44", "45 - 49",
+                  "50 - 54", "55 - 59", "60 - 64", "65 - 69", "70 - 74",
+                  "75 - 79", "80 - 84", "85+"]
 
     rel_labels = ['Single', 'Married', 'Separated', 'Divorced', 'Widowed']
 
@@ -34,8 +38,8 @@ def gen_natave_2011():
     child_total = sum(child_df.values[0])
     child_data = list(child_df.values[0] / child_total)
 
-    fam_labels = ['Pre-Family', 'Empty Nest', 'Retired', 'Pre-School', 'Early School',
-                  'Pre-Teen', 'Teenager', 'Adult']
+    fam_labels = ['Pre-Family', 'Empty Nest', 'Retired', 'Pre-School',
+                  'Early School', 'Pre-Teen', 'Teenager', 'Adult']
 
     fam_df = df.ix[:, 55:64]
     fam_total = fam_df.values[0][-1]
@@ -70,7 +74,8 @@ def gen_natave_2011():
                            'Owner Occupier without Mortgage',
                            'Rented from Private Landlord',
                            'Rented from Local Authority',
-                           'Rented from Voluntary Body', 'Rented Free of Rent',
+                           'Rented from Voluntary Body',
+                           'Rented Free of Rent',
                            'Not Stated']
 
     hh_occupancy_df = df.ix[:, 111:119]
@@ -79,7 +84,8 @@ def gen_natave_2011():
                         :-1]
 
     hh_rooms_labels = ['1 Room', '2 Rooms', '3 Rooms', '4 Rooms', '5 Rooms',
-                       '6 Rooms', '7 Rooms', 'More than 8 Rooms', 'Not Stated']
+                       '6 Rooms', '7 Rooms', 'More than 8 Rooms',
+                       'Not Stated']
 
     hh_rooms_df = df.ix[:, 119:129]
     hh_rooms_total = hh_rooms_df.values[0][-1]
@@ -90,7 +96,8 @@ def gen_natave_2011():
 
     hh_occupation_df = df.ix[:, 129:133]
     hh_occupation_total = sum(hh_occupation_df.values[0])
-    hh_occupation_data = list(hh_occupation_df.values[0] / hh_occupation_total)
+    hh_occupation_data = list(hh_occupation_df.values[0] /
+                              hh_occupation_total)
 
     prince_stat_labels = ['Working', 'Looking for First Job', 'Unemployed',
                           'Student', 'Looking After Home/Family', 'Retired',
@@ -219,6 +226,7 @@ def gen_natave_2011():
 
     return dict
 
+
 def gen_natave_2016():
     df = pd.read_csv('ed_subset/natave_data_2016.csv', index_col=0)
 
@@ -226,9 +234,10 @@ def gen_natave_2016():
     age_total = age_df.values[0][-1]
     age_data = list(age_df.values[0]/age_total)[:-1]
 
-    age_labels = ['0 - 4', "5 - 9", "10 - 14", "15 - 19", "20 - 24", "25 - 29",
-                  "30 - 34", "35 - 39", "40 - 44", "45 - 49", "50 - 54", "55 - 59",
-                  "60 - 64", "65 - 69", "70 - 74", "75 - 79", "80 - 84", "85+"]
+    age_labels = ['0 - 4', "5 - 9", "10 - 14", "15 - 19", "20 - 24",
+                  "25 - 29", "30 - 34", "35 - 39", "40 - 44", "45 - 49",
+                  "50 - 54", "55 - 59", "60 - 64", "65 - 69", "70 - 74",
+                  "75 - 79", "80 - 84", "85+"]
 
     rel_labels = ['Single', 'Married', 'Separated', 'Divorced', 'Widowed']
 
@@ -236,8 +245,8 @@ def gen_natave_2016():
     rel_total = rel_df.values[0][-1]
     rel_data = list(rel_df.values[0]/rel_total)[:-1]
 
-    nat_labels = ['Irish', 'United Kingdom', 'Polish', 'Lithuanian', 'Other EU',
-                  'Rest of World', 'Not Stated']
+    nat_labels = ['Irish', 'United Kingdom', 'Polish', 'Lithuanian',
+                  'Other EU', 'Rest of World', 'Not Stated']
 
     nat_df = df.ix[:, 38:46]
     nat_total = nat_df.values[0][-1]
@@ -250,8 +259,8 @@ def gen_natave_2016():
     child_total = sum(child_df.values[0])
     child_data = list(child_df.values[0]/child_total)
 
-    fam_labels = ['Pre-Family', 'Empty Nest', 'Retired', 'Pre-School', 'Early School',
-                  'Pre-Teen', 'Teenager', 'Adult']
+    fam_labels = ['Pre-Family', 'Empty Nest', 'Retired', 'Pre-School',
+                  'Early School', 'Pre-Teen', 'Teenager', 'Adult']
 
     fam_df = df.ix[:, 55:64]
     fam_total = fam_df.values[0][-1]
@@ -274,37 +283,43 @@ def gen_natave_2016():
     house_type_data = list(house_type_df.values[0]/house_type_total)[:-1]
 
     house_age_labels = ['Before 1919', '1919 - 1945', '1946 - 1960',
-                        '1961 - 1970', '1971 - 1980', '1981 - 1990', '1991 - 2000',
-                        '2001 - 2010', 'After 2011', 'Not Stated']
+                        '1961 - 1970', '1971 - 1980', '1981 - 1990',
+                        '1991 - 2000', '2001 - 2010', 'After 2011',
+                        'Not Stated']
 
     house_age_df = df.ix[:, 100:111]
     house_age_total = house_age_df.values[0][-1]
     house_age_data = list(house_age_df.values[0]/house_age_total)[:-1]
 
-    hh_occupancy_labels = ['Owner Occupier with Mortgage', 'Owner Occupier without Mortgage',
-                           'Rented from Private Landlord', 'Rented from Local Authority',
-                           'Rented from Voluntary Body', 'Rented Free of Rent', 'Not Stated']
+    hh_occupancy_labels = ['Owner Occupier with Mortgage',
+                           'Owner Occupier without Mortgage',
+                           'Rented from Private Landlord',
+                           'Rented from Local Authority',
+                           'Rented from Voluntary Body',
+                           'Rented Free of Rent', 'Not Stated']
 
     hh_occupancy_df = df.ix[:, 111:119]
     hh_occupancy_total = hh_occupancy_df.values[0][-1]
     hh_occupancy_data = list(hh_occupancy_df.values[0]/hh_occupancy_total)[:-1]
 
     hh_rooms_labels = ['1 Room', '2 Rooms', '3 Rooms', '4 Rooms', '5 Rooms',
-                       '6 Rooms', '7 Rooms', 'More than 8 Rooms', 'Not Stated']
+                       '6 Rooms', '7 Rooms', 'More than 8 Rooms',
+                       'Not Stated']
 
     hh_rooms_df = df.ix[:, 119:129]
     hh_rooms_total = hh_rooms_df.values[0][-1]
     hh_rooms_data = list(hh_rooms_df.values[0]/hh_rooms_total)[:-1]
 
-    hh_occupation_labels = ['Occupied', 'Temporarily Unoccupied', 'Unoccupied Holiday Home', 'Unoccupied']
+    hh_occupation_labels = ['Occupied', 'Temporarily Unoccupied',
+                            'Unoccupied Holiday Home', 'Unoccupied']
 
     hh_occupation_df = df.ix[:, 129:133]
     hh_occupation_total = sum(hh_occupation_df.values[0])
     hh_occupation_data = list(hh_occupation_df.values[0]/hh_occupation_total)
 
     prince_stat_labels = ['Working', 'Looking for First Job', 'Unemployed',
-                          'Student', 'Looking After Home/Family', 'Retired', 'Sick or Disabled',
-                          'Other']
+                          'Student', 'Looking After Home/Family', 'Retired',
+                          'Sick or Disabled', 'Other']
 
     prince_stat_df = df.ix[:, 136:145]
     prince_stat_total = prince_stat_df.values[0][-1]
@@ -319,45 +334,53 @@ def gen_natave_2016():
     socclass_data = list(socclass_df.values[0]/socclass_total)[:-1]
 
     education_labels = ['No Formal Education', 'Primary', 'Lower Secondary',
-                        'Upper Secondary', 'Technical Vocatation', 'Apprenticeship',
-                        'Higher Certificate', 'Bachelors Degree', 'Bachelors Degree (Hons)',
+                        'Upper Secondary', 'Technical Vocatation',
+                        'Apprenticeship', 'Higher Certificate',
+                        'Bachelors Degree', 'Bachelors Degree (Hons)',
                         'Postgraduate Degree', 'Doctorate', 'Not Stated']
 
     education_df = df.ix[:, 159:172]
     education_total = education_df.values[0][-1]
     education_data = list(education_df.values[0]/education_total)[:-1]
 
-
-    transport_method_labels = ['Walking', 'Cycling', 'Bus', 'Train', 'Motorbike', 'Car (Driver)', 'Car (Passenger)', 'Van', 'Other', 'Not Stated']
+    transport_method_labels = ['Walking', 'Cycling', 'Bus', 'Train',
+                               'Motorbike', 'Car (Driver)', 'Car (Passenger)',
+                               'Van', 'Other', 'Not Stated']
 
     transport_method_df = df.ix[:, 175:185]
     transport_method_total = sum(transport_method_df.values[0])
-    transport_method_data = list(transport_method_df.values[0]/transport_method_total)
+    transport_method_data = list(transport_method_df.values[0] /
+                                 transport_method_total)
 
     transport_time_labels = ['Under 15 minutes', '15 - 30 minutes',
                              '30 - 45 minutes', '45 - 60 minutes',
-                             '60 - 90 minutes', 'Over 90 minutes', 'Not Stated']
+                             '60 - 90 minutes', 'Over 90 minutes',
+                             'Not Stated']
 
     transport_time_df = df.ix[:, 186:194]
     transport_time_total = transport_time_df.values[0][-1]
-    transport_time_data = list(transport_time_df.values[0]/transport_time_total)[:-1]
+    transport_time_data = list(transport_time_df.values[0] /
+                               transport_time_total)[:-1]
 
-    occupation_labels = ['Managers, Directors and Senior Officials', 'Professional Occupations',
+    occupation_labels = ['Managers, Directors and Senior Officials',
+                         'Professional Occupations',
                          'Associate Professional and Technical Occupations',
                          'Administrative and Secretarial Occupations',
                          'Skilled Trades Occupations',
                          'Caring, Leisure and Other Service Occupations',
                          'Sales and Customer Service Occupations ',
-                         'Process, Plant and Machine Operatives', 'Elementary Occupations',
-                         'Not Stated']
+                         'Process, Plant and Machine Operatives',
+                         'Elementary Occupations', 'Not Stated']
 
     occupation_df = df.ix[:, 197:208]
     occupation_total = occupation_df.values[0][-1]
-    occupation_data = list(occupation_df.values[0]/occupation_total)[:-1]
+    occupation_data = list(occupation_df.values[0] / occupation_total)[:-1]
 
     industry_labels = ['Agriculture, Forestry and Fishing',
-                       'Building and Construction', 'Manufacturing', 'Commerce and Trade',
-                       'Transport and Communications ', 'Public Administration',
+                       'Building and Construction',
+                       'Manufacturing', 'Commerce and Trade',
+                       'Transport and Communications ',
+                       'Public Administration',
                        'Professional Services', 'Other']
 
     industry_df = df.ix[:, 211:220]
@@ -373,7 +396,8 @@ def gen_natave_2016():
     age_f_data = list(age_f_df.values[0]/age_f_total)
 
     df_list = [[age_labels, age_data, 'age'], [rel_labels, rel_data, 'rel'],
-               [nat_labels, nat_data, 'nat'], [child_labels, child_data, 'child'],
+               [nat_labels, nat_data, 'nat'],
+               [child_labels, child_data, 'child'],
                [fam_labels, fam_data, 'fam'], [hh_labels, hh_data, 'hh'],
                [house_type_labels, house_type_data, 'house_type'],
                [house_age_labels, house_age_data, 'house_age'],
@@ -383,10 +407,12 @@ def gen_natave_2016():
                [prince_stat_labels, prince_stat_data, 'prince_stat'],
                [socclass_labels, socclass_data, 'socclass'],
                [education_labels, education_data, 'education'],
-               [transport_method_labels, transport_method_data, 'transport_method'],
+               [transport_method_labels, transport_method_data,
+                'transport_method'],
                [transport_time_labels, transport_time_data, 'transport_time'],
                [occupation_labels, occupation_data, 'occupation'],
-               [industry_labels, industry_data, 'ind'], [age_labels, age_m_data, 'age_m'],
+               [industry_labels, industry_data, 'ind'],
+               [age_labels, age_m_data, 'age_m'],
                [age_labels, age_f_data, 'age_f']]
 
     dict = {}
@@ -415,17 +441,16 @@ def gen_natave_2016():
 
     return dict
 
-def main():
-    a = gen_natave_2011()
-    b = gen_natave_2016()
 
+def main():
     with open('natave.js', 'w') as f:
         f.write("var natave11 = ")
-        f.write(str(a))
+        f.write(str(gen_natave_2011()))
         f.write(';\n')
         f.write("var natave16 = ")
-        f.write(str(b))
+        f.write(str(gen_natave_2016()))
         f.write(';')
+
 
 if __name__ == '__main__':
     main()

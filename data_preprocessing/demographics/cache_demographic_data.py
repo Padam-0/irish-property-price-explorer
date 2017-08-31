@@ -1,12 +1,16 @@
+"""
+Saves demographic risk data to static .js
+"""
+
 import pandas as pd
 import numpy as np
 import operator
-from datetime import date, datetime, timedelta
-import calendar
+from datetime import date
 import re
 import csv
 from sklearn.externals import joblib
 from tqdm import tqdm
+
 
 def get_age_risk(apm, apf, anm, anf):
     auc_l = 0
@@ -40,50 +44,57 @@ def get_age_risk(apm, apf, anm, anf):
 
     return auc_h, auc_l
 
+
 def main():
     df = pd.read_csv('eds.csv', encoding='latin1')
 
-    df = df[['OSM_ID', 'NAME_TAG', 'AREA', 'LATITUDE', 'LONGITUDE', 'CO_NAME']]
+    df = df[['OSM_ID', 'NAME_TAG', 'AREA', 'LATITUDE', 'LONGITUDE',
+             'CO_NAME']]
     # print(df['NAME_TAG'].value_counts())
 
     with open('./cross_ref_dict.txt') as f:
         cross_ref_dict = eval(f.read())
 
-    #Maps from TL UID to CSO Name
+    # Maps from TL UID to CSO Name
     uid_dict = {}
     ignore_list = []
-    #Maps from CSO name to TL UID
+    # Maps from CSO name to TL UID
     tl_dict = {}
-    # print(df[df['NAME_TAG'] == 'Castletown'])
+
     for i in df.index:
         try:
-            uid_dict[df.loc[i, 'OSM_ID']] = cross_ref_dict[df.loc[i, 'NAME_TAG']]
-            tl_dict[cross_ref_dict[df.loc[i, 'NAME_TAG']]] = df.loc[i, 'NAME_TAG']
+            uid_dict[df.loc[i, 'OSM_ID']] = \
+                cross_ref_dict[df.loc[i, 'NAME_TAG']]
+            tl_dict[cross_ref_dict[df.loc[i, 'NAME_TAG']]] = \
+                df.loc[i, 'NAME_TAG']
         except:
             ignore_list.append(df.loc[i, 'OSM_ID'])
 
     cso_ref = pd.read_csv('ed_subset/cso_ref.csv', index_col=0)
     age_ed = pd.read_csv('ed_subset/mf_age_ed.csv', index_col=0)
-    age_irl = pd.read_csv('ed_subset/mf_age_irl.csv', index_col=0).iloc[0, 3:39]
+    age_irl = pd.read_csv('ed_subset/mf_age_irl.csv',
+                          index_col=0).iloc[0, 3:39]
 
-    fam_ed = pd.read_csv('ed_subset/fam_stat_ed.csv', index_col=1)[['empty_nest', 'retired', 'fam_total']]
+    fam_ed = pd.read_csv('ed_subset/fam_stat_ed.csv',
+                         index_col=1)[['empty_nest', 'retired', 'fam_total']]
     fam_irl = pd.read_csv('ed_subset/fam_stat_irl.csv').ix[:, 10:]
 
-    ind_ed = pd.read_csv('ed_subset/ind_stat_ed.csv', index_col=1).ix[:,3:]
-    ind_irl = pd.read_csv('ed_subset/ind_stat_irl.csv').ix[:,4:]
+    ind_ed = pd.read_csv('ed_subset/ind_stat_ed.csv', index_col=1).ix[:, 3:]
 
-    job_ed = pd.read_csv('ed_subset/job_stat_ed.csv', index_col=1).ix[:,3:]
-    job_irl = pd.read_csv('ed_subset/job_stat_irl.csv').ix[:, 4:]
+    job_ed = pd.read_csv('ed_subset/job_stat_ed.csv', index_col=1).ix[:, 3:]
 
-    prince_ed = pd.read_csv('ed_subset/prince_stat_ed.csv', index_col=1).ix[:,3:]
+    prince_ed = pd.read_csv('ed_subset/prince_stat_ed.csv',
+                            index_col=1).ix[:, 3:]
     prince_irl = pd.read_csv('ed_subset/prince_stat_irl.csv').ix[:, 4:]
 
-    house_ed = pd.read_csv('ed_subset/house_stat_ed.csv', index_col=1).ix[:, 20:]
-    house_irl = pd.read_csv('ed_subset/house_stat_irl.csv', index_col=1).ix[:, 20:]
+    house_ed = pd.read_csv('ed_subset/house_stat_ed.csv',
+                           index_col=1).ix[:, 20:]
+    house_irl = pd.read_csv('ed_subset/house_stat_irl.csv',
+                            index_col=1).ix[:, 20:]
 
     mort_ed = house_ed.ix[:, :8]
     mort_irl = house_irl.ix[:, :8]
-    occu_ed = house_ed.ix[:,-4:]
+    occu_ed = house_ed.ix[:, -4:]
     occu_irl = house_irl.ix[:, -4:]
 
     age_scores = {}
@@ -95,10 +106,8 @@ def main():
     occu_scores = {}
 
     pred_scores = {}
-    pred_info = []
 
     for i in tqdm(df.index):
-    # for i in tqdm(df.index[575:576]):
         input_data = {}
         lat = df.loc[i, 'LATITUDE']
         lng = df.loc[i, 'LONGITUDE']
@@ -142,8 +151,6 @@ def main():
             pred_scores[tl_name] = 'NEDTMP'
             continue
 
-
-
         model_choice, county = find_model(county, input_data['ed'])
         z = ed_map(input_data['ed'])
         if z == 'NEDTMP':
@@ -167,68 +174,6 @@ def main():
         else:
             pred_scores[cso_id] = 0
 
-    # price_12m_scores = {}
-    # price_24m_scores = {}
-    # data_df = pd.read_csv('../good_data_ed.csv', index_col='sale_date')
-    #
-    # today = datetime.today()
-    # m12 = timedelta(weeks=104)
-    # m24 = timedelta(weeks=156)
-    #
-    # for ed in tqdm(cso_ref['uid'].values):
-    #     cso_name = cso_ref[cso_ref['uid'] == ed]['desc'].values[0]
-    #
-    #     try:
-    #         tl_name = tl_dict[cso_name]
-    #     except:
-    #         price_12m_scores[ed] = [0, 0]
-    #         price_24m_scores[ed] = [0, 0]
-    #     min_df = data_df[data_df['ed'] == tl_name]
-    #
-    #     min_df = min_df.set_index(pd.DatetimeIndex(min_df.index))
-    #     min_df_12m = min_df[min_df.index > today - m12]
-    #     min_df_12m = min_df_12m.resample('M').mean().dropna(axis=0, how='any')
-    #     min_df_24m = min_df[min_df.index > today - m24]
-    #     min_df_24m = min_df_24m.resample('M').mean().dropna(axis=0, how='any')
-    #
-    #     roc = 0
-    #
-    #     if len(min_df_12m.index) < 6:
-    #         price_12m_scores[ed] = [0, 0]
-    #     else:
-    #         sales_data = [[calendar.timegm(min_df_12m.index[i].timetuple()), int(min_df_12m.ix[i, 'price'])] for i in range(len(min_df_12m.index))]
-    #         p = np.polyfit([i[0] for i in sales_data], [i[1] for i in sales_data], deg=1)
-    #         score = float(p[0]) - 0.000176
-    #
-    #         p1 = min_df_12m.iloc[0, :].price
-    #         t2 = calendar.timegm(min_df_12m.index[-1].timetuple())
-    #
-    #         pred = p[0] * t2 + p[1]
-    #         roc = round((pred - p1) / p1 * 100, 2)
-    #
-    #
-    #         if score > 0:
-    #             price_12m_scores[ed] = [score / 0.06938963, roc]
-    #         else:
-    #             price_12m_scores[ed] = [score / 0.21746398, roc]
-    #
-    #     if len(min_df_24m.index) < 12:
-    #         price_24m_scores[ed] = [0, 0]
-    #     else:
-    #         sales_data = [[calendar.timegm(min_df_24m.index[i].timetuple()), int(min_df_24m.ix[i, 'price'])] for i in range(len(min_df_24m.index))]
-    #         p = np.polyfit([i[0] for i in sales_data], [i[1] for i in sales_data], deg=1)
-    #
-    #         pred = p[0] * t2 + p[1]
-    #
-    #         roc = round((pred - p1) / p1 * 50, 2)
-    #
-    #         if score > 0:
-    #             price_24m_scores[ed] = [score, roc]
-    #         else:
-    #             price_24m_scores[ed] = [score, roc]
-
-
-
     for ed in cso_ref['uid'].values:
         age_data = age_ed.ix[ed, 2:38]
 
@@ -242,9 +187,10 @@ def main():
         npop_m = sum(age_na_males)
         npop_f = sum(age_na_females)
 
-        age_labels = ['0 - 4', "5 - 9", "10 - 14", "15 - 19", "20 - 24", "25 - 29",
-                      "30 - 34", "35 - 39", "40 - 44", "45 - 49", "50 - 54", "55 - 59",
-                      "60 - 64", "65 - 69", "70 - 74", "75 - 79", "80 - 84", "85+"]
+        age_labels = ['0 - 4', "5 - 9", "10 - 14", "15 - 19", "20 - 24",
+                      "25 - 29", "30 - 34", "35 - 39", "40 - 44", "45 - 49",
+                      "50 - 54", "55 - 59", "60 - 64", "65 - 69", "70 - 74",
+                      "75 - 79", "80 - 84", "85+"]
 
         age_profile_males = []
         age_natave_males = []
@@ -252,12 +198,21 @@ def main():
         age_natave_females = []
 
         for i in range(len(age_labels)):
-            age_profile_males.append({'label': age_labels[i], 'value': round((age_males[i] / pop_m) * 100, 2)})
-            age_natave_males.append({'label': age_labels[i], 'value': round((age_na_males[i] / npop_m) * 100, 2)})
-            age_profile_females.append({'label': age_labels[i], 'value': round((age_females[i] / pop_f) * 100, 2)})
-            age_natave_females.append({'label': age_labels[i], 'value': round((age_na_females[i] / npop_f) * 100, 2)})
+            age_profile_males.append({'label': age_labels[i],
+                                      'value': round((age_males[i] / pop_m)
+                                                     * 100, 2)})
+            age_natave_males.append({'label': age_labels[i],
+                                     'value': round((age_na_males[i] / npop_m)
+                                                    * 100, 2)})
+            age_profile_females.append({'label': age_labels[i],
+                                        'value': round((age_females[i] /
+                                                        pop_f) * 100, 2)})
+            age_natave_females.append({'label': age_labels[i],
+                                       'value': round((age_na_females[i] /
+                                                       npop_f) * 100, 2)})
 
-        auc_h, auc_l = get_age_risk(age_profile_males, age_profile_females, age_natave_males, age_natave_females)
+        auc_h, auc_l = get_age_risk(age_profile_males, age_profile_females,
+                                    age_natave_males, age_natave_females)
 
         if auc_h > 1150:
             score = (auc_h - 1150) / 3513.3
@@ -291,8 +246,7 @@ def main():
 
         score = max([ret_dif, enest_dif], key=abs)
 
-        fam_scores[ed] =  score
-        score = 0
+        fam_scores[ed] = score
 
         ind_data = ind_ed.ix[ed, :]
 
@@ -300,7 +254,8 @@ def main():
         for i in ind_data.index[:-1]:
             ind_data_norm[i] = ind_data[i] / ind_data['ind_total']
 
-        ind_conc_lab = max(ind_data_norm.items(), key=operator.itemgetter(1))[0]
+        ind_conc_lab = max(ind_data_norm.items(),
+                           key=operator.itemgetter(1))[0]
 
         ind_conc = ind_data_norm[ind_conc_lab] - 0.26326761909
         if ind_conc > 0:
@@ -317,8 +272,8 @@ def main():
         for i in job_data.index[:-1]:
             job_data_norm[i] = job_data[i] / job_data['class_total']
 
-        job_conc_lab = \
-        max(job_data_norm.items(), key=operator.itemgetter(1))[0]
+        job_conc_lab = max(job_data_norm.items(),
+                           key=operator.itemgetter(1))[0]
 
         job_conc = job_data_norm[job_conc_lab] - 0.297725257914
 
@@ -371,7 +326,6 @@ def main():
 
         occu_scores[ed] = score
 
-
     with open('age_cp_data.js', 'w') as f:
         f.write("var age_ref = ")
         f.write(str(age_scores).replace(' ', ""))
@@ -403,15 +357,6 @@ def main():
         f.write(str(pred_scores).replace(' ', ""))
         f.write(';')
 
-    # with open('../../prac/reporter/static/reporter/js/roc_data.js', 'w') as f:
-    #     f.write("var m12_ref = ")
-    #     f.write(str(price_12m_scores).replace(' ', ""))
-    #     f.write(';\n\n')
-    #     f.write("var m24_ref = ")
-    #     f.write(str(price_24m_scores).replace(' ', ""))
-    #     f.write(';')
-
-
 
 def get_moe(string):
     file_location = '../../prac/predictive_model/models/model_results.csv'
@@ -431,17 +376,18 @@ def get_moe(string):
 
 
 def find_model(county, ed):
-    county_list = ['Leitrim', 'Mayo', 'Roscommon', 'Kildare', 'Sligo', 'Kilkenny',
-                   'Laois', 'Longford', 'Louth', 'Meath', 'Westmeath', 'Offaly',
-                   'Wexford', 'Clare', 'Wicklow', 'Kerry', 'Tipperary',
-                   'Donegal', 'Cavan', 'Monaghan']
+    county_list = ['Leitrim', 'Mayo', 'Roscommon', 'Kildare', 'Sligo',
+                   'Kilkenny', 'Laois', 'Longford', 'Louth', 'Meath',
+                   'Westmeath', 'Offaly', 'Wexford', 'Clare', 'Wicklow',
+                   'Kerry', 'Tipperary', 'Donegal', 'Cavan', 'Monaghan']
 
     if county == 'Dublin':
         return 'Dublin', county
     elif county in county_list:
         return 'County', county
     else:
-        file_location = '../../prac/predictive_model/mappings/eds_location_split.csv'
+        file_location = '../../prac/predictive_model/mappings/' \
+                        'eds_location_split.csv'
         reader = csv.reader(open(file_location, 'r'))
         d = {}
         for row in reader:
@@ -460,11 +406,12 @@ def find_model(county, ed):
 
 
 def word_isolation(string):
-    keep_words = ['road', 'park', 'avenue', 'court', 'rd', 'street', 'drive', 'st',
-                  'grove', 'manor', 'close', 'green', 'view', 'hill', 'house', 'the',
-                  'wood', 'terrace', 'heights', 'hall', 'mount', 'grange',
-                  'lodge', 'lane', 'main', 'place', 'lawn', 'ave', 'square', 'dr',
-                  'estate', 'woodlands', 'harbour', 'quay', 'bay', 'apt', 'sq', 'apartment']
+    keep_words = ['road', 'park', 'avenue', 'court', 'rd', 'street', 'drive',
+                  'st', 'grove', 'manor', 'close', 'green', 'view', 'hill',
+                  'house', 'the', 'wood', 'terrace', 'heights', 'hall',
+                  'mount', 'grange', 'lodge', 'lane', 'main', 'place', 'lawn',
+                  'ave', 'square', 'dr', 'estate', 'woodlands', 'harbour',
+                  'quay', 'bay', 'apt', 'sq', 'apartment']
     words = string.split()
     for word in words:
         if word in keep_words:
@@ -489,13 +436,15 @@ def word_map(string):
 
 
 def ti_pred(data, location, model_choice):
-
     if model_choice == 'Dublin':
-        model_location = '../../prac/predictive_model/dublin_model_time_independent.pkl'
+        model_location = '../../prac/predictive_model/' \
+                         'dublin_model_time_independent.pkl'
     elif model_choice == 'Urban':
-        model_location = '../../prac/predictive_model/urban_model_time_independent.pkl'
+        model_location = '../../prac/predictive_model/' \
+                         'urban_model_time_independent.pkl'
     elif model_choice == 'County':
-        model_location = '../../prac/predictive_model/rural_model_time_independent.pkl'
+        model_location = '../../prac/predictive_model/' \
+                         'rural_model_time_independent.pkl'
     else:
         model_location = None
         print("Error - No model could be chosen")
@@ -538,15 +487,21 @@ def full_pred(data, location, model_choice):
 
 
 def county_map(string):
-    if string == 'Carlow County' or string == 'Carlow City':
+    if string is 'Carlow County' or string is 'Carlow City':
         sstring = 'Carlow'
-    else: sstring = string
+    else:
+        sstring = string
 
-    county_mapping = {"Carlow":0, "Cavan":1, "Clare":2, "Cork City":3, "Cork County":3, "Donegal":4, "Dublin":5,
-                  "Galway City":6, "Galway County":6, "Kerry":7, "Kildare":8, "Kilkenny":9, "Laois":10, "Leitrim":11,
-                  "Limerick City":12, "Limerick County":12, "Longford":13, "Louth":14, "Mayo":15, "Meath":16,
-                  "Monaghan":17, "Offaly":18, "Roscommon":19, "Sligo":20, "Tipperary":21,
-                  "Waterford City":22,"Waterford County":22, "Westmeath":23, "Wexford":24, "Wicklow":25}
+    county_mapping = {"Carlow": 0, "Cavan": 1, "Clare": 2, "Cork City": 3,
+                      "Cork County": 3, "Donegal": 4, "Dublin": 5,
+                      "Galway City": 6, "Galway County": 6, "Kerry": 7,
+                      "Kildare": 8, "Kilkenny": 9, "Laois": 10, "Leitrim": 11,
+                      "Limerick City": 12, "Limerick County": 12,
+                      "Longford": 13, "Louth": 14, "Mayo": 15, "Meath": 16,
+                      "Monaghan": 17, "Offaly": 18, "Roscommon": 19,
+                      "Sligo": 20, "Tipperary": 21, "Waterford City": 22,
+                      "Waterford County": 22, "Westmeath": 23, "Wexford": 24,
+                      "Wicklow": 25}
 
     return county_mapping[sstring]
 
@@ -566,7 +521,8 @@ def desc_map(string):
 
 def ed_map(string):
 
-    file_location = '../../prac/predictive_model/mappings/eds_location_split.csv'
+    file_location = '../../prac/predictive_model/mappings/' \
+                    'eds_location_split.csv'
     reader = csv.reader(open(file_location, 'r'))
     d = {}
     for row in reader:
@@ -579,7 +535,8 @@ def ed_map(string):
 
 
 def cond_map(string):
-    cond = {"Second-Hand Dwelling house /Apartment": 0, "New Dwelling house /Apartment": 1}
+    cond = {"Second-Hand Dwelling house /Apartment": 0,
+            "New Dwelling house /Apartment": 1}
     return cond[string]
 
 
@@ -594,7 +551,7 @@ def name_map(string):
 
 
 def suffix_map(string):
-    if string == None:
+    if string is None:
         string = "None"
 
     file_location = '../../prac/predictive_model/mappings/suffix_mapping.csv'
@@ -627,6 +584,7 @@ def regex_suffix(string):
     string = string.replace('\d+', '').lower().replace(',', '')
     suffix = word_map(word_isolation(string))
     return suffix
+
 
 def get_common(attr, edist, county):
     # Returns the most common attribute for a given county
@@ -662,7 +620,6 @@ def get_common(attr, edist, county):
                 return 3
             elif attr == 'baths':
                 return 1
-
 
 
 if __name__ == '__main__':

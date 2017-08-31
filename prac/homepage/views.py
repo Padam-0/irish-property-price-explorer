@@ -341,13 +341,14 @@ def retrieve_stats(queryset):
     df.index.names = ['date']
 
     df = df.set_index(pd.DatetimeIndex(df.index))
-    # Group data frame sales to a weekly average
 
+    # Group data frame sales to a weekly average
     df = df.resample('W').mean().dropna(axis=0, how='any')
 
     # Generate scatterplot data with correct timestamps
-    scatter_data = list(map(lambda x, y: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
-                      round(float(y), 2)], df.index.tolist(), df.values))
+    scatter_data = list(map(lambda x, y: [calendar.timegm(
+        x.to_pydatetime().timetuple()) * 1000,
+        round(float(y), 2)], df.index.tolist(), df.values))
 
     # Compress and test histogram data in order to have appropriate bin-widths
     # to ensure correct display in D3
