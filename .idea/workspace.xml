@@ -2,48 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d24e570d-7f3c-4947-ba87-0d62ec882304" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/roc_data.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/age_cp_data.js" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/age_cp_data.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/age_cp_data.py" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/age_cp_data.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/age_demo.py" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/age_demo.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/cross_ref_dict.txt" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/cross_ref_dict.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/2011/AllThemesTablesCTY.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/2011/AllThemesTablesCTY.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/2011/AllThemesTablesED.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/2011/AllThemesTablesED.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/2011/AllThemesTablesPR.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/2011/AllThemesTablesPR.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/2011/AllThemesTablesSA.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/2011/AllThemesTablesSA.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/2011/Theme,breakdown.xlsx" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/2011/Theme,breakdown.xlsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/2011/field_desc.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/2011/field_desc.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/2016/SAPS2016_CTY31.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/2016/SAPS2016_CTY31.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/2016/SAPS2016_ED3409.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/2016/SAPS2016_ED3409.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/2016/SAPS2016_PROV.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/2016/SAPS2016_PROV.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/2016/SAPS_2016_Glossary.xlsx" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/2016/SAPS_2016_Glossary.xlsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/data/townlands_ed_names.txt" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/data/townlands_ed_names.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_matching.py" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_matching.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_name_test.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_name_test.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/cso_ref.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/cso_ref.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/fam_stat_ed.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/fam_stat_ed.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/fam_stat_irl.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/fam_stat_irl.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/house_stat_ed.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/house_stat_ed.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/house_stat_irl.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/house_stat_irl.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/ind_stat_ed.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/ind_stat_ed.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/ind_stat_irl.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/ind_stat_irl.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/job_stat_ed.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/job_stat_ed.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/job_stat_irl.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/job_stat_irl.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/mf_age_ed.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/mf_age_ed.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/mf_age_irl.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/mf_age_irl.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/natave_data_2011.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/natave_data_2011.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/natave_data_2016.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/natave_data_2016.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/prince_stat_ed.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/prince_stat_ed.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/ed_subset/prince_stat_irl.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/ed_subset/prince_stat_irl.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/eds.csv" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/eds.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/gen_natave.py" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/gen_natave.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/natave.js" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/natave.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/parse_cso_data_11.py" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/parse_cso_data_11.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/parse_cso_data_16.py" afterPath="$PROJECT_DIR$/data_preprocessing/demographics/parse_cso_data_16.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_preprocessing/rppr/migrate_sales_data.py" afterPath="$PROJECT_DIR$/data_preprocessing/rppr/migrate_sales_data.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prac/homepage/views.py" afterPath="$PROJECT_DIR$/prac/homepage/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prac/requirements.txt" afterPath="$PROJECT_DIR$/prac/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,7 +18,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -71,41 +31,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="parse_cso_data_16.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/parse_cso_data_16.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1666">
-              <caret line="734" column="41" lean-forward="false" selection-start-line="734" selection-start-column="41" selection-end-line="734" selection-end-column="41" />
-              <folding>
-                <element signature="e#51#70#0" expanded="true" />
-                <element signature="e#225#540#0" expanded="false" />
-                <element signature="e#578#937#0" expanded="false" />
-                <element signature="e#978#1248#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parse_cso_data_11.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/parse_cso_data_11.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding>
-                <element signature="e#51#70#0" expanded="true" />
-                <element signature="e#225#540#0" expanded="false" />
-                <element signature="e#578#937#0" expanded="false" />
-                <element signature="e#978#1248#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>compress</find>
+      <find>sorted</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -124,10 +55,19 @@
         <option value="$PROJECT_DIR$/data_preprocessing/rppr/RRP_download.py" />
         <option value="$PROJECT_DIR$/data_preprocessing/rppr/migrate_data.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/prac/homepage/views.py" />
         <option value="$PROJECT_DIR$/data_preprocessing/rppr/migrate_sales_data.py" />
         <option value="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/parse_cso_data_11.py" />
         <option value="$PROJECT_DIR$/data_preprocessing/demographics/cso_data/parse_cso_data_16.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing/demographics/parse_cso_data_16.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing/demographics/parse_cso_data_11.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing/demographics/gen_natave.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing/demographics/tl_ed_names.txt" />
+        <option value="$PROJECT_DIR$/data_preprocessing/demographics/ed_matching.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing/demographics/age_demo.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing/demographics/age_cp_data.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing/demographics/cache_demographic_data.py" />
+        <option value="$PROJECT_DIR$/prac/requirements.txt" />
+        <option value="$PROJECT_DIR$/prac/homepage/views.py" />
       </list>
     </option>
   </component>
@@ -180,74 +120,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="prac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prac_submission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prac_submission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data_preprocessing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prac_submission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prac_submission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data_preprocessing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rppr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prac_submission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prac_submission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data_preprocessing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prac_submission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Prac_submission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data_preprocessing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demographics" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -508,16 +380,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2532189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2532189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49679896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -650,32 +522,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_preprocessing/rppr/RRP_download.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="3" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
-          <folding>
-            <element signature="e#110#144#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_preprocessing/rppr/parse_locations.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prac/homepage/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="352" column="4" lean-forward="false" selection-start-line="352" selection-start-column="4" selection-end-line="353" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -696,14 +548,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/parse_cso_data_16.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="632" column="12" lean-forward="false" selection-start-line="632" selection-start-column="12" selection-end-line="632" selection-end-column="23" />
+          <folding>
+            <element signature="e#51#70#0" expanded="false" />
+            <element signature="e#226#541#0" expanded="false" />
+            <element signature="e#579#938#0" expanded="false" />
+            <element signature="e#979#1249#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/natave.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/ed_name_test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/tl_ed_names.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -729,29 +607,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/parse_cso_data_11.py">
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/cross_ref_dict.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/rppr/RRP_download.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="26" />
           <folding>
-            <element signature="e#51#70#0" expanded="true" />
-            <element signature="e#225#540#0" expanded="false" />
-            <element signature="e#578#937#0" expanded="false" />
-            <element signature="e#978#1248#0" expanded="false" />
+            <element signature="e#110#144#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/parse_cso_data_16.py">
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/cache_demographic_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="734" column="41" lean-forward="false" selection-start-line="734" selection-start-column="41" selection-end-line="734" selection-end-column="41" />
+        <state relative-caret-position="135">
+          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/parse_cso_data_11.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3945">
+          <caret line="292" column="24" lean-forward="false" selection-start-line="292" selection-start-column="24" selection-end-line="292" selection-end-column="24" />
           <folding>
             <element signature="e#51#70#0" expanded="true" />
-            <element signature="e#225#540#0" expanded="false" />
-            <element signature="e#578#937#0" expanded="false" />
-            <element signature="e#978#1248#0" expanded="false" />
+            <element signature="e#226#541#0" expanded="false" />
+            <element signature="e#579#938#0" expanded="false" />
+            <element signature="e#979#1249#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/gen_natave.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5640">
+          <caret line="376" column="51" lean-forward="false" selection-start-line="376" selection-start-column="51" selection-end-line="376" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/ed_matching.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/demographics/calculate_risk_boundaries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding>
+            <element signature="e#83#102#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prac/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prac/homepage/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prac/predictor/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prac/reporter/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prac/riskdb/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prac/tableview/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 from django.db.models import Avg, Max, Min, Count
 import json
-from datetime import datetime, date
+from datetime import datetime
 import calendar
 from sklearn.cluster import KMeans
 
