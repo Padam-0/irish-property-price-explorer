@@ -1,9 +1,16 @@
+"""
+Script to split a data set into smaller chunks of 25000 so it can be processed in parallel
+
+"""
+
 import pandas as pd
 
+# Import data set
 df = pd.read_csv('good_data.csv', encoding='latin1', index_col=0)
 print(len(df.index))
 
 count = 0
+
 for i in range(0, len(df.index), 25000):
     count += 1
     start_row = i
