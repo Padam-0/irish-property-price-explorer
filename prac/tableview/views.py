@@ -7,6 +7,7 @@ import datetime
 import googlemaps
 import math
 
+
 # Create your views here.
 def index(request):
     cookies = request.COOKIES
@@ -24,7 +25,8 @@ def index(request):
     radius = float(cookies.get('radius', 1))
     bad_data = cookies.get('bad_data_inc', "true")
 
-    with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'RRP_timestamp.txt',
+    with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL +
+              'RRP_timestamp.txt',
               'r') as file:
         lu = file.read()
 
@@ -120,7 +122,9 @@ def index(request):
 
 def distance(lat1, lon1, lat2, lon2):
     p = 0.017453292519943295
-    a = 0.5 - math.cos((lat2 - lat1) * p) / 2 + math.cos(lat1 * p) * math.cos(lat2 * p) * (1 - math.cos((lon2 - lon1) * p)) / 2
+    a = 0.5 - math.cos((lat2 - lat1) * p) / 2 + \
+        math.cos(lat1 * p) * math.cos(lat2 * p) * \
+        (1 - math.cos((lon2 - lon1) * p)) / 2
 
     return 12742 * math.asin(math.sqrt(a))
 
@@ -194,7 +198,6 @@ def ajax_response_table(request):
         else:
             data = data.order_by('-' + sort)[start:end]
 
-
     elif calcArea == 'radius':
         right = float(request.GET['r'])
         left = float(request.GET['l'])
@@ -244,11 +247,16 @@ def ajax_response_table(request):
         bad_data = request.GET['bad_data']
 
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No', price__lte=price_high, price__gte=price_low,
-                                       sale_date__gte=dl, sale_date__lte=dh, county=county)
+            data = Sale.objects.filter(nfma='No', price__lte=price_high,
+                                       price__gte=price_low,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       county=county)
         else:
-            data = Sale.objects.filter(quality='good', nfma='No', price__lte=price_high, price__gte=price_low,
-                                       sale_date__gte=dl, sale_date__lte=dh, county=county)
+            data = Sale.objects.filter(quality='good', nfma='No',
+                                       price__lte=price_high,
+                                       price__gte=price_low,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       county=county)
 
         if len(data) == 0:
             return HttpResponse("Not Enough Data")
@@ -269,11 +277,16 @@ def ajax_response_table(request):
         bad_data = request.GET['bad_data']
 
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No', price__lte=price_high, price__gte=price_low,
-                                       sale_date__gte=dl, sale_date__lte=dh, region=region)
+            data = Sale.objects.filter(nfma='No', price__lte=price_high,
+                                       price__gte=price_low,
+                                       sale_date__gte=dl,
+                                       sale_date__lte=dh, region=region)
         else:
-            data = Sale.objects.filter(quality='good', nfma='No', price__lte=price_high, price__gte=price_low,
-                                       sale_date__gte=dl, sale_date__lte=dh, region=region)
+            data = Sale.objects.filter(quality='good', nfma='No',
+                                       price__lte=price_high,
+                                       price__gte=price_low,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       region=region)
 
         if len(data) == 0:
             return HttpResponse("Not Enough Data")
@@ -289,10 +302,13 @@ def ajax_response_table(request):
         bad_data = request.GET['bad_data']
 
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No', price__lte=price_high, price__gte=price_low,
+            data = Sale.objects.filter(nfma='No', price__lte=price_high,
+                                       price__gte=price_low,
                                        sale_date__gte=dl, sale_date__lte=dh)
         else:
-            data = Sale.objects.filter(quality='good', nfma='No', price__lte=price_high, price__gte=price_low,
+            data = Sale.objects.filter(quality='good', nfma='No',
+                                       price__lte=price_high,
+                                       price__gte=price_low,
                                        sale_date__gte=dl, sale_date__lte=dh)
 
         if len(data) == 0:
@@ -305,12 +321,13 @@ def ajax_response_table(request):
         else:
             data = data.order_by('-' + sort)[start:end]
 
-
     final_data = {}
     for i in range(len(data)):
-        final_data[i] = {'price': int(data[i].price), 'address': data[i].address,
+        final_data[i] = {'price': int(data[i].price),
+                         'address': data[i].address,
                          'sale_date': str(data[i].sale_date),
-                         'postcode': data[i].postcode, 'county': data[i].county,
+                         'postcode': data[i].postcode,
+                         'county': data[i].county,
                          'nfma': data[i].nfma, 'vat_ex': data[i].vat_ex,
                          'dop': data[i].DoP, 'size': data[i].PSD,
                          'ed': data[i].ed}
@@ -368,14 +385,13 @@ def geolocate(address_string):
     # If a bad result, set default location
     if status is 2:
         location = {'lng': -6.2603, 'lat': 53.3498, 'l': -6.30896600036624,
-                'r':-6.211633999633818, 't':53.368906276426856,
-                'b':53.330685156427386}
+                    'r': -6.211633999633818, 't': 53.368906276426856,
+                    'b': 53.330685156427386}
 
     return location, status
 
 
 def ajax_response_map(request):
-
 
     search_address = request.POST['address']
 
