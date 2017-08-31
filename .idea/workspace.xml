@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d24e570d-7f3c-4947-ba87-0d62ec882304" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/geoJSON_filter/filter.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/geoJSON_filter/ireland/counties.geojson" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/geoJSON_filter/ireland/eds.geojson" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/geoJSON_filter/ireland/eds.txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/geoJSON_filter/ireland/counties_cso.geojson" afterPath="$PROJECT_DIR$/geoJSON_filter/counties_cso.geojson" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/geoJSON_filter/ireland/cso_prov.geojson" afterPath="$PROJECT_DIR$/geoJSON_filter/regions_cso.geojson" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/geoJSON_filter/ireland/eds100.geojson" afterPath="$PROJECT_DIR$/geoJSON_filter/eds100.geojson" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geoJSON_filter/parse_geojson.py" afterPath="$PROJECT_DIR$/geoJSON_filter/parse_geojson.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prac/homepage/forms.py" afterPath="$PROJECT_DIR$/prac/homepage/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prac/homepage/views.py" afterPath="$PROJECT_DIR$/prac/homepage/views.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/geoJSON_filter/counties_cso.geojson" afterPath="$PROJECT_DIR$/data_preprocessing/geoJSON/counties_cso.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/geoJSON_filter/country.geojson" afterPath="$PROJECT_DIR$/data_preprocessing/geoJSON/country.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/geoJSON_filter/cso_ref.csv" afterPath="$PROJECT_DIR$/data_preprocessing/geoJSON/cso_ref.csv" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/geoJSON_filter/eds100.geojson" afterPath="$PROJECT_DIR$/data_preprocessing/geoJSON/eds100.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/geoJSON_filter/parse_geojson.py" afterPath="$PROJECT_DIR$/data_preprocessing/geoJSON/parse_geojson.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/geoJSON_filter/regions_cso.geojson" afterPath="$PROJECT_DIR$/data_preprocessing/geoJSON/regions_cso.geojson" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/outlier_detection/ed_mean_std.csv" afterPath="$PROJECT_DIR$/data_preprocessing/outlier_detection/ed_mean_std.csv" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/outlier_detection/model_data.csv" afterPath="$PROJECT_DIR$/data_preprocessing/outlier_detection/model_data.csv" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/outlier_detection/outlier_exploration.py" afterPath="$PROJECT_DIR$/data_preprocessing/outlier_detection/outlier_exploration.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/outlier_detection/outliers.py" afterPath="$PROJECT_DIR$/data_preprocessing/outlier_detection/outliers.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/outlier_detection/outliers_test.csv" afterPath="$PROJECT_DIR$/data_preprocessing/outlier_detection/outliers_test.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,14 +27,28 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="parse_geojson.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/geoJSON_filter/parse_geojson.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="migrate_sales_data.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data_preprocessing/rppr/migrate_sales_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="80" column="26" lean-forward="false" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+            <state relative-caret-position="255">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
-                <element signature="e#120#139#0" expanded="true" />
+                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#1254#1601#0" expanded="false" />
+                <element signature="e#1633#3270#0" expanded="false" />
+                <element signature="e#3313#4629#0" expanded="false" />
+                <element signature="e#4673#5313#0" expanded="false" />
+                <element signature="e#5347#10671#0" expanded="false" />
+                <element signature="e#10707#12508#0" expanded="false" />
+                <element signature="e#12536#13748#0" expanded="false" />
+                <marker date="1504179509000" expanded="true" signature="414:435" ph="DELETE FROM " />
+                <marker date="1504179509000" expanded="true" signature="738:768" ph="SELECT COUNT... prac_sale" />
+                <marker date="1504179509000" expanded="true" signature="3369:3445" ph="SELECT * FRO... prac_sexagemarriage" />
+                <marker date="1504179509000" expanded="true" signature="4997:5073" ph="SELECT occup... prac_housing" />
+                <marker date="1504179509000" expanded="true" signature="5125:5203" ph="SELECT unocc... prac_housing" />
+                <marker date="1504179509000" expanded="true" signature="5538:5561" ph="SELECT * FRO... prac_sale" />
+                <marker date="1504179509000" expanded="true" signature="10898:10921" ph="SELECT * FRO... prac_sale" />
               </folding>
             </state>
           </provider>
@@ -48,6 +64,13 @@
       <list>
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/geoJSON_filter/parse_geojson.py" />
+        <option value="$PROJECT_DIR$/database_update/ed_update.py" />
+        <option value="$PROJECT_DIR$/database_update/assign_ed.py" />
+        <option value="$PROJECT_DIR$/database_update/geocode_script.py" />
+        <option value="$PROJECT_DIR$/database_update/RRP_download.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing/good_data/add_features.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing/rppr/RRP_download.py" />
+        <option value="$PROJECT_DIR$/data_preprocessing/rppr/migrate_data.py" />
       </list>
     </option>
   </component>
@@ -77,7 +100,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -100,12 +122,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="geoJSON_filter" />
+              <option name="myItemId" value="data_preprocessing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Prac_submission" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Prac_submission" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data_preprocessing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rppr" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -119,6 +160,13 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data_preprocessing" />
+      <recent name="$PROJECT_DIR$/data_preprocessing/geoJSON" />
+      <recent name="$PROJECT_DIR$/data_preprocessing/rppr" />
+      <recent name="$PROJECT_DIR$/data_preprocessing/demographics" />
+      <recent name="$PROJECT_DIR$/data_preprocessing/model" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/geoJSON_filter" />
     </key>
   </component>
@@ -212,6 +260,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -347,24 +401,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2532189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -379,15 +433,26 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/geoJSON_filter/cso_ref.csv">
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/geoJSON/parse_geojson.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#120#139#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/geoJSON/cso_ref.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -399,15 +464,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geoJSON_filter/ireland/eds.txt">
+    <entry file="file://$PROJECT_DIR$/geoJSON_filter/ireland/eds.txt" />
+    <entry file="file://$PROJECT_DIR$/geoJSON_filter/counties.geojson" />
+    <entry file="file://$PROJECT_DIR$/geoJSON_filter/filter.py" />
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/geoJSON/country.geojson">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1035">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geoJSON_filter/counties.geojson">
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/rppr/geocoded_data_with_ed.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_update/explore_leftovers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -415,7 +487,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geoJSON_filter/filter.py">
+    <entry file="file://$PROJECT_DIR$/database_update/merge_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -423,12 +495,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geoJSON_filter/parse_geojson.py">
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/good_data/split_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/model/merge_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/rppr/geocode_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding>
+            <element signature="e#47#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/good_data/add_features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/rppr/assign_ed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#113#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/geoJSON/parse_geojson.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="80" column="26" lean-forward="false" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
           <folding>
             <element signature="e#120#139#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/rppr/parse_locations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/rppr/RRP_download.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="3" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+          <folding>
+            <element signature="e#110#144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/rppr/migrate_sales_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#1254#1601#0" expanded="false" />
+            <element signature="e#1633#3270#0" expanded="false" />
+            <element signature="e#3313#4629#0" expanded="false" />
+            <element signature="e#4673#5313#0" expanded="false" />
+            <element signature="e#5347#10671#0" expanded="false" />
+            <element signature="e#10707#12508#0" expanded="false" />
+            <element signature="e#12536#13748#0" expanded="false" />
+            <marker date="1504179509000" expanded="true" signature="414:435" ph="DELETE FROM " />
+            <marker date="1504179509000" expanded="true" signature="738:768" ph="SELECT COUNT... prac_sale" />
+            <marker date="1504179509000" expanded="true" signature="3369:3445" ph="SELECT * FRO... prac_sexagemarriage" />
+            <marker date="1504179509000" expanded="true" signature="4997:5073" ph="SELECT occup... prac_housing" />
+            <marker date="1504179509000" expanded="true" signature="5125:5203" ph="SELECT unocc... prac_housing" />
+            <marker date="1504179509000" expanded="true" signature="5538:5561" ph="SELECT * FRO... prac_sale" />
+            <marker date="1504179509000" expanded="true" signature="10898:10921" ph="SELECT * FRO... prac_sale" />
           </folding>
         </state>
       </provider>
