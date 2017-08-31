@@ -12,9 +12,9 @@ import numpy as np
 import json
 from django.conf import settings
 
+
 # Create your views here.
 def index(request):
-
     cookies = request.COOKIES
 
     date_max = int(cookies.get('max_date'))
@@ -30,7 +30,8 @@ def index(request):
     radius = float(cookies.get('radius'))
     bad_data = cookies.get('bad_data_inc')
 
-    with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'RRP_timestamp.txt', 'r') as file:
+    with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL +
+              'RRP_timestamp.txt', 'r') as file:
         lu = file.read()
 
     datalist = Sale.objects.aggregate(Max('price'))
@@ -38,7 +39,8 @@ def index(request):
 
     context = {'last_update': lu, 'maxp': maxp}
 
-    if (date_max == 1491001200000 and date_min == 1262304000000 and price_max == 26500000 and price_min == 0):
+    if (date_max == 1491001200000 and date_min == 1262304000000
+            and price_max == 26500000 and price_min == 0):
         use_cached_natave = True
         context['cache'] = 'true'
     else:
@@ -67,9 +69,11 @@ def index(request):
         for sale in data:
             points.append([float(sale.latitude), float(sale.longitude)])
 
-        sales_data, hist_data, volume_data, new_data, avg_size = retrieve_stats(data)
+        sales_data, hist_data, volume_data, new_data, avg_size = \
+            retrieve_stats(data)
 
-        ag_data = data.aggregate(Avg('price'), Min('price'), Max('price'), Count('price'))
+        ag_data = data.aggregate(Avg('price'), Min('price'),
+                                 Max('price'), Count('price'))
 
         count = ag_data['price__count']
         avg_price = ag_data['price__avg']
@@ -164,7 +168,8 @@ def index(request):
                 scatter_data['price'].append(float(sale.price))
                 hist_data.append(float(sale.price))
 
-                if sale.PSD == 'greater than or equal to 38 sq metres and less than 125 sq metres':
+                if sale.PSD == 'greater than or equal to 38 sq metres ' \
+                               'and less than 125 sq metres':
                     size_list.append(81.5)
                 elif sale.PSD == 'greater than 125 sq metres':
                     size_list.append(125)
@@ -202,7 +207,8 @@ def index(request):
 
         df = pd.DataFrame(scatter_data, columns=['price'],
                           index=scatter_data['date'])
-        new_df = pd.DataFrame(new_data, columns=['new', 'used'],index=new_data['date'])
+        new_df = pd.DataFrame(new_data, columns=['new', 'used'],
+                              index=new_data['date'])
         df.index.names = ['date']
         new_df.index.names = ['date']
 
@@ -224,7 +230,10 @@ def index(request):
         volume_data = list(map(lambda x, y: [
             calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
             round(float(y), 2)], vdf.index.tolist(), vdf.values))
-        new_data = list(map(lambda x, y, z: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000, round(float(y), 2), round(float(z), 2)], idf.index.tolist(), udf.tolist(), ndf.tolist()))
+        new_data = list(map(lambda x, y, z: [
+            calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
+            round(float(y), 2), round(float(z), 2)],
+                            idf.index.tolist(), udf.tolist(), ndf.tolist()))
 
         ed_data = Sale.objects.filter(quality='good', nfma='No').filter(
             latitude__gte=bottom, latitude__lte=top, longitude__gte=left,
@@ -279,11 +288,16 @@ def index(request):
         ref_id = CSORef.objects.filter(zoom=calcArea, desc=area)[0].uid
 
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No', price__lte=price_max, price__gte=price_min,
-                                       sale_date__gte=dl, sale_date__lte=dh, county=area)
+            data = Sale.objects.filter(nfma='No', price__lte=price_max,
+                                       price__gte=price_min,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       county=area)
         else:
-            data = Sale.objects.filter(quality='good', nfma='No', price__lte=price_max, price__gte=price_min,
-                                       sale_date__gte=dl, sale_date__lte=dh, county=area)
+            data = Sale.objects.filter(quality='good', nfma='No',
+                                       price__lte=price_max,
+                                       price__gte=price_min,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       county=area)
 
         if len(data) == 0:
             context['enoughdata'] = 'false'
@@ -295,7 +309,8 @@ def index(request):
         for sale in data:
             points.append([float(sale.latitude), float(sale.longitude)])
 
-        sales_data, hist_data, volume_data, new_data, avg_size = retrieve_stats(data)
+        sales_data, hist_data, volume_data, new_data, avg_size = \
+            retrieve_stats(data)
 
         ag_data = data.aggregate(Avg('price'), Min('price'), Max('price'),
                                  Count('price'))
@@ -315,11 +330,16 @@ def index(request):
         ref_id = CSORef.objects.filter(zoom=calcArea, desc=area)[0].uid
 
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No', price__lte=price_max, price__gte=price_min,
-                                       sale_date__gte=dl, sale_date__lte=dh, region=area)
+            data = Sale.objects.filter(nfma='No', price__lte=price_max,
+                                       price__gte=price_min,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       region=area)
         else:
-            data = Sale.objects.filter(quality='good', nfma='No', price__lte=price_max, price__gte=price_min,
-                                       sale_date__gte=dl, sale_date__lte=dh, region=area)
+            data = Sale.objects.filter(quality='good', nfma='No',
+                                       price__lte=price_max,
+                                       price__gte=price_min,
+                                       sale_date__gte=dl,
+                                       sale_date__lte=dh, region=area)
 
         if len(data) == 0:
             context['enoughdata'] = 'false'
@@ -328,7 +348,8 @@ def index(request):
 
             return render(request, 'reporter/index.html', context)
 
-        sales_data, hist_data, volume_data, new_data, avg_size = retrieve_stats(data)
+        sales_data, hist_data, volume_data, new_data, avg_size = \
+            retrieve_stats(data)
 
         ag_data = data.aggregate(Avg('price'), Min('price'), Max('price'),
                                  Count('price'))
@@ -347,10 +368,13 @@ def index(request):
     elif calcArea == 'country':
         ref_id = CSORef.objects.filter(zoom=calcArea)[0].uid
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No', price__lte=price_max, price__gte=price_min,
+            data = Sale.objects.filter(nfma='No', price__lte=price_max,
+                                       price__gte=price_min,
                                        sale_date__gte=dl, sale_date__lte=dh)
         else:
-            data = Sale.objects.filter(quality='good', nfma='No', price__lte=price_max, price__gte=price_min,
+            data = Sale.objects.filter(quality='good', nfma='No',
+                                       price__lte=price_max,
+                                       price__gte=price_min,
                                        sale_date__gte=dl, sale_date__lte=dh)
 
         if len(data) == 0:
@@ -360,7 +384,8 @@ def index(request):
 
             return render(request, 'reporter/index.html', context)
 
-        sales_data, hist_data, volume_data, new_data, avg_size = retrieve_stats(data)
+        sales_data, hist_data, volume_data, new_data, avg_size = \
+            retrieve_stats(data)
 
         ag_data = data.aggregate(Avg('price'), Min('price'), Max('price'),
                                  Count('price'))
@@ -378,8 +403,9 @@ def index(request):
             med = sum(values[count / 2 - 0.5: count / 2 + 0.5]) / 2
 
         if not use_cached_natave:
-            na_sales, na_volume_scaled, na_hist_scaled = get_na_data(True,
-                 bad_data, price_max, price_min, dl, dh, volume_data, hist_data, data=data)
+            na_sales, na_volume_scaled, na_hist_scaled = \
+                get_na_data(True, bad_data, price_max, price_min, dl, dh,
+                            volume_data, hist_data, data=data)
 
             context['na_sales'] = na_sales
             context['na_volume'] = na_volume_scaled
@@ -399,14 +425,14 @@ def index(request):
     context['current_points'] = points
 
     price_lobf = [float(i) for i in
-                 list(np.polyfit([i[0] for i in sales_data],
-                                 [i[1] for i in sales_data],
-                                 deg=3))]
+                  list(np.polyfit([i[0] for i in sales_data],
+                                  [i[1] for i in sales_data],
+                                  deg=3))]
 
     vol_lobf = [float(i) for i in
-                  list(np.polyfit([i[0] for i in volume_data],
-                                  [i[1] for i in volume_data],
-                                  deg=3))]
+                list(np.polyfit([i[0] for i in volume_data],
+                                [i[1] for i in volume_data],
+                                deg=3))]
 
     context['price_lobf'] = price_lobf
     context['vol_lobf'] = vol_lobf
@@ -420,9 +446,10 @@ def index(request):
 
     context['demo'] = cso_dict
 
-    if calcArea != 'country' and use_cached_natave == False:
-        na_sales, na_volume_scaled, na_hist_scaled = get_na_data(False, bad_data,
-                     price_max, price_min, dl, dh, volume_data, hist_data, data=None)
+    if calcArea != 'country' and use_cached_natave is False:
+        na_sales, na_volume_scaled, na_hist_scaled = \
+            get_na_data(False, bad_data, price_max, price_min, dl, dh,
+                        volume_data, hist_data, data=None)
 
         context['na_sales'] = na_sales
         context['na_volume'] = na_volume_scaled
@@ -433,22 +460,26 @@ def index(request):
     return render(request, 'reporter/index.html', context)
 
 
-def get_na_data(country, bad_data, price_max, price_min, dl, dh, volume_data, hist_data, data=None):
+def get_na_data(country, bad_data, price_max, price_min, dl, dh,
+                volume_data, hist_data, data=None):
     if country:
         na_data = data
     elif bad_data == 'true':
         na_data = Sale.objects.filter(nfma='No', price__lte=price_max,
-                                   price__gte=price_min, sale_date__gte=dl, sale_date__lte=dh)
+                                      price__gte=price_min, sale_date__gte=dl,
+                                      sale_date__lte=dh)
     else:
         na_data = Sale.objects.filter(quality='good', nfma='No',
-                                   price__lte=price_max, price__gte=price_min,
-                                   sale_date__gte=dl, sale_date__lte=dh)
+                                      price__lte=price_max,
+                                      price__gte=price_min,
+                                      sale_date__gte=dl, sale_date__lte=dh)
 
     na_sales, na_volume, na_hist = retrieve_na_stats(na_data)
 
     na_total = sum(i[1] for i in na_volume)
     total = sum(i[1] for i in volume_data)
-    na_volume_scaled = [[i[0], total * (i[1] / na_total) / 4] for i in na_volume]
+    na_volume_scaled = [[i[0], total * (i[1] / na_total) / 4]
+                        for i in na_volume]
 
     na_hist_data = compress_list(na_hist, 10000)
 
@@ -590,19 +621,24 @@ def cycle_cso(ref_id, year, context):
         age_ext_natave.age_7579_f, age_ext_natave.age_8084_f,
         age_ext_natave.age_85p_f]
 
-    age_labels = ['0 - 4', "5 - 9", "10 - 14", "15 - 19", "20 - 24", "25 - 29",
-                  "30 - 34", "35 - 39", "40 - 44", "45 - 49", "50 - 54", "55 - 59",
-                  "60 - 64", "65 - 69", "70 - 74", "75 - 79", "80 - 84", "85+"]
+    age_labels = ['0 - 4', "5 - 9", "10 - 14", "15 - 19", "20 - 24",
+                  "25 - 29", "30 - 34", "35 - 39", "40 - 44", "45 - 49",
+                  "50 - 54", "55 - 59", "60 - 64", "65 - 69", "70 - 74",
+                  "75 - 79", "80 - 84", "85+"]
 
     age_profile_males = []
     age_natave_males = []
     age_profile_females = []
     age_natave_females = []
     for i in range(len(age_labels)):
-        age_profile_males.append({'label': age_labels[i], 'value': age_males[i]})
-        age_profile_females.append({'label': age_labels[i], 'value': age_females[i]})
-        age_natave_males.append({'label': age_labels[i], 'value': age_na_males[i]})
-        age_natave_females.append({'label': age_labels[i], 'value': age_na_females[i]})
+        age_profile_males.append({'label': age_labels[i],
+                                  'value': age_males[i]})
+        age_profile_females.append({'label': age_labels[i],
+                                    'value': age_females[i]})
+        age_natave_males.append({'label': age_labels[i],
+                                 'value': age_na_males[i]})
+        age_natave_females.append({'label': age_labels[i],
+                                   'value': age_na_females[i]})
 
     age_data = [
         t1_data.age_04, t1_data.age_59, t1_data.age_1014,
@@ -937,7 +973,9 @@ def latlng(clat, clng, d, dir):
 
 def distance(lat1, lon1, lat2, lon2):
     p = 0.017453292519943295
-    a = 0.5 - math.cos((lat2 - lat1) * p) / 2 + math.cos(lat1 * p) * math.cos(lat2 * p) * (1 - math.cos((lon2 - lon1) * p)) / 2
+    a = 0.5 - math.cos((lat2 - lat1) * p) / 2 + \
+        math.cos(lat1 * p) * math.cos(lat2 * p) * \
+        (1 - math.cos((lon2 - lon1) * p)) / 2
 
     return 12742 * math.asin(math.sqrt(a))
 
@@ -958,7 +996,8 @@ def retrieve_stats(queryset):
         scatter_data['price'].append(float(sale.price))
         hist_data.append(float(sale.price))
 
-        if sale.PSD == 'greater than or equal to 38 sq metres and less than 125 sq metres':
+        if sale.PSD == 'greater than or equal to 38 sq metres ' \
+                       'and less than 125 sq metres':
             size_list.append(81.5)
         elif sale.PSD == 'greater than 125 sq metres':
             size_list.append(125)
@@ -985,8 +1024,10 @@ def retrieve_stats(queryset):
 
     avg_size = round(np.mean(size_list), 1)
 
-    df = pd.DataFrame(scatter_data, columns=['price'], index=scatter_data['date'])
-    new_df = pd.DataFrame(new_data, columns=['new', 'used'], index=new_data['date'])
+    df = pd.DataFrame(scatter_data, columns=['price'],
+                      index=scatter_data['date'])
+    new_df = pd.DataFrame(new_data, columns=['new', 'used'],
+                          index=new_data['date'])
 
     df.index.names = ['date']
     new_df.index.names = ['date']
@@ -1004,17 +1045,20 @@ def retrieve_stats(queryset):
     udf = udf.resample('W').count().dropna(axis=0, how='any')
     idf = new_df.resample('W').count().dropna(axis=0, how='any')
 
-    scatter_data = list(map(lambda x, y: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
-                      round(float(y), 2)], sdf.index.tolist(), sdf.values))
-    volume_data = list(map(lambda x, y: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
-                      round(float(y), 2)], vdf.index.tolist(), vdf.values))
+    scatter_data = list(map(lambda x, y: [
+        calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
+        round(float(y), 2)], sdf.index.tolist(), sdf.values))
+    volume_data = list(map(lambda x, y: [
+        calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
+        round(float(y), 2)], vdf.index.tolist(), vdf.values))
 
     new_scatter_data = list(map(
         lambda x, y, z: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
                          round(float(y), 2), round(float(z), 2)],
         idf.index.tolist(), udf.tolist(), ndf.tolist()))
 
-    return scatter_data, compressed_hist_data, volume_data, new_scatter_data, avg_size
+    return scatter_data, compressed_hist_data, volume_data, \
+        new_scatter_data, avg_size
 
 
 def compress_list(data, limit):
@@ -1059,12 +1103,14 @@ def retrieve_na_stats(queryset):
 
     nasdf = df.resample('M').mean().dropna(axis=0, how='any')
     nasdf = nasdf[nasdf['price'] != 0]
-    na_scatter_data = list(map(lambda x, y: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
-                      round(float(y), 2)], nasdf.index.tolist(), nasdf.values))
+    na_scatter_data = list(map(lambda x, y: [
+        calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
+        round(float(y), 2)], nasdf.index.tolist(), nasdf.values))
     navdf = df.resample('M').count().dropna(axis=0, how='any')
     navdf = navdf[navdf['price'] != 0]
-    na_volume_data = list(map(lambda x, y: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
-                      round(float(y), 2)], navdf.index.tolist(), navdf.values))
+    na_volume_data = list(map(lambda x, y: [
+        calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
+        round(float(y), 2)], navdf.index.tolist(), navdf.values))
 
     return na_scatter_data, na_volume_data, hist_data
 
@@ -1142,24 +1188,37 @@ def ajax_response_chart(request):
 
     elif calcArea == 'county':
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No', price__lte=price_max, price__gte=price_min,
-                                       sale_date__gte=dl, sale_date__lte=dh, county=area)
+            data = Sale.objects.filter(nfma='No', price__lte=price_max,
+                                       price__gte=price_min,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       county=area)
         else:
-            data = Sale.objects.filter(quality='good', nfma='No', price__lte=price_max, price__gte=price_min,
-                                       sale_date__gte=dl, sale_date__lte=dh, county=area)
+            data = Sale.objects.filter(quality='good', nfma='No',
+                                       price__lte=price_max,
+                                       price__gte=price_min,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       county=area)
     elif calcArea == 'region':
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No', price__lte=price_max, price__gte=price_min,
-                                       sale_date__gte=dl, sale_date__lte=dh, region=area)
+            data = Sale.objects.filter(nfma='No', price__lte=price_max,
+                                       price__gte=price_min,
+                                       sale_date__gte=dl,
+                                       sale_date__lte=dh, region=area)
         else:
-            data = Sale.objects.filter(quality='good', nfma='No', price__lte=price_max, price__gte=price_min,
-                                       sale_date__gte=dl, sale_date__lte=dh, region=area)
+            data = Sale.objects.filter(quality='good', nfma='No',
+                                       price__lte=price_max,
+                                       price__gte=price_min,
+                                       sale_date__gte=dl,
+                                       sale_date__lte=dh, region=area)
     elif calcArea == 'country':
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No', price__lte=price_max, price__gte=price_min,
+            data = Sale.objects.filter(nfma='No', price__lte=price_max,
+                                       price__gte=price_min,
                                        sale_date__gte=dl, sale_date__lte=dh)
         else:
-            data = Sale.objects.filter(quality='good', nfma='No', price__lte=price_max, price__gte=price_min,
+            data = Sale.objects.filter(quality='good', nfma='No',
+                                       price__lte=price_max,
+                                       price__gte=price_min,
                                        sale_date__gte=dl, sale_date__lte=dh)
 
     if request.GET['chart'] == 'hist':
@@ -1181,13 +1240,15 @@ def ajax_response_chart(request):
         if calcArea != 'country':
             if bad_data == 'true':
                 data = Sale.objects.filter(nfma='No', price__lte=price_max,
-                                              price__gte=price_min,
-                                              sale_date__gte=dl, sale_date__lte=dh)
+                                           price__gte=price_min,
+                                           sale_date__gte=dl,
+                                           sale_date__lte=dh)
             else:
                 data = Sale.objects.filter(quality='good', nfma='No',
-                                              price__lte=price_max,
-                                              price__gte=price_min,
-                                              sale_date__gte=dl, sale_date__lte=dh)
+                                           price__lte=price_max,
+                                           price__gte=price_min,
+                                           sale_date__gte=dl,
+                                           sale_date__lte=dh)
 
             hist_data = []
 
@@ -1201,7 +1262,8 @@ def ajax_response_chart(request):
         for k, v in na_hist_data.items():
             na_hist_scaled[k] = (na_hist_data[k] / na_hist_total) * hist_total
 
-        data_dict = {'hist_data': compressed_hist_data, 'na_hist': na_hist_scaled}
+        data_dict = {'hist_data': compressed_hist_data,
+                     'na_hist': na_hist_scaled}
 
     elif request.GET['chart'] == 'scatter':
         agg = request.GET['agg']
@@ -1215,7 +1277,8 @@ def ajax_response_chart(request):
                 scatter_data['date'].append(sale.sale_date)
                 scatter_data['price'].append(float(sale.price))
 
-            df = pd.DataFrame(scatter_data, columns=['price'], index=scatter_data['date'])
+            df = pd.DataFrame(scatter_data, columns=['price'],
+                              index=scatter_data['date'])
             df.index.names = ['date']
             df = df.set_index(pd.DatetimeIndex(df.index))
 
@@ -1224,7 +1287,8 @@ def ajax_response_chart(request):
                 sdf = df.resample(agg).mean().dropna(axis=0, how='any')
                 sdf = sdf[sdf['price'] != 0]
 
-                scatter_data = list(map(lambda x, y: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
+                scatter_data = list(map(lambda x, y: [
+                    calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
                     round(float(y), 2)], sdf.index.tolist(), sdf.values))
 
                 data_dict = {'scatter_data': scatter_data, 'agg': agg}
@@ -1232,17 +1296,18 @@ def ajax_response_chart(request):
                 vdf = df.resample(agg).count().dropna(axis=0, how='any')
                 vdf = vdf[vdf['price'] != 0]
 
-                volume_data = list(map(lambda x, y: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
+                volume_data = list(map(lambda x, y: [
+                    calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
                     round(float(y), 2)], vdf.index.tolist(), vdf.values))
 
                 data_dict = {'scatter_data': volume_data, 'agg': agg}
 
             lobf_coef = [float(i) for i in
-                         list(np.polyfit([i[0] for i in data_dict['scatter_data']],
-                                         [i[1] for i in data_dict['scatter_data']],
-                                         deg=3))]
+                         list(np.polyfit(
+                             [i[0] for i in data_dict['scatter_data']],
+                             [i[1] for i in data_dict['scatter_data']],
+                             deg=3))]
             data_dict['lobf_coef'] = lobf_coef
-
 
         elif cid == 3:
             new_data = {'date': [], 'used': [], 'new': []}
@@ -1257,7 +1322,8 @@ def ajax_response_chart(request):
                     new_data['used'].append(0)
                     new_data['new'].append(float(sale.price))
 
-            new_df = pd.DataFrame(new_data, columns=['new', 'used'], index=new_data['date'])
+            new_df = pd.DataFrame(new_data, columns=['new', 'used'],
+                                  index=new_data['date'])
             new_df.index.names = ['date']
 
             new_df = new_df.set_index(pd.DatetimeIndex(new_df.index))
@@ -1267,12 +1333,12 @@ def ajax_response_chart(request):
             udf = udf.resample(agg).count().dropna(axis=0, how='any')
             idf = new_df.resample(agg).count().dropna(axis=0, how='any')
 
-            new_scatter_data = list(map(
-                lambda x, y, z: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000, round(float(y), 2), round(float(z), 2)], idf.index.tolist(), udf.tolist(), ndf.tolist()))
-
+            new_scatter_data = list(map(lambda x, y, z: [
+                calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
+                round(float(y), 2), round(float(z), 2)], idf.index.tolist(),
+                                        udf.tolist(), ndf.tolist()))
 
             data_dict = {'scatter_data': new_scatter_data, 'agg': agg}
-
 
     return HttpResponse(json.dumps(data_dict))
 
@@ -1287,7 +1353,7 @@ def ajax_response_pie(request):
     calcArea = cookies.get('areaMain', 'country')
     area = cookies.get('areaSecond', 'Dublin')
     radius = float(cookies.get('radius', 1))
-    
+
     year = int(request.GET['year'])
     chartname = request.GET['chartname']
 
@@ -1407,7 +1473,6 @@ def ajax_response_pie(request):
         ref_id = 'I00'
         final_data = get_cso_light(chartname, ref_id, year)[chartname]
 
-
     return HttpResponse(json.dumps(final_data))
 
 
@@ -1526,8 +1591,8 @@ def get_cso_light(chartname, ref_id, year):
                           ]
         house_age_labels = ['Before 1919', '1919 - 1945', '1946 - 1960',
                             '1961 - 1970', '1971 - 1980', '1981 - 1990',
-                            '1991 - 2000', '2001 - 2010', 'After 2011', 'Not Stated'
-                            ]
+                            '1991 - 2000', '2001 - 2010', 'After 2011',
+                            'Not Stated']
 
         final_data = []
         for i in range(len(house_age_data)):
