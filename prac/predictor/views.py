@@ -31,14 +31,12 @@ def geolocate(address_string, county):
 
     # Check if location is within east/west boundary of Ireland
     if status is 1:
-        if location['lng'] > -10.738539 and location[
-            'lng'] < -5.930445:
+        if location['lng'] > -10.738539 and location['lng'] < -5.930445:
             pass
         else:
             status = 2
 
-        if location['lat'] > 51.387652 and location[
-            'lat'] < 55.445918:
+        if location['lat'] > 51.387652 and location['lat'] < 55.445918:
             pass
         else:
             status = 2
@@ -80,11 +78,13 @@ def find_ed(data, latitude, longitude):
 
 
 def word_isolation(string):
-    keep_words = ['road', 'park', 'avenue', 'court', 'rd', 'street', 'drive', 'st',
-                  'grove', 'manor', 'close', 'green', 'view', 'hill', 'house', 'the',
-                  'wood', 'terrace', 'heights', 'hall', 'mount', 'grange',
-                  'lodge', 'lane', 'main', 'place', 'lawn', 'ave', 'square', 'dr',
-                  'estate', 'woodlands', 'harbour', 'quay', 'bay', 'apt', 'sq', 'apartment']
+    keep_words = ['road', 'park', 'avenue', 'court', 'rd', 'street', 'drive',
+                  'st', 'grove', 'manor', 'close', 'green', 'view', 'hill',
+                  'house', 'the', 'wood', 'terrace', 'heights', 'hall',
+                  'mount', 'grange', 'lodge', 'lane', 'main', 'place', 'lawn',
+                  'ave', 'square', 'dr', 'estate', 'woodlands', 'harbour',
+                  'quay', 'bay', 'apt', 'sq', 'apartment']
+
     words = string.split()
     for word in words:
         if word in keep_words:
@@ -109,13 +109,16 @@ def word_map(string):
 
 
 def full_pred(data, location, model_choice, clf):
-    if clf == None:
+    if clf is None:
         if model_choice == 'Dublin':
-            model_location = settings.BASE_DIR + '/predictive_model/models/dublin_model_full.pkl'
+            model_location = settings.BASE_DIR + \
+                             '/predictive_model/models/dublin_model_full.pkl'
         elif model_choice == 'Urban':
-            model_location = settings.BASE_DIR + '/predictive_model/models/urban_model_full.pkl'
+            model_location = settings.BASE_DIR + \
+                             '/predictive_model/models/urban_model_full.pkl'
         elif model_choice == 'Rural':
-            model_location = settings.BASE_DIR + '/predictive_model/models/rural_model_full.pkl'
+            model_location = settings.BASE_DIR + \
+                             '/predictive_model/models/rural_model_full.pkl'
         else:
             model_location = None
 
@@ -137,21 +140,25 @@ def full_pred(data, location, model_choice, clf):
 
 def partial_pred(data, clf):
     # Basically the same thing, but uses fewer features and NAs the rest
-    if clf == None:
+    if clf is None:
         if data['model_choice'] == 'Dublin':
-            model_location = settings.BASE_DIR + '/predictive_model/models/dublin_model_partial.pkl'
+            model_location = settings.BASE_DIR + \
+                         '/predictive_model/models/dublin_model_partial.pkl'
         elif data['model_choice'] == 'Urban':
-            model_location = settings.BASE_DIR + '/predictive_model/models/urban_model_partial.pkl'
+            model_location = settings.BASE_DIR + \
+                         '/predictive_model/models/urban_model_partial.pkl'
         elif data['model_choice'] == 'Rural':
-            model_location = settings.BASE_DIR + '/predictive_model/models/rural_model_partial.pkl'
+            model_location = settings.BASE_DIR + \
+                         '/predictive_model/models/rural_model_partial.pkl'
         else:
             model_location = None
 
         clf = joblib.load(model_location)
 
     X = np.asarray([data['county'], data['type'], data['bed'],
-                    data['bath'], data['condition'], data['apt'], data['house_name'],
-                    data['suffix'], data['date']]).reshape(1, -1)
+                    data['bath'], data['condition'], data['apt'],
+                    data['house_name'], data['suffix'],
+                    data['date']]).reshape(1, -1)
 
     try:
         prediction = clf.predict(X)
@@ -186,17 +193,23 @@ def regex_suffix(string):
 
 
 def county_map(string):
-    county_mapping = {"Carlow":0, "Cavan":1, "Clare":2, "Cork City":3, "Cork County":3, "Donegal":4, "Dublin":5,
-                  "Galway City":6, "Galway County":6, "Kerry":7, "Kildare":8, "Kilkenny":9, "Laois":10, "Leitrim":11,
-                  "Limerick City":12, "Limerick County":12, "Longford":13, "Louth":14, "Mayo":15, "Meath":16,
-                  "Monaghan":17, "Offaly":18, "Roscommon":19, "Sligo":20, "Tipperary":21,
-                  "Waterford City":22,"Waterford County":22, "Westmeath":23, "Wexford":24, "Wicklow":25}
+    county_mapping = {"Carlow": 0, "Cavan": 1, "Clare": 2, "Cork City": 3,
+                      "Cork County": 3, "Donegal": 4, "Dublin": 5,
+                      "Galway City": 6, "Galway County": 6, "Kerry": 7,
+                      "Kildare": 8, "Kilkenny": 9, "Laois": 10, "Leitrim": 11,
+                      "Limerick City": 12, "Limerick County": 12,
+                      "Longford": 13, "Louth": 14, "Mayo": 15, "Meath": 16,
+                      "Monaghan": 17, "Offaly": 18, "Roscommon": 19,
+                      "Sligo": 20, "Tipperary": 21, "Waterford City": 22,
+                      "Waterford County": 22, "Westmeath": 23,
+                      "Wexford": 24, "Wicklow": 25}
 
     return county_mapping[string]
 
 
 def desc_map(string):
-    file_location = settings.BASE_DIR + '/predictive_model/mappings/desc_mapping.csv'
+    file_location = settings.BASE_DIR + \
+                    '/predictive_model/mappings/desc_mapping.csv'
     reader = csv.reader(open(file_location, 'r'))
     d = {}
     for row in reader:
@@ -207,7 +220,8 @@ def desc_map(string):
 
 
 def ed_map(string):
-    file_location = settings.BASE_DIR + '/predictive_model/mappings/eds_location_split.csv'
+    file_location = settings.BASE_DIR + \
+                    '/predictive_model/mappings/eds_location_split.csv'
     reader = csv.reader(open(file_location, 'r'))
     d = {}
     for row in reader:
@@ -228,15 +242,16 @@ def apt_map(string):
 
 
 def name_map(string):
-    name = {"No":0, "Yes": 1}
+    name = {"No": 0, "Yes": 1}
     return name[string]
 
 
 def suffix_map(string):
-    if string == None:
+    if string is None:
         string = "None"
 
-    file_location = settings.BASE_DIR + '/predictive_model/mappings/suffix_mapping.csv'
+    file_location = settings.BASE_DIR + \
+        '/predictive_model/mappings/suffix_mapping.csv'
     reader = csv.reader(open(file_location, 'r'))
     d = {}
     for row in reader:
@@ -247,7 +262,8 @@ def suffix_map(string):
 
 
 def find_model(string):
-    file_location = settings.BASE_DIR + '/predictive_model/mappings/eds_location_split.csv'
+    file_location = settings.BASE_DIR + \
+                    '/predictive_model/mappings/eds_location_split.csv'
     reader = csv.reader(open(file_location, 'r'))
     d = {}
     for row in reader:
@@ -258,7 +274,8 @@ def find_model(string):
 
 
 def plotting_data(list_with_times, list_with_preds):
-    data = list(map(lambda x, y: [int(x), int(y)], list_with_times, list_with_preds))
+    data = list(map(lambda x, y: [int(x), int(y)], list_with_times,
+                    list_with_preds))
     return data
 
 
@@ -266,6 +283,7 @@ def index(request):
     context = {}
 
     return render(request, 'predictor/index.html', context)
+
 
 def predict(request):
     input_data = {}
@@ -333,42 +351,54 @@ def predict(request):
         model_choice = input_data['model_choice']
         input_data['ed'] = ed_map(input_data['ed'])
 
-        pred['price'], pred['status'], clf = full_pred(input_data, loc, model_choice, clf)
+        pred['price'], pred['status'], clf = full_pred(input_data, loc,
+                                                       model_choice, clf)
         list_with_predictions = [pred['price']]
         times_to_transform = [input_data['date']]
 
         for i in range(22):
             input_data['date'] = (today - start).days - i * 120
-            list_with_predictions.append(full_pred(input_data, loc, model_choice, clf)[0])
+            list_with_predictions.append(full_pred(input_data, loc,
+                                                   model_choice, clf)[0])
             times_to_transform.append((today - start).days - i * 120)
 
         pred['moe'] = get_moe(model_choice)
 
-    list_with_times = [((x + time_increase) * millisec) for x in times_to_transform]
+    list_with_times = [((x + time_increase) * millisec) for x in
+                       times_to_transform]
     list_to_plot = plotting_data(list_with_times, list_with_predictions)
 
     pred['ti_data'] = int(ti_pred(input_data, loc, model_choice))
 
     pred['price'] = int(pred['price'])
-    pred['date'] = str(today.day) + '-' + str(calendar.month_name[today.month]) + '-' + str(today.year)
+    pred['date'] = str(today.day) + '-' + \
+        str(calendar.month_name[today.month]) + '-' + \
+        str(today.year)
 
     pred['plotdata'] = list_to_plot
 
     return HttpResponse(json.dumps(pred))
 
+
 def ti_pred(data, location, model_choice):
     if model_choice == 'Dublin':
-        model_location = settings.BASE_DIR + '/predictive_model/models/dublin_model_ti.pkl'
+        model_location = settings.BASE_DIR + \
+                         '/predictive_model/models/dublin_model_ti.pkl'
     elif model_choice == 'Dublinp':
-        model_location = settings.BASE_DIR + '/predictive_model/models/dublin_model_ti_part.pkl'
+        model_location = settings.BASE_DIR + \
+                         '/predictive_model/models/dublin_model_ti_part.pkl'
     elif model_choice == 'Urban':
-        model_location = settings.BASE_DIR + '/predictive_model/models/urban_model_ti.pkl'
+        model_location = settings.BASE_DIR + \
+                         '/predictive_model/models/urban_model_ti.pkl'
     elif model_choice == 'Urbanp':
-        model_location = settings.BASE_DIR + '/predictive_model/models/urban_model_ti_part.pkl'
+        model_location = settings.BASE_DIR + \
+                         '/predictive_model/models/urban_model_ti_part.pkl'
     elif model_choice == 'Rural':
-        model_location = settings.BASE_DIR + '/predictive_model/models/rural_model_ti.pkl'
+        model_location = settings.BASE_DIR + \
+                         '/predictive_model/models/rural_model_ti.pkl'
     elif model_choice == 'Ruralp':
-        model_location = settings.BASE_DIR + '/predictive_model/models/rural_model_ti_part.pkl'
+        model_location = settings.BASE_DIR + \
+                         '/predictive_model/models/rural_model_ti_part.pkl'
     else:
         model_location = None
 
@@ -388,8 +418,10 @@ def ti_pred(data, location, model_choice):
 
     return prediction
 
+
 def get_moe(string):
-    file_location = settings.BASE_DIR + '/predictive_model/models/model_results.csv'
+    file_location = settings.BASE_DIR + \
+                    '/predictive_model/models/model_results.csv'
     reader = csv.reader(open(file_location, 'r'))
     d = {}
     for row in reader:
