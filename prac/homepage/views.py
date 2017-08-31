@@ -14,8 +14,6 @@ from datetime import datetime, date
 import calendar
 from sklearn.cluster import KMeans
 
-import time
-
 def geolocate(address_string):
     """
     Take address from search bar and return lat & long location if possible.
@@ -39,6 +37,7 @@ def geolocate(address_string):
     if len(geocode_result) > 0:
         # Set the location as the result
         location = geocode_result[0]['geometry']['location']
+        # Set map bounds
         location['l'] = location['lng'] - 0.04866600036624025
         location['r'] = location['lng'] + 0.04866600036624025
         location['t'] = location['lat'] + 0.019106276426853697
@@ -71,22 +70,29 @@ def geolocate(address_string):
 
 
 def index(request):
+    # Initialize form
     form = SearchForm()
 
+    # Set default location - Central Dublin
     location = {'lng': -6.2603, 'lat': 53.3498, 'l': -6.30896600036624,
                 'r':-6.211633999633818, 't':53.368906276426856,
                 'b':53.330685156427386}
     status = 0
 
-    with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'RRP_timestamp.txt', 'r') as file:
+    # Get time of last RPPR update
+    with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + \
+        'RRP_timestamp.txt', 'r') as file:
         lu = file.read()
 
+    # If refreshing after search
     if request.method == 'GET':
         form = SearchForm(request.GET)
         if form.is_valid():
+            # Get address from search and geolocate
             search_address = form.cleaned_data['address']
             location, status = geolocate(search_address)
 
+    # Filter by map boundaries
     database_list = Sale.objects.\
         filter(quality='good').\
         filter(latitude__gte=location['b']).\
@@ -94,29 +100,36 @@ def index(request):
         filter(longitude__gte=location['l']).\
         filter(longitude__lte=location['r'])
 
-    print(database_list)
-
+    # Calculate maximum sale price in returned results
     datalist = Sale.objects.aggregate(Max('price'))
     max_price = datalist['price__max']
 
     scatter_data = {'date': [], 'price': []}
     hist_data = []
 
+    # Loop through returned results
     for sale in database_list:
         raw_time = calendar.timegm(sale.sale_date.timetuple()) * 1000
         scatter_data['date'].append(sale.sale_date)
         scatter_data['price'].append(float(sale.price))
         hist_data.append(float(sale.price))
 
-    df = pd.DataFrame(scatter_data, columns=['price'], index=scatter_data['date'])
-
+    # Create data frame from scatter data
+    df = pd.DataFrame(scatter_data, columns=['price'],
+        index=scatter_data['date'])
     df.index.names = ['date']
 
     df = df.set_index(pd.DatetimeIndex(df.index))
+    # Group data frame sales to a weekly average
     df = df.resample('W').mean().dropna(axis=0, how='any')
 
-    scatter_data = list(map(lambda x,y: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000, round(float(y),2)], df.index.tolist(), df.values))
+    # Generate scatterplot data with correct timestamps
+    scatter_data = list(map(lambda x,y:
+            [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
+            round(float(y),2)],
+        df.index.tolist(), df.values))
 
+    # Compress histogram data by pre-binning to reduce data transfer
     compressed_hist_data = {}
     k = 0
     for v in range(25000, 5000000, 25000):
@@ -130,7 +143,10 @@ def index(request):
 
         k = v
 
-    lobf_coef = [float(i) for i in list(np.polyfit([i[0] for i in scatter_data], [i[1] for i in scatter_data], deg=3))]
+    # Generate 3rd order polynomial line of best fit and store
+    # coefficients in a list
+    lobf_coef = [float(i) for i in list(np.polyfit(
+        [i[0] for i in scatter_data], [i[1] for i in scatter_data], deg=3))]
 
     context = {'form': form, 'latitude': location['lat'],
                'longitude':location['lng'], 'status': status,
@@ -156,50 +172,62 @@ def data(request):
 
 
 def return_response_markers(request):
+    # Responds to AJAX request to display markers on map
+
+    # Get map boundaries from request
     top = request.GET['top']
     bottom = request.GET['bottom']
     right = request.GET['right']
     left = request.GET['left']
 
-    t0 = time.time()
-
+    # Filter database by map boundaries
     database_list = Sale.objects.\
-        filter(quality='good', latitude__gte=bottom, latitude__lte=top, longitude__gte=left, longitude__lte=right)
+        filter(quality='good', latitude__gte=bottom, latitude__lte=top,
+        longitude__gte=left, longitude__lte=right)
 
-    print(len(database_list))
-    print(time.time() - t0)
-
+    # If current zoom is above 13, or there are less than 2000 sales after
+    # geographic filtering, do not cluster data:
     if int(request.GET['zoom']) > 13 or len(database_list) < 2000:
 
-        b = calendar.timegm(datetime.strptime('2010-01-01', '%Y-%m-%d').timetuple())
+        b = calendar.timegm(
+            datetime.strptime('2010-01-01', '%Y-%m-%d').timetuple())
 
         result = serialize('json', database_list,
-                           fields=('uid', 'latitude', 'longitude', 'price', 'sale_date'))
+               fields=('uid', 'latitude', 'longitude', 'price', 'sale_date'))
 
+        # Standardizes time stamps with 01-01-2010 as 0, in order to be
+        # interpreted by color scale in Javascript
         res = json.loads(result)
         for i in range(len(res)):
-            t = calendar.timegm(datetime.strptime(res[i]['fields']['sale_date'][:10], '%Y-%m-%d').timetuple())
+            t = calendar.timegm(datetime.strptime(
+                res[i]['fields']['sale_date'][:10], '%Y-%m-%d').timetuple())
             res[i]['fields']['sale_date'] = str(t - b)
 
         return HttpResponse(json.dumps(res))
 
     cluster_data = {'lat': [], 'lng': []}
 
+    # Iterate through returned results and build clustering dictionary
     for point in database_list:
         cluster_data['lat'].append(point.latitude)
         cluster_data['lng'].append(point.longitude)
 
+    # Create data frame from clustering dictionary
     df = pd.DataFrame(cluster_data, columns=['lat', 'lng'], index=None)
 
-    kmeans = KMeans(n_clusters=40, n_init=1, max_iter=30, tol=0.001, n_jobs=2).fit(df)
-    # kmeans = KMeans(n_clusters=40).fit(df)
+    # Create and cluster data properties into 40 clusters on lat/long
+    kmeans = KMeans(n_clusters=40, n_init=1, max_iter=30, tol=0.001,
+        n_jobs=2).fit(df)
     samples = kmeans.predict(df)
 
     centroids = kmeans.cluster_centers_
 
+    # Return data in format: [[centroid_lat, centroid_long,
+    # number in centroid], ...]
     response_data = []
     for i in range(len(centroids)):
-        response_data.append([centroids[i][0], centroids[i][1], len([j for j in samples if j == i])])
+        response_data.append([centroids[i][0], centroids[i][1],
+            len([j for j in samples if j == i])])
 
     response = {'data': response_data, 'cluster': 'true'}
 
@@ -207,19 +235,26 @@ def return_response_markers(request):
 
 
 def return_response_infowindow(request):
+    # Returns specific information on a property when requested
+
     uid = request.GET['uid']
 
     database_list = Sale.objects.filter(uid=uid)
 
     result = serialize('json', database_list,
-                       fields=('uid', 'sale_date', 'address', 'postcode', 'county',
-                               'nfma', 'vat_ex', 'DoP', 'PSD', 'price'))
+                   fields=('uid', 'sale_date', 'address', 'postcode', 'county',
+                           'nfma', 'vat_ex', 'DoP', 'PSD', 'price'))
 
     return HttpResponse(result)
 
 
 def latlng(clat, clng, d, dir):
-    R = 6378.1
+    # Based on a centroid location, returns the lat/long location of a point
+    # d km away in a specific direction
+
+    R = 6378.1 # Radius of the earth
+
+    # Sets direction in radians
     if dir == 'N':
         brng = 0
     elif dir == 'E':
@@ -231,9 +266,11 @@ def latlng(clat, clng, d, dir):
     else:
         brng = 0
 
+    # Convert lat/long into radians
     lat1 = (clat / 180) * math.pi
     lng1 = (clng / 180) * math.pi
 
+    # Calculate new lat/long
     lat2 = math.asin(math.sin(lat1) * math.cos(d / R) + math.cos(lat1)
                      * math.sin(d / R) * math.cos(brng))
     lng2 = lng1 + math.atan2(math.sin(brng) * math.sin(d / R) * math
@@ -241,28 +278,39 @@ def latlng(clat, clng, d, dir):
                              math.cos(d / R) - math.sin(lat1) * math
                              .sin(lat2))
 
+    # returns new lat/long in degrees
     return [lat2 * (180 / math.pi), lng2 * (180 / math.pi)]
 
 
 def distance(lat1, lon1, lat2, lon2):
+    # Calculates the distance between two points
+
     p = 0.017453292519943295
-    a = 0.5 - math.cos((lat2 - lat1) * p) / 2 + math.cos(lat1 * p) * math.cos(lat2 * p) * (1 - math.cos((lon2 - lon1) * p)) / 2
+    a = 0.5 - math.cos((lat2 - lat1) * p) / 2 + \
+        math.cos(lat1 * p) * math.cos(lat2 * p) * \
+        (1 - math.cos((lon2 - lon1) * p)) / 2
 
     return 12742 * math.asin(math.sqrt(a))
 
 
 def retrieve_stats(queryset):
+    # Returns specific statistics calculated from a Django queryset
+
+    # Compute aggregate statistics
     ag_data = queryset.aggregate(Avg('price'), Min('price'), Max('price'),
                              Count('price'))
 
+    # Number of entries in the queryset
     count = ag_data['price__count']
 
+    # Median price of the queryset
     values = queryset.values_list('price', flat=True).order_by('price')
 
     if count % 2 == 1:
         med = values[int(round(count / 2 - 0.5))]
     else:
         med = sum(values[count / 2 - 0.5: count / 2 + 0.5]) / 2
+
 
     sale_list = []
     size_list = []
@@ -283,19 +331,26 @@ def retrieve_stats(queryset):
         elif sale.PSD == 'less than 38 sq metres':
             size_list.append(38)
 
+    # Average sale date and size of properties in the queryset
     avg_sale = round(np.mean(sale_list) * 1000, 0)
     avg_size = round(np.mean(size_list), 1)
 
+    # Create data frame from scatter data
     df = pd.DataFrame(scatter_data, columns=['price'],
                       index=scatter_data['date'])
     df.index.names = ['date']
 
     df = df.set_index(pd.DatetimeIndex(df.index))
+    # Group data frame sales to a weekly average
+
     df = df.resample('W').mean().dropna(axis=0, how='any')
 
+    # Generate scatterplot data with correct timestamps
     scatter_data = list(map(lambda x, y: [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
                       round(float(y), 2)], df.index.tolist(), df.values))
 
+    # Compress and test histogram data in order to have appropriate bin-widths
+    # to ensure correct display in D3
     compressed_hist_data = compress_list(hist_data, 25000)
 
     if max(compressed_hist_data.keys()) / 25 < 25000:
@@ -319,6 +374,8 @@ def retrieve_stats(queryset):
 
 
 def compress_list(data, limit):
+    # Based on a list of data, bin into bins of width limit between values of
+    # 0 and 500000
     a = {}
     k = 0
     for v in range(limit, 5000000, limit):
@@ -332,6 +389,7 @@ def compress_list(data, limit):
 
         k = v
 
+    # If a bin has less than 5% of the entries of the largest bin, remove it.
     b = {}
     for k, v in a.items():
         if v > max(a.values()) * 0.05:
@@ -432,6 +490,8 @@ def retrieve_cso(data_list, zoom, year, data_dict=None, area='Ireland'):
 
 
 def cached_data(request):
+    # Retrieve cached data from disk
+
     res = {i[0]: i[1] for i in request.GET.items()}
     if res['calcArea'] == 'country':
         with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/country_request.txt') as f:
@@ -705,6 +765,8 @@ def return_response_stats(request):
 
 
 def parse_tf(tf):
+    # Converts Javascript boolean values into Python boolean values
+
     if tf == 'true':
         return True
     else:
@@ -712,9 +774,11 @@ def parse_tf(tf):
 
 
 def write_error(request):
+    # Writes a reported error into the database
 
     error = ReportedErrors()
 
+    # Writes information from request
     error.marker_uid = request.POST['uid']
     error.address_error = parse_tf(request.POST['address-error'])
     error.location_error = parse_tf(request.POST['location-error'])
@@ -723,6 +787,8 @@ def write_error(request):
 
     other_info = request.POST['text']
 
+    # If length of free text response is over 500 characters, only writes first
+    # 500.
     if len(other_info) > 500:
         other_info = other_info[:500]
 
