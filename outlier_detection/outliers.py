@@ -1,7 +1,7 @@
 import pandas as pd
 
-# Import Model Data
-df = pd.read_csv('model_data.csv', encoding='latin1', index_col=0)
+# Import Dataset
+df = pd.read_csv('<>.csv', encoding='latin1', index_col=0)
 
 # Properties grouped by electoral division and the mean and standard deviation
 # of each is calculated
@@ -20,4 +20,7 @@ for index, row in df.iterrows():
         df.loc[index, 'two_stds'] = 'NaN'
 
 # Updated data exported to CSV
-df.to_csv('outliers.csv')
+df.to_csv('outlier_data.csv')
+
+# Mean and standard deviation information exported to CSV
+stats.to_csv('ed_mean_std.csv')
