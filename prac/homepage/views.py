@@ -14,6 +14,7 @@ from datetime import datetime
 import calendar
 from sklearn.cluster import KMeans
 
+
 def geolocate(address_string):
     """
     Take address from search bar and return lat & long location if possible.
@@ -63,8 +64,8 @@ def geolocate(address_string):
     # If a bad result, set default location
     if status is 2:
         location = {'lng': -6.2603, 'lat': 53.3498, 'l': -6.30896600036624,
-                'r':-6.211633999633818, 't':53.368906276426856,
-                'b':53.330685156427386}
+                    'r': -6.211633999633818, 't': 53.368906276426856,
+                    'b': 53.330685156427386}
 
     return location, status
 
@@ -75,13 +76,13 @@ def index(request):
 
     # Set default location - Central Dublin
     location = {'lng': -6.2603, 'lat': 53.3498, 'l': -6.30896600036624,
-                'r':-6.211633999633818, 't':53.368906276426856,
-                'b':53.330685156427386}
+                'r': -6.211633999633818, 't': 53.368906276426856,
+                'b': 53.330685156427386}
     status = 0
 
     # Get time of last RPPR update
-    with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + \
-        'RRP_timestamp.txt', 'r') as file:
+    with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL +
+              'RRP_timestamp.txt', 'r') as file:
         lu = file.read()
 
     # If refreshing after search
@@ -93,12 +94,11 @@ def index(request):
             location, status = geolocate(search_address)
 
     # Filter by map boundaries
-    database_list = Sale.objects.\
-        filter(quality='good').\
-        filter(latitude__gte=location['b']).\
-        filter(latitude__lte=location['t']).\
-        filter(longitude__gte=location['l']).\
-        filter(longitude__lte=location['r'])
+    database_list = Sale.objects.filter(quality='good',
+                                        latitude__gte=location['b'],
+                                        latitude__lte=location['t'],
+                                        longitude__gte=location['l'],
+                                        longitude__lte=location['r'])
 
     # Calculate maximum sale price in returned results
     datalist = Sale.objects.aggregate(Max('price'))
@@ -109,14 +109,13 @@ def index(request):
 
     # Loop through returned results
     for sale in database_list:
-        raw_time = calendar.timegm(sale.sale_date.timetuple()) * 1000
         scatter_data['date'].append(sale.sale_date)
         scatter_data['price'].append(float(sale.price))
         hist_data.append(float(sale.price))
 
     # Create data frame from scatter data
     df = pd.DataFrame(scatter_data, columns=['price'],
-        index=scatter_data['date'])
+                      index=scatter_data['date'])
     df.index.names = ['date']
 
     df = df.set_index(pd.DatetimeIndex(df.index))
@@ -124,10 +123,11 @@ def index(request):
     df = df.resample('W').mean().dropna(axis=0, how='any')
 
     # Generate scatterplot data with correct timestamps
-    scatter_data = list(map(lambda x,y:
-            [calendar.timegm(x.to_pydatetime().timetuple()) * 1000,
-            round(float(y),2)],
-        df.index.tolist(), df.values))
+    scatter_data = list(map(lambda x, y:
+                            [calendar.timegm(
+                                x.to_pydatetime().timetuple()) * 1000,
+                             round(float(y), 2)],
+                            df.index.tolist(), df.values))
 
     # Compress histogram data by pre-binning to reduce data transfer
     compressed_hist_data = {}
@@ -149,7 +149,7 @@ def index(request):
         [i[0] for i in scatter_data], [i[1] for i in scatter_data], deg=3))]
 
     context = {'form': form, 'latitude': location['lat'],
-               'longitude':location['lng'], 'status': status,
+               'longitude': location['lng'], 'status': status,
                'database_list': database_list,
                'hist_data': compressed_hist_data,
                'scatter_data': scatter_data,
@@ -181,9 +181,10 @@ def return_response_markers(request):
     left = request.GET['left']
 
     # Filter database by map boundaries
-    database_list = Sale.objects.\
-        filter(quality='good', latitude__gte=bottom, latitude__lte=top,
-        longitude__gte=left, longitude__lte=right)
+    database_list = Sale.objects.filter(quality='good', latitude__gte=bottom,
+                                        latitude__lte=top,
+                                        longitude__gte=left,
+                                        longitude__lte=right)
 
     # If current zoom is above 13, or there are less than 2000 sales after
     # geographic filtering, do not cluster data:
@@ -193,7 +194,8 @@ def return_response_markers(request):
             datetime.strptime('2010-01-01', '%Y-%m-%d').timetuple())
 
         result = serialize('json', database_list,
-               fields=('uid', 'latitude', 'longitude', 'price', 'sale_date'))
+                           fields=('uid', 'latitude', 'longitude',
+                                   'price', 'sale_date'))
 
         # Standardizes time stamps with 01-01-2010 as 0, in order to be
         # interpreted by color scale in Javascript
@@ -217,7 +219,7 @@ def return_response_markers(request):
 
     # Create and cluster data properties into 40 clusters on lat/long
     kmeans = KMeans(n_clusters=40, n_init=1, max_iter=30, tol=0.001,
-        n_jobs=2).fit(df)
+                    n_jobs=2).fit(df)
     samples = kmeans.predict(df)
 
     centroids = kmeans.cluster_centers_
@@ -227,7 +229,7 @@ def return_response_markers(request):
     response_data = []
     for i in range(len(centroids)):
         response_data.append([centroids[i][0], centroids[i][1],
-            len([j for j in samples if j == i])])
+                              len([j for j in samples if j == i])])
 
     response = {'data': response_data, 'cluster': 'true'}
 
@@ -242,8 +244,9 @@ def return_response_infowindow(request):
     database_list = Sale.objects.filter(uid=uid)
 
     result = serialize('json', database_list,
-                   fields=('uid', 'sale_date', 'address', 'postcode', 'county',
-                           'nfma', 'vat_ex', 'DoP', 'PSD', 'price'))
+                       fields=('uid', 'sale_date', 'address', 'postcode',
+                               'county', 'nfma', 'vat_ex', 'DoP', 'PSD',
+                               'price'))
 
     return HttpResponse(result)
 
@@ -252,7 +255,7 @@ def latlng(clat, clng, d, dir):
     # Based on a centroid location, returns the lat/long location of a point
     # d km away in a specific direction
 
-    R = 6378.1 # Radius of the earth
+    R = 6378.1  # Radius of the earth
 
     # Sets direction in radians
     if dir == 'N':
@@ -298,7 +301,7 @@ def retrieve_stats(queryset):
 
     # Compute aggregate statistics
     ag_data = queryset.aggregate(Avg('price'), Min('price'), Max('price'),
-                             Count('price'))
+                                 Count('price'))
 
     # Number of entries in the queryset
     count = ag_data['price__count']
@@ -310,7 +313,6 @@ def retrieve_stats(queryset):
         med = values[int(round(count / 2 - 0.5))]
     else:
         med = sum(values[count / 2 - 0.5: count / 2 + 0.5]) / 2
-
 
     sale_list = []
     size_list = []
@@ -324,7 +326,8 @@ def retrieve_stats(queryset):
         scatter_data['date'].append(sale.sale_date)
         scatter_data['price'].append(float(sale.price))
         hist_data.append(float(sale.price))
-        if sale.PSD == 'greater than or equal to 38 sq metres and less than 125 sq metres':
+        if sale.PSD == 'greater than or equal to 38 sq metres and ' \
+                       'less than 125 sq metres':
             size_list.append(81.5)
         elif sale.PSD == 'greater than 125 sq metres':
             size_list.append(125)
@@ -360,7 +363,6 @@ def retrieve_stats(queryset):
             compressed_hist_data = compress_list(hist_data, 15000)
             if max(compressed_hist_data.keys()) / 25 < 15000:
                 compressed_hist_data = compress_list(hist_data, 10000)
-
 
     return {'ave_price': ag_data['price__avg'],
             'min_price': float(ag_data['price__min']),
@@ -400,7 +402,8 @@ def compress_list(data, limit):
 
 
 def get_age_stats(zoom, uid, year):
-    age_profile = SexAgeMarriage.objects.filter(zoom=zoom, uid=uid, year=year)[0]
+    age_profile = SexAgeMarriage.objects.filter(zoom=zoom, uid=uid,
+                                                year=year)[0]
 
     age_04 = age_profile.age_04
     age_59 = age_profile.age_59
@@ -441,7 +444,9 @@ def retrieve_cso(data_list, zoom, year, data_dict=None, area='Ireland'):
 
         for tl_ed in data_dict.keys():
 
-            with open(settings.BASE_DIR + '/riskdb' + settings.STATIC_URL + 'riskdb/data/cross_ref_dict.txt') as f:
+            with open(settings.BASE_DIR +
+                      '/riskdb' + settings.STATIC_URL +
+                      'riskdb/data/cross_ref_dict.txt') as f:
                 cross_ref_dict = eval(f.read())
             try:
                 cso_ed = cross_ref_dict[tl_ed]
@@ -452,10 +457,13 @@ def retrieve_cso(data_list, zoom, year, data_dict=None, area='Ireland'):
 
             w_age, pop = get_age_stats('edist', ref_id, year)
 
-            oc = Housing.objects.filter(zoom='edist', uid=ref_id, year=year)[0].occupied
-            unoc = Housing.objects.filter(zoom='edist', uid=ref_id, year=year)[0].unoccupied
+            oc = Housing.objects.filter(zoom='edist', uid=ref_id,
+                                        year=year)[0].occupied
+            unoc = Housing.objects.filter(zoom='edist', uid=ref_id,
+                                          year=year)[0].unoccupied
 
-            ed_data.append([w_age, pop, round((oc / (oc + unoc)) * 100, 2), data_dict[tl_ed]])
+            ed_data.append([w_age, pop, round((oc / (oc + unoc)) * 100, 2),
+                            data_dict[tl_ed]])
 
         count = 0
         w_age = 0
@@ -482,8 +490,10 @@ def retrieve_cso(data_list, zoom, year, data_dict=None, area='Ireland'):
 
         data_list['population'] = pop
 
-        oc = Housing.objects.filter(zoom=zoom, uid=ref_id, year=year)[0].occupied
-        unoc = Housing.objects.filter(zoom=zoom, uid=ref_id, year=year)[0].unoccupied
+        oc = Housing.objects.filter(zoom=zoom, uid=ref_id,
+                                    year=year)[0].occupied
+        unoc = Housing.objects.filter(zoom=zoom, uid=ref_id,
+                                      year=year)[0].unoccupied
 
         data_list['perc_oc'] = round((oc / (oc + unoc)) * 100, 2)
 
@@ -495,60 +505,88 @@ def cached_data(request):
 
     res = {i[0]: i[1] for i in request.GET.items()}
     if res['calcArea'] == 'country':
-        with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/country_request.txt') as f:
+        with open(settings.BASE_DIR +
+                  '/homepage' + settings.STATIC_URL +
+                  'homepage/data/country_request.txt') as f:
             country_request = eval(f.read())
-        with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/country_request_nobad.txt') as f:
+        with open(settings.BASE_DIR +
+                  '/homepage' + settings.STATIC_URL +
+                  'homepage/data/country_request_nobad.txt') as f:
             cr_nobad = eval(f.read())
         if res == country_request:
-            with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/country_data.txt') as f:
+            with open(settings.BASE_DIR +
+                      '/homepage' + settings.STATIC_URL +
+                      'homepage/data/country_data.txt') as f:
                 country_data = eval(f.read())
                 return [True, country_data]
         elif res == cr_nobad:
-            with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/country_data_nobad.txt') as f:
+            with open(settings.BASE_DIR +
+                      '/homepage' + settings.STATIC_URL +
+                      'homepage/data/country_data_nobad.txt') as f:
                 cd_nobad = eval(f.read())
             return [True, cd_nobad]
 
     elif res['calcArea'] == 'region':
         if res['area'] == 'Leinster':
-            with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/leinster_request.txt') as f:
+            with open(settings.BASE_DIR +
+                      '/homepage' + settings.STATIC_URL +
+                      'homepage/data/leinster_request.txt') as f:
                 region_request = eval(f.read())
-            with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/leinster_request_nobad.txt') as f:
+            with open(settings.BASE_DIR +
+                      '/homepage' + settings.STATIC_URL +
+                      'homepage/data/leinster_request_nobad.txt') as f:
                 rr_nobad = eval(f.read())
             if res == region_request:
-                with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/leinster_data.txt') as f:
+                with open(settings.BASE_DIR +
+                          '/homepage' + settings.STATIC_URL +
+                          'homepage/data/leinster_data.txt') as f:
                     region_data = eval(f.read())
                 return [True, region_data]
             elif res == rr_nobad:
-                with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/leinster_data_nobad.txt') as f:
+                with open(settings.BASE_DIR +
+                          '/homepage' + settings.STATIC_URL +
+                          'homepage/data/leinster_data_nobad.txt') \
+                        as f:
                     rd_nobad = eval(f.read())
                 return [True, rd_nobad]
 
         elif res['area'] == 'Munster':
-            with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/munster_request.txt') as f:
+            with open(settings.BASE_DIR +
+                      '/homepage' + settings.STATIC_URL +
+                      'homepage/data/munster_request.txt') as f:
                 region_request = eval(f.read())
-            with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/munster_request_nobad.txt') as f:
+            with open(settings.BASE_DIR +
+                      '/homepage' + settings.STATIC_URL +
+                      'homepage/data/munster_request_nobad.txt') as f:
                 rr_nobad = eval(f.read())
             if res == region_request:
-                with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/munster_data.txt') as f:
+                with open(settings.BASE_DIR +
+                          '/homepage' + settings.STATIC_URL +
+                          'homepage/data/munster_data.txt') as f:
                     region_data = eval(f.read())
                 return [True, region_data]
             elif res == rr_nobad:
-                with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/munster_data_nobad.txt') as f:
+                with open(settings.BASE_DIR +
+                          '/homepage' + settings.STATIC_URL +
+                          'homepage/data/munster_data_nobad.txt') as f:
                     rd_nobad = eval(f.read())
                 return [True, rd_nobad]
 
-
     elif res['calcArea'] == 'county' and res['area'] == 'Dublin':
-        with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/dublin_request.txt') as f:
+        with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL +
+                  'homepage/data/dublin_request.txt') as f:
             county_request = eval(f.read())
-        with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/dublin_request_nobad.txt') as f:
+        with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL +
+                  'homepage/data/dublin_request_nobad.txt') as f:
             cr_nobad = eval(f.read())
         if res == county_request:
-            with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/dublin_data.txt') as f:
+            with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL +
+                      'homepage/data/dublin_data.txt') as f:
                 county_data = eval(f.read())
             return [True, county_data]
         elif res == cr_nobad:
-            with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'homepage/data/dublin_data_nobad.txt') as f:
+            with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL +
+                      'homepage/data/dublin_data_nobad.txt') as f:
                 county_data = eval(f.read())
             return [True, county_data]
 
@@ -558,7 +596,7 @@ def cached_data(request):
 def return_response_stats(request):
 
     calcArea = request.GET['calcArea']
-    if cached_data(request)[0] == True:
+    if cached_data(request)[0] is True:
         return HttpResponse(json.dumps(cached_data(request)[1]))
 
     price_low = request.GET['price_low']
@@ -612,7 +650,6 @@ def return_response_stats(request):
         top = latlng(c_lat, c_lng, radius, 'N')[0]
         bottom = latlng(c_lat, c_lng, radius, 'S')[0]
 
-
         data = Sale.objects.filter(quality='good', nfma='No').filter(
             latitude__gte=bottom, latitude__lte=top, longitude__gte=left,
             longitude__lte=right, price__lte=price_high, price__gte=price_low,
@@ -645,7 +682,8 @@ def return_response_stats(request):
                     ed_count[sale.ed] += 1
                 else:
                     ed_count[sale.ed] = 1
-                if sale.PSD == 'greater than or equal to 38 sq metres and less than 125 sq metres':
+                if sale.PSD == 'greater than or equal to 38 sq ' \
+                               'metres and less than 125 sq metres':
                     size_list.append(81.5)
                 elif sale.PSD == 'greater than 125 sq metres':
                     size_list.append(125)
@@ -677,15 +715,15 @@ def return_response_stats(request):
                     compressed_hist_data = compress_list(hist_data, 10000)
 
         data_list = {'ave_price': np.mean(price_list),
-            'min_price': min(price_list),
-            'max_price': max(price_list),
-            'min_date': min(date_list) * 1000,
-            'max_date': max(date_list) * 1000,
-            'med_price': np.median(price_list),
-            'avg_date': np.mean(date_list) * 1000,
-            'avg_size': round(np.mean(size_list), 1),
-            'hist_data': compressed_hist_data,
-            'scatter_data': scatter_data}
+                     'min_price': min(price_list),
+                     'max_price': max(price_list),
+                     'min_date': min(date_list) * 1000,
+                     'max_date': max(date_list) * 1000,
+                     'med_price': np.median(price_list),
+                     'avg_date': np.mean(date_list) * 1000,
+                     'avg_size': round(np.mean(size_list), 1),
+                     'hist_data': compressed_hist_data,
+                     'scatter_data': scatter_data}
 
         data_list = retrieve_cso(data_list, 'map', 2016, ed_count)
 
@@ -694,13 +732,16 @@ def return_response_stats(request):
         bad_data = request.GET['bad_data']
 
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No',
-                price__lte=price_high, price__gte=price_low,
-                sale_date__gte=dl, sale_date__lte=dh, county=county)
+            data = Sale.objects.filter(nfma='No', price__lte=price_high,
+                                       price__gte=price_low,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       county=county)
         else:
             data = Sale.objects.filter(quality='good', nfma='No',
-                price__lte=price_high, price__gte=price_low,
-                sale_date__gte=dl, sale_date__lte=dh, county=county)
+                                       price__lte=price_high,
+                                       price__gte=price_low,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       county=county)
 
         if len(data) < 50:
             return HttpResponse("Not Enough Data")
@@ -718,13 +759,16 @@ def return_response_stats(request):
         bad_data = request.GET['bad_data']
 
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No',
-                price__lte=price_high, price__gte=price_low,
-                sale_date__gte=dl, sale_date__lte=dh, region=region)
+            data = Sale.objects.filter(nfma='No', price__lte=price_high,
+                                       price__gte=price_low,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       region=region)
         else:
             data = Sale.objects.filter(quality='good', nfma='No',
-               price__lte=price_high, price__gte=price_low,
-               sale_date__gte=dl, sale_date__lte=dh, region=region)
+                                       price__lte=price_high,
+                                       price__gte=price_low,
+                                       sale_date__gte=dl, sale_date__lte=dh,
+                                       region=region)
 
         if len(data) < 50:
             return HttpResponse("Not Enough Data")
@@ -740,13 +784,14 @@ def return_response_stats(request):
         bad_data = request.GET['bad_data']
 
         if bad_data == 'true':
-            data = Sale.objects.filter(nfma='No',
-                price__lte=price_high, price__gte=price_low,
-                sale_date__gte=dl, sale_date__lte=dh)
+            data = Sale.objects.filter(nfma='No', price__lte=price_high,
+                                       price__gte=price_low,
+                                       sale_date__gte=dl, sale_date__lte=dh)
         else:
             data = Sale.objects.filter(quality='good', nfma='No',
-                price__lte=price_high, price__gte=price_low,
-                sale_date__gte=dl, sale_date__lte=dh)
+                                       price__lte=price_high,
+                                       price__gte=price_low,
+                                       sale_date__gte=dl, sale_date__lte=dh)
 
         if len(data) < 50:
             return HttpResponse("Not Enough Data")
@@ -760,7 +805,9 @@ def return_response_stats(request):
 
     data_list['shade'] = goodlist
 
-    data_list['lobf_coef'] = list(np.polyfit([i[0] for i in data_list['scatter_data']], [i[1] for i in data_list['scatter_data']], deg = 3))
+    data_list['lobf_coef'] = list(
+        np.polyfit([i[0] for i in data_list['scatter_data']],
+                   [i[1] for i in data_list['scatter_data']], deg=3))
 
     return HttpResponse(json.dumps(data_list))
 
