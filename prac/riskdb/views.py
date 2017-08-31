@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import SearchForm
 from prac.models import CSORef, SexAgeMarriage, Families, Industries, AgeExt, \
-    Housing, PrincStat, SocClass, Occupation
+    Housing, PrincStat, SocClass
 from django.conf import settings
 import googlemaps
 import matplotlib.path as mplPath
@@ -14,6 +14,7 @@ import re
 import pandas as pd
 from sklearn.externals import joblib
 
+
 def geolocate(address_string, data):
     """
     Take address from search bar and return lat & long location if possible.
@@ -25,10 +26,10 @@ def geolocate(address_string, data):
     1 - Good search results
     2 - Bad / No results
     """
-    main_key = 'AIzaSyBFwN-7_erzpXeWWFe3DwMqSPKGoCjj1Hg'
-    secondary_key = 'AIzaSyDl2p6S1QgcDxUTypZHk-iR96dBq6uNd-M'
 
-    gmaps = googlemaps.Client(key=secondary_key)
+    main_key = 'AIzaSyBFwN-7_erzpXeWWFe3DwMqSPKGoCjj1Hg'
+
+    gmaps = googlemaps.Client(key=main_key)
     location = {}
     ed = False
 
@@ -104,7 +105,8 @@ def get_ed(location, data):
             inside = check_polygon(polygon, point)
 
         if inside == 1:
-            return feature['properties']['NAME_TAG'], feature['properties']['CO_NAME']
+            return feature['properties']['NAME_TAG'], \
+                   feature['properties']['CO_NAME']
 
     return None
 
@@ -116,13 +118,14 @@ def index(request):
     status = 0
     first = True
 
-    with open(settings.BASE_DIR + '/homepage' + settings.STATIC_URL + 'RRP_timestamp.txt','r') as file:
-        lu = file.read()
-    with open(settings.BASE_DIR + '/riskdb' + settings.STATIC_URL + 'riskdb/data/cross_ref_dict.txt') as f:
+    with open(settings.BASE_DIR + '/riskdb' + settings.STATIC_URL +
+              'riskdb/data/cross_ref_dict.txt') as f:
         cross_ref_dict = eval(f.read())
-    with open(settings.BASE_DIR + '/riskdb' + settings.STATIC_URL + 'riskdb/data/age_cp_data.txt') as f:
+    with open(settings.BASE_DIR + '/riskdb' + settings.STATIC_URL +
+              'riskdb/data/age_cp_data.txt') as f:
         age_cp_data = eval(f.read())
-    with open(settings.BASE_DIR + '/riskdb' + settings.STATIC_URL + 'riskdb/geojson/eds.geojson') as f:
+    with open(settings.BASE_DIR + '/riskdb' + settings.STATIC_URL +
+              'riskdb/geojson/eds.geojson') as f:
         ed_geojson = json.load(f)
 
     if request.method == 'GET':
@@ -137,7 +140,7 @@ def index(request):
     else:
         tl_ed = None
 
-    if tl_ed == None:
+    if tl_ed is None:
         cso_ed = None
         if first:
             status = 0
@@ -150,7 +153,8 @@ def index(request):
             cso_ed = None
             status = 2
 
-    context = {'form': form, 'tl_ed': tl_ed, 'cso_ed': cso_ed, 'status': status}
+    context = {'form': form, 'tl_ed': tl_ed, 'cso_ed': cso_ed,
+               'status': status}
 
     if status == 1:
         context['lat'] = location['lat']
@@ -166,40 +170,50 @@ def index(request):
         age_ext_natave = AgeExt.objects.filter(zoom='country', year=2016)[0]
 
         age_males = [
-            age_ext_data.age_04_m, age_ext_data.age_59_m, age_ext_data.age_1014_m,
-            age_ext_data.age_1519_m, age_ext_data.age_2024_m, age_ext_data.age_2529_m,
-            age_ext_data.age_3034_m, age_ext_data.age_3539_m, age_ext_data.age_4044_m,
-            age_ext_data.age_4549_m, age_ext_data.age_5054_m, age_ext_data.age_5559_m,
-            age_ext_data.age_6064_m, age_ext_data.age_6569_m, age_ext_data.age_7074_m,
-            age_ext_data.age_7579_m, age_ext_data.age_8084_m, age_ext_data.age_85p_m
+            age_ext_data.age_04_m, age_ext_data.age_59_m,
+            age_ext_data.age_1014_m, age_ext_data.age_1519_m,
+            age_ext_data.age_2024_m, age_ext_data.age_2529_m,
+            age_ext_data.age_3034_m, age_ext_data.age_3539_m,
+            age_ext_data.age_4044_m, age_ext_data.age_4549_m,
+            age_ext_data.age_5054_m, age_ext_data.age_5559_m,
+            age_ext_data.age_6064_m, age_ext_data.age_6569_m,
+            age_ext_data.age_7074_m, age_ext_data.age_7579_m,
+            age_ext_data.age_8084_m, age_ext_data.age_85p_m
         ]
 
         age_na_males = [
-            age_ext_natave.age_04_m, age_ext_natave.age_59_m, age_ext_natave.age_1014_m,
-            age_ext_natave.age_1519_m, age_ext_natave.age_2024_m, age_ext_natave.age_2529_m,
-            age_ext_natave.age_3034_m, age_ext_natave.age_3539_m, age_ext_natave.age_4044_m,
-            age_ext_natave.age_4549_m, age_ext_natave.age_5054_m, age_ext_natave.age_5559_m,
-            age_ext_natave.age_6064_m, age_ext_natave.age_6569_m, age_ext_natave.age_7074_m,
-            age_ext_natave.age_7579_m, age_ext_natave.age_8084_m, age_ext_natave.age_85p_m
+            age_ext_natave.age_04_m, age_ext_natave.age_59_m,
+            age_ext_natave.age_1014_m, age_ext_natave.age_1519_m,
+            age_ext_natave.age_2024_m, age_ext_natave.age_2529_m,
+            age_ext_natave.age_3034_m, age_ext_natave.age_3539_m,
+            age_ext_natave.age_4044_m, age_ext_natave.age_4549_m,
+            age_ext_natave.age_5054_m, age_ext_natave.age_5559_m,
+            age_ext_natave.age_6064_m, age_ext_natave.age_6569_m,
+            age_ext_natave.age_7074_m, age_ext_natave.age_7579_m,
+            age_ext_natave.age_8084_m, age_ext_natave.age_85p_m
         ]
 
         age_females = [
-            age_ext_data.age_04_f, age_ext_data.age_59_f, age_ext_data.age_1014_f,
-            age_ext_data.age_1519_f, age_ext_data.age_2024_f, age_ext_data.age_2529_f,
-            age_ext_data.age_3034_f, age_ext_data.age_3539_f, age_ext_data.age_4044_f,
-            age_ext_data.age_4549_f, age_ext_data.age_5054_f, age_ext_data.age_5559_f,
-            age_ext_data.age_6064_f, age_ext_data.age_6569_f, age_ext_data.age_7074_f,
-            age_ext_data.age_7579_f, age_ext_data.age_8084_f, age_ext_data.age_85p_f
+            age_ext_data.age_04_f, age_ext_data.age_59_f,
+            age_ext_data.age_1014_f, age_ext_data.age_1519_f,
+            age_ext_data.age_2024_f, age_ext_data.age_2529_f,
+            age_ext_data.age_3034_f, age_ext_data.age_3539_f,
+            age_ext_data.age_4044_f, age_ext_data.age_4549_f,
+            age_ext_data.age_5054_f, age_ext_data.age_5559_f,
+            age_ext_data.age_6064_f, age_ext_data.age_6569_f,
+            age_ext_data.age_7074_f, age_ext_data.age_7579_f,
+            age_ext_data.age_8084_f, age_ext_data.age_85p_f
         ]
 
-        age_na_females = [
-            age_ext_natave.age_04_f, age_ext_natave.age_59_f, age_ext_natave.age_1014_f,
-            age_ext_natave.age_1519_f, age_ext_natave.age_2024_f, age_ext_natave.age_2529_f,
-            age_ext_natave.age_3034_f, age_ext_natave.age_3539_f, age_ext_natave.age_4044_f,
-            age_ext_natave.age_4549_f, age_ext_natave.age_5054_f, age_ext_natave.age_5559_f,
-            age_ext_natave.age_6064_f, age_ext_natave.age_6569_f, age_ext_natave.age_7074_f,
-            age_ext_natave.age_7579_f, age_ext_natave.age_8084_f, age_ext_natave.age_85p_f
-        ]
+        age_na_females = [age_ext_natave.age_04_f, age_ext_natave.age_59_f,
+                          age_ext_natave.age_1014_f, age_ext_natave.age_1519_f,
+                          age_ext_natave.age_2024_f, age_ext_natave.age_2529_f,
+                          age_ext_natave.age_3034_f, age_ext_natave.age_3539_f,
+                          age_ext_natave.age_4044_f, age_ext_natave.age_4549_f,
+                          age_ext_natave.age_5054_f, age_ext_natave.age_5559_f,
+                          age_ext_natave.age_6064_f, age_ext_natave.age_6569_f,
+                          age_ext_natave.age_7074_f, age_ext_natave.age_7579_f,
+                          age_ext_natave.age_8084_f, age_ext_natave.age_85p_f]
 
         pop = t1_data.pop
         pop_m = sum(age_males)
@@ -217,28 +231,36 @@ def index(request):
             t1_data.age_7579, t1_data.age_8084, t1_data.age_85p
         ]
 
-        age_labels = ['0 - 4', "5 - 9", "10 - 14", "15 - 19", "20 - 24", "25 - 29",
-                      "30 - 34", "35 - 39", "40 - 44", "45 - 49", "50 - 54", "55 - 59",
-                      "60 - 64", "65 - 69", "70 - 74", "75 - 79", "80 - 84", "85+"
-                      ]
+        age_labels = ['0 - 4', "5 - 9", "10 - 14", "15 - 19", "20 - 24",
+                      "25 - 29", "30 - 34", "35 - 39", "40 - 44", "45 - 49",
+                      "50 - 54", "55 - 59", "60 - 64", "65 - 69", "70 - 74",
+                      "75 - 79", "80 - 84", "85+"]
 
         age_profile_males = []
         age_natave_males = []
         age_profile_females = []
         age_natave_females = []
         for i in range(len(age_labels)):
-            age_profile_males.append({'label': age_labels[i], 'value': round((age_males[i] / pop_m) * 100, 2)})
-            age_natave_males.append({'label': age_labels[i], 'value': round((age_na_males[i] / npop_m) * 100, 2)})
-            age_profile_females.append({'label': age_labels[i], 'value': round((age_females[i] / pop_f) * 100, 2)})
-            age_natave_females.append({'label': age_labels[i], 'value': round((age_na_females[i] / npop_f) * 100, 2)})
-
+            age_profile_males.append({'label': age_labels[i],
+                                      'value': round((age_males[i] /
+                                                      pop_m) * 100, 2)})
+            age_natave_males.append({'label': age_labels[i],
+                                     'value': round((age_na_males[i] /
+                                                     npop_m) * 100, 2)})
+            age_profile_females.append({'label': age_labels[i],
+                                        'value': round((age_females[i] /
+                                                        pop_f) * 100, 2)})
+            age_natave_females.append({'label': age_labels[i],
+                                       'value': round((age_na_females[i] /
+                                                       npop_f) * 100, 2)})
 
         context['age_males'] = age_profile_males
         context['age_na_males'] = age_natave_males
         context['age_females'] = age_profile_females
         context['age_na_females'] = age_natave_females
 
-        auc_h, auc_l = get_age_risk(age_profile_males, age_profile_females, age_natave_males, age_natave_females)
+        auc_h, auc_l = get_age_risk(age_profile_males, age_profile_females,
+                                    age_natave_males, age_natave_females)
 
         if auc_h > 1941:
             context['auc'] = 'High Risk'
@@ -262,22 +284,24 @@ def index(request):
         t4_natave = Families.objects.filter(zoom='country', year=2016)[0]
 
         family_status = [t4_data.adult, t4_data.pre_fam, t4_data.pre_s,
-                      t4_data.early_s, t4_data.pre_adol, t4_data.adol,
-                      t4_data.empty_nest, t4_data.retired
-                      ]
+                         t4_data.early_s, t4_data.pre_adol, t4_data.adol,
+                         t4_data.empty_nest, t4_data.retired]
 
         family_natave = [t4_natave.adult, t4_natave.pre_fam, t4_natave.pre_s,
-                      t4_natave.early_s, t4_natave.pre_adol, t4_natave.adol,
-                      t4_natave.empty_nest, t4_natave.retired]
+                         t4_natave.early_s, t4_natave.pre_adol, t4_natave.adol,
+                         t4_natave.empty_nest, t4_natave.retired]
 
         family_labels = ['Adult', 'Pre-Family', 'Pre-School', 'Early School',
-                      'Pre-Adoldolescence', 'Adolescence', 'Empty Nest', 'Retired']
+                         'Pre-Adoldolescence', 'Adolescence', 'Empty Nest',
+                         'Retired']
 
         fam_profile = []
         fam_natave = []
         for i in range(len(family_status)):
-            fam_profile.append({'label': family_labels[i], 'value': family_status[i]})
-            fam_natave.append({'label': family_labels[i], 'value': family_natave[i]})
+            fam_profile.append({'label': family_labels[i],
+                                'value': family_status[i]})
+            fam_natave.append({'label': family_labels[i],
+                               'value': family_natave[i]})
 
         context['fam_profile'] = fam_profile
         context['fam_natave'] = fam_natave
@@ -304,10 +328,12 @@ def index(request):
                          t14_data.manufac, t14_data.comm_trade,
                          t14_data.trans_coms, t14_data.pub_admin,
                          t14_data.prof_ser, t14_data.ind_other]
+
         industry_natave = [t14_natave.ag_for_fish, t14_natave.build_construct,
-                         t14_natave.manufac, t14_natave.comm_trade,
-                         t14_natave.trans_coms, t14_natave.pub_admin,
-                         t14_natave.prof_ser, t14_natave.ind_other]
+                           t14_natave.manufac, t14_natave.comm_trade,
+                           t14_natave.trans_coms, t14_natave.pub_admin,
+                           t14_natave.prof_ser, t14_natave.ind_other]
+
         industry_labels = ['Agriculture, Forestry and Fishing',
                            'Building and Construction', 'Manufacturing',
                            'Commerce and Trade',
@@ -316,17 +342,20 @@ def index(request):
                            'Professional Services', 'Other']
 
         industry_profile = []
-        ind_natave =[]
+        ind_natave = []
         for i in range(len(industry_data)):
-            industry_profile.append({'label': industry_labels[i], 'value': industry_data[i]})
-            ind_natave.append({'label': industry_labels[i], 'value': industry_natave[i]})
+            industry_profile.append({'label': industry_labels[i],
+                                     'value': industry_data[i]})
+            ind_natave.append({'label': industry_labels[i],
+                               'value': industry_natave[i]})
 
         context['ind_profile'] = industry_profile
         context['ind_natave'] = ind_natave
 
         ind_data = {}
         for i in range(len(industry_data)):
-            ind_data[industry_labels[i]] = industry_data[i] / t14_data.ind_total
+            ind_data[industry_labels[i]] = industry_data[i] / \
+                                           t14_data.ind_total
 
         ind_conc_lab = max(ind_data.items(), key=operator.itemgetter(1))[0]
 
@@ -356,7 +385,7 @@ def index(request):
 
         start = date(2010, 1, 1)
         today = date.today()
-        print(input_data)
+
         input_data['date'] = (today - start).days
         input_data['type'] = desc_map(input_data['type'])
         input_data['condition'] = cond_map(input_data['condition'])
@@ -365,9 +394,9 @@ def index(request):
         input_data['suffix'] = suffix_map(input_data['suffix'])
 
         input_data['ed'] = tl_ed
-        model_choice, input_data['county'] = find_model(county, input_data['ed'])
+        model_choice, input_data['county'] = find_model(county,
+                                                        input_data['ed'])
         z = ed_map(input_data['ed'])
-        print(model_choice, z)
 
         if z == 'NEDTMP':
             context['pred_data'] = [0]
@@ -380,7 +409,8 @@ def index(request):
             pred = {}
 
             clf = None
-            pred['price'], clf = full_pred(input_data, location, model_choice, clf)
+            pred['price'], clf = full_pred(input_data, location,
+                                           model_choice, clf)
 
             time_increase = (date(2010, 1, 1) - date(1970, 1, 1)).days
             millisec = 86400000
@@ -390,15 +420,17 @@ def index(request):
 
             for i in range(22):
                 input_data['date'] = (today - start).days - i * 120
-                list_with_predictions.append(full_pred(input_data, location, model_choice, clf)[0])
+                list_with_predictions.append(full_pred(input_data, location,
+                                                       model_choice, clf)[0])
                 times_to_transform.append((today - start).days - i * 120)
 
             context['moe'] = get_moe(model_choice)
 
-            list_with_times = [((x + time_increase) * millisec) for x in times_to_transform]
+            list_with_times = [((x + time_increase) * millisec)
+                               for x in times_to_transform]
             # List to be plotted
-            list_to_plot = list(map(lambda x, y: [int(x), int(y)], list_with_times,
-                     list_with_predictions))
+            list_to_plot = list(map(lambda x, y: [int(x), int(y)],
+                                    list_with_times, list_with_predictions))
 
             context['pred_data'] = list_to_plot
 
@@ -414,36 +446,44 @@ def index(request):
         t6_data = Housing.objects.filter(uid=ref_id, year=2016)[0]
         t6_natave = Housing.objects.filter(zoom='country', year=2016)[0]
 
-        hh_occupancy_data = [t6_data.occupied, t6_data.temp_unoc, t6_data.unoc_hol, t6_data.unoccupied]
-        hh_occupancy_na = [t6_natave.occupied, t6_natave.temp_unoc, t6_natave.unoc_hol, t6_natave.unoccupied]
+        hh_occupancy_data = [t6_data.occupied, t6_data.temp_unoc,
+                             t6_data.unoc_hol, t6_data.unoccupied]
+        hh_occupancy_na = [t6_natave.occupied, t6_natave.temp_unoc,
+                           t6_natave.unoc_hol, t6_natave.unoccupied]
 
-        hh_occupancy_labels =['Occupied', 'Temporarily Vacant', 'Unoccupied Holiday Homes', 'Unoccupied']
+        hh_occupancy_labels = ['Occupied', 'Temporarily Vacant',
+                               'Unoccupied Holiday Homes', 'Unoccupied']
 
         hh_occupancy_profile = []
         hh_occupancy_natave = []
         for i in range(len(hh_occupancy_data)):
-            hh_occupancy_profile.append({'label': hh_occupancy_labels[i], 'value': hh_occupancy_data[i]})
-            hh_occupancy_natave.append({'label': hh_occupancy_labels[i], 'value': hh_occupancy_na[i]})
-
-
+            hh_occupancy_profile.append({'label': hh_occupancy_labels[i],
+                                         'value': hh_occupancy_data[i]})
+            hh_occupancy_natave.append({'label': hh_occupancy_labels[i],
+                                        'value': hh_occupancy_na[i]})
 
         hh_mortgage_data = [t6_data.oo_wm, t6_data.oo_wom, t6_data.rent_pl,
-                             t6_data.rent_la, t6_data.rent_vol, t6_data.rent_free,
-                             t6_data.occu_ns]
+                            t6_data.rent_la, t6_data.rent_vol,
+                            t6_data.rent_free, t6_data.occu_ns]
 
         hh_mortgage_na = [t6_natave.oo_wm, t6_natave.oo_wom, t6_natave.rent_pl,
-                             t6_natave.rent_la, t6_natave.rent_vol, t6_natave.rent_free,
-                             t6_natave.occu_ns]
+                          t6_natave.rent_la, t6_natave.rent_vol,
+                          t6_natave.rent_free, t6_natave.occu_ns]
 
-        hh_mortgage_labels = ['Owner Occupier with Mortgage', 'Owner Occupier without Mortgage',
-                               'Rented from Private Landlord', 'Rented from Local Authority',
-                               'Rented from Voluntary Body', 'Rented Free of Rent', 'Not Stated']
+        hh_mortgage_labels = ['Owner Occupier with Mortgage',
+                              'Owner Occupier without Mortgage',
+                              'Rented from Private Landlord',
+                              'Rented from Local Authority',
+                              'Rented from Voluntary Body',
+                              'Rented Free of Rent', 'Not Stated']
 
         hh_mortgage_profile = []
         hh_mortgage_natave = []
         for i in range(len(hh_mortgage_data)):
-            hh_mortgage_profile.append({'label': hh_mortgage_labels[i], 'value': hh_mortgage_data[i]})
-            hh_mortgage_natave.append({'label': hh_mortgage_labels[i], 'value': hh_mortgage_na[i]})
+            hh_mortgage_profile.append({'label': hh_mortgage_labels[i],
+                                        'value': hh_mortgage_data[i]})
+            hh_mortgage_natave.append({'label': hh_mortgage_labels[i],
+                                       'value': hh_mortgage_na[i]})
 
         t8_data = PrincStat.objects.filter(uid=ref_id, year=2016)[0]
         t8_natave = PrincStat.objects.filter(zoom='country', year=2016)[0]
@@ -452,19 +492,24 @@ def index(request):
                             t8_data.student, t8_data.home_fam, t8_data.retired,
                             t8_data.sick_dis, t8_data.stat_other]
 
-        prince_stat_na = [t8_natave.work, t8_natave.lffj, t8_natave.unemployed,
-                            t8_natave.student, t8_natave.home_fam, t8_natave.retired,
-                            t8_natave.sick_dis, t8_natave.stat_other]
+        prince_stat_na = [t8_natave.work, t8_natave.lffj,
+                          t8_natave.unemployed,
+                          t8_natave.student, t8_natave.home_fam,
+                          t8_natave.retired, t8_natave.sick_dis,
+                          t8_natave.stat_other]
 
-        prince_stat_labels = ['Working', 'Looking for First Job', 'Unemployed',
-                              'Student', 'Looking After Home/Family', 'Retired',
+        prince_stat_labels = ['Working', 'Looking for First Job',
+                              'Unemployed', 'Student',
+                              'Looking After Home/Family', 'Retired',
                               'Sick or Disabled', 'Other']
 
         prince_stat_profile = []
         prince_stat_natave = []
         for i in range(len(prince_stat_data)):
-            prince_stat_profile.append({'label': prince_stat_labels[i], 'value': prince_stat_data[i]})
-            prince_stat_natave.append({'label': prince_stat_labels[i], 'value': prince_stat_na[i]})
+            prince_stat_profile.append({'label': prince_stat_labels[i],
+                                        'value': prince_stat_data[i]})
+            prince_stat_natave.append({'label': prince_stat_labels[i],
+                                       'value': prince_stat_na[i]})
 
         t9_data = SocClass.objects.filter(uid=ref_id, year=2016)[0]
         t9_natave = SocClass.objects.filter(zoom='country', year=2016)[0]
@@ -475,9 +520,9 @@ def index(request):
                          t9_data.class_other]
 
         socclass_na = [t9_natave.prof_worker, t9_natave.manage_tech,
-                         t9_natave.non_manual, t9_natave.skilled_manual,
-                         t9_natave.semi_skilled, t9_natave.unskilled,
-                         t9_natave.class_other]
+                       t9_natave.non_manual, t9_natave.skilled_manual,
+                       t9_natave.semi_skilled, t9_natave.unskilled,
+                       t9_natave.class_other]
 
         socclass_labels = ['Professional Worker', 'Managerial and Technical',
                            'Non-Manual', 'Skilled Manual',
@@ -486,8 +531,10 @@ def index(request):
         socclass_profile = []
         socclass_natave = []
         for i in range(len(socclass_data)):
-            socclass_profile.append({'label': socclass_labels[i], 'value': socclass_data[i]})
-            socclass_natave.append({'label': socclass_labels[i], 'value': socclass_na[i]})
+            socclass_profile.append({'label': socclass_labels[i],
+                                     'value': socclass_data[i]})
+            socclass_natave.append({'label': socclass_labels[i],
+                                    'value': socclass_na[i]})
 
         context['job_profile'] = prince_stat_profile
         context['job_natave'] = prince_stat_natave
@@ -500,9 +547,11 @@ def index(request):
 
         skills_data = {}
         for i in range(len(socclass_data)):
-            skills_data[socclass_labels[i]] = socclass_data[i] / t9_data.class_total
+            skills_data[socclass_labels[i]] = \
+                socclass_data[i] / t9_data.class_total
 
-        skills_conc_lab = max(skills_data.items(), key=operator.itemgetter(1))[0]
+        skills_conc_lab = max(skills_data.items(),
+                              key=operator.itemgetter(1))[0]
 
         skills_conc = skills_data[skills_conc_lab]
 
@@ -554,7 +603,8 @@ def index(request):
 
 def get_common(attr, edist, county):
     # Returns the most common attribute for a given county
-    df = pd.read_csv(settings.BASE_DIR + '/predictive_model/model_data_ed.csv')
+    df = pd.read_csv(settings.BASE_DIR +
+                     '/predictive_model/model_data_ed.csv')
 
     try:
         df = df[df['ed'] == edist]
@@ -606,7 +656,6 @@ def get_age_risk(apm, apf, anm, anf):
         else:
             ma = 0
 
-
         m_na = anm[i]['value']
         m = apm[i]['value']
 
@@ -643,7 +692,8 @@ def desc_map(string):
 
 
 def ed_map(string):
-    file_location = settings.BASE_DIR + '/predictive_model/mappings/eds_location_split.csv'
+    file_location = settings.BASE_DIR + \
+                    '/predictive_model/mappings/eds_location_split.csv'
     reader = csv.reader(open(file_location, 'r'))
     d = {}
     for row in reader:
@@ -657,7 +707,8 @@ def ed_map(string):
 
 
 def cond_map(string):
-    cond = {"Second-Hand Dwelling house /Apartment": 0, "New Dwelling house /Apartment": 1}
+    cond = {"Second-Hand Dwelling house /Apartment": 0,
+            "New Dwelling house /Apartment": 1}
     return cond[string]
 
 
@@ -672,10 +723,11 @@ def name_map(string):
 
 
 def suffix_map(string):
-    if string == None:
+    if string is None:
         string = "None"
 
-    file_location = settings.BASE_DIR + '/predictive_model/mappings/suffix_mapping.csv'
+    file_location = settings.BASE_DIR + \
+        '/predictive_model/mappings/suffix_mapping.csv'
     reader = csv.reader(open(file_location, 'r'))
     d = {}
     for row in reader:
@@ -688,11 +740,14 @@ def suffix_map(string):
 def ti_pred(data, location, model_choice):
 
     if model_choice == 'Dublin':
-        model_location = settings.BASE_DIR + '/predictive_model/dublin_model_time_independent.pkl'
+        model_location = settings.BASE_DIR + \
+                         '/predictive_model/dublin_model_time_independent.pkl'
     elif model_choice == 'Urban':
-        model_location = settings.BASE_DIR + '/predictive_model/urban_model_time_independent.pkl'
+        model_location = settings.BASE_DIR + \
+                         '/predictive_model/urban_model_time_independent.pkl'
     elif model_choice == 'County':
-        model_location = settings.BASE_DIR + '/predictive_model/rural_model_time_independent.pkl'
+        model_location = settings.BASE_DIR + \
+                         '/predictive_model/rural_model_time_independent.pkl'
     else:
         model_location = None
 
@@ -709,13 +764,16 @@ def ti_pred(data, location, model_choice):
 
 
 def full_pred(data, location, model_choice, clf):
-    if clf == None:
+    if clf is None:
         if model_choice == 'Dublin':
-            model_location = settings.BASE_DIR + '/predictive_model/dublin_model.pkl'
+            model_location = settings.BASE_DIR + \
+                             '/predictive_model/dublin_model.pkl'
         elif model_choice == 'Urban':
-            model_location = settings.BASE_DIR + '/predictive_model/urban_model.pkl'
+            model_location = settings.BASE_DIR + \
+                             '/predictive_model/urban_model.pkl'
         elif model_choice == 'County':
-            model_location = settings.BASE_DIR + '/predictive_model/rural_model.pkl'
+            model_location = settings.BASE_DIR + \
+                             '/predictive_model/rural_model.pkl'
         else:
             model_location = None
 
@@ -759,17 +817,23 @@ def county_map(string):
     else:
         sstring = string
 
-    county_mapping = {"Carlow":0, "Cavan":1, "Clare":2, "Cork City":3, "Cork County":3, "Donegal":4, "Dublin":5,
-                  "Galway City":6, "Galway County":6, "Kerry":7, "Kildare":8, "Kilkenny":9, "Laois":10, "Leitrim":11,
-                  "Limerick City":12, "Limerick County":12, "Longford":13, "Louth":14, "Mayo":15, "Meath":16,
-                  "Monaghan":17, "Offaly":18, "Roscommon":19, "Sligo":20, "Tipperary":21,
-                  "Waterford City":22,"Waterford County":22, "Westmeath":23, "Wexford":24, "Wicklow":25}
+    county_mapping = {"Carlow": 0, "Cavan": 1, "Clare": 2, "Cork City": 3,
+                      "Cork County": 3, "Donegal": 4, "Dublin": 5,
+                      "Galway City": 6, "Galway County": 6, "Kerry": 7,
+                      "Kildare": 8, "Kilkenny": 9, "Laois": 10, "Leitrim": 11,
+                      "Limerick City": 12, "Limerick County": 12,
+                      "Longford": 13, "Louth": 14, "Mayo": 15, "Meath": 16,
+                      "Monaghan": 17, "Offaly": 18, "Roscommon": 19,
+                      "Sligo": 20, "Tipperary": 21, "Waterford City": 22,
+                      "Waterford County": 22, "Westmeath": 23, "Wexford": 24,
+                      "Wicklow": 25}
 
     return county_mapping[sstring]
 
 
 def get_moe(string):
-    file_location = settings.BASE_DIR + '/predictive_model/models/model_results.csv'
+    file_location = settings.BASE_DIR + \
+                    '/predictive_model/models/model_results.csv'
     reader = csv.reader(open(file_location, 'r'))
     d = {}
     for row in reader:
@@ -780,18 +844,20 @@ def get_moe(string):
     else:
         return d[string.lower()]
 
+
 def find_model(county, ed):
-    county_list = ['Leitrim', 'Mayo', 'Roscommon', 'Kildare', 'Sligo', 'Kilkenny',
-                   'Laois', 'Longford', 'Louth', 'Meath', 'Westmeath', 'Offaly',
-                   'Wexford', 'Clare', 'Wicklow', 'Kerry', 'Tipperary',
-                   'Donegal', 'Cavan', 'Monaghan']
+    county_list = ['Leitrim', 'Mayo', 'Roscommon', 'Kildare', 'Sligo',
+                   'Kilkenny', 'Laois', 'Longford', 'Louth', 'Meath',
+                   'Westmeath', 'Offaly', 'Wexford', 'Clare', 'Wicklow',
+                   'Kerry', 'Tipperary', 'Donegal', 'Cavan', 'Monaghan']
 
     if county == 'Dublin':
         return 'Dublin', county
     elif county in county_list:
         return 'County', county
     else:
-        file_location = settings.BASE_DIR + '/predictive_model/mappings/eds_location_split.csv'
+        file_location = settings.BASE_DIR + \
+                        '/predictive_model/mappings/eds_location_split.csv'
         reader = csv.reader(open(file_location, 'r'))
         d = {}
         for row in reader:
@@ -810,11 +876,14 @@ def find_model(county, ed):
 
 
 def word_isolation(string):
-    keep_words = ['road', 'park', 'avenue', 'court', 'rd', 'street', 'drive', 'st',
-                  'grove', 'manor', 'close', 'green', 'view', 'hill', 'house', 'the',
-                  'wood', 'terrace', 'heights', 'hall', 'mount', 'grange',
-                  'lodge', 'lane', 'main', 'place', 'lawn', 'ave', 'square', 'dr',
-                  'estate', 'woodlands', 'harbour', 'quay', 'bay', 'apt', 'sq', 'apartment']
+    keep_words = ['road', 'park', 'avenue', 'court', 'rd', 'street',
+                  'drive', 'st', 'grove', 'manor', 'close', 'green', 'view',
+                  'hill', 'house', 'the', 'wood', 'terrace', 'heights',
+                  'hall', 'mount', 'grange', 'lodge', 'lane', 'main',
+                  'place', 'lawn', 'ave', 'square', 'dr', 'estate',
+                  'woodlands', 'harbour', 'quay', 'bay', 'apt', 'sq',
+                  'apartment']
+
     words = string.split()
     for word in words:
         if word in keep_words:
