@@ -20,8 +20,10 @@ def check_null(address, pc, county):
 
     return sa
 
-
-def get_loc(sa, row, key, log_file, counter):
+# This function takes an address and submits it to the Google Maps Api
+# A latitude and longitude is returned if found in the Google DB
+# Nothing is returned if not
+def get_loc(sa, row, key):
     gmaps = googlemaps.Client(key=key)
 
     try:
@@ -29,12 +31,9 @@ def get_loc(sa, row, key, log_file, counter):
         key_status = False
     except Exception as e:
         if str(e) == 'HTTP Error: 400':
-            log_file.write(" Error with row {}".format(row))
             geocode_result = ""
             key_status = False
         else:
-            log_file.write(" Error with row {}".format(row))
-            log_file.write(" Key complete for this period after {} requests".format(counter))
             geocode_result = ""
             key_status = True
 
@@ -65,6 +64,8 @@ def get_loc(sa, row, key, log_file, counter):
         return False, None, None, key_status
 
 
+# This function maps counties to their respective provence
+
 def get_region(county):
     counties = {
         'Connacht': ['Galway', 'Leitrim', 'Mayo', 'Roscommon', 'Sligo'],
@@ -83,9 +84,11 @@ def get_region(county):
     return None
 
 
-def find_next_row_to_process(df, counter, log_file):
-    good = pd.read_csv('good_data.csv', encoding='latin1', index_col=0)
-    bad = pd.read_csv('bad_data.csv', encoding='latin1', index_col=0)
+# This function checks the existing geocoded and non geocoded files and returns the next non processed
+# row to be processed
+def find_next_row_to_process(df, good_output_filename, bad_output_filename):
+    good = pd.read_csv(good_output_filename, encoding='latin1', index_col=0)
+    bad = pd.read_csv(bad_output_filename, encoding='latin1', index_col=0)
 
     for row in df.index:
         if (row not in good.index) and (row not in bad.index):
@@ -93,41 +96,42 @@ def find_next_row_to_process(df, counter, log_file):
 
 
 def main():
-    log_file = open('logfile.txt', 'a')
-    log_file.write('\n')
-    log_file.write('-------------')
-    log_file.write('\n')
-    log_file.write(str(datetime.datetime.now()))
-    log_file.write('\n -------------')
-
     # API keys (First two are Pete's, second two are Andy's, key0 - Another of Andy's key)
-    key0 = 'AIzaSyDfli3wnRWU6569PLU2CBsipyw3yM01Jqg'
-    key1 =  'AIzaSyBFwN-7_erzpXeWWFe3DwMqSPKGoCjj1Hg'
-    key2 = 'AIzaSyCS2_nkFXNLvO5EdD0gAcxzTO5h35Z__L0'
-    key3 = 'AIzaSyDC3FZnGEFnDQZHEg1d5f9tKfPgFn3t8nU'
-    key4 = 'AIzaSyA7u79SHIkWqKmGdxIV6OMIaUah039dS8k'
-    keys = [key0, key1, key2, key3, key4]
+    key1 = 'Enter Google API Key'
+    key2 = 'Enter Google API Key'
+    key3 = 'Enter Google API Key'
+    keys = [key1, key2, key3]
 
-    good_output_filename = "./good_data.csv"
-    bad_output_filename = "./bad_data.csv"
+    # Output filenames
+    good_output_filename = "./geocoded_data.csv"
+    bad_output_filename = "./nongeocoded_data.csv"
 
+    # Import data
     df = pd.read_csv('../../Data/PPR-ALL-UIdentifier.csv', encoding='latin1', index_col=0)
+
+    # Remove euro symbol from price column
     df['price'] = df['Price (Â\x80)'].map(lambda x: x.lstrip('Â').replace(',','')).astype(float)
 
+    # For loop to cycle through each Google API Key
     for key in keys:
-        print("\nCurrent Key: ", key)
         key_status = False
+
+        # Number of minutes to pause script between keys
         BACKOFF_TIME = 1
-        log_file.write('\n')
-        log_file.write("Attempting key: {}".format(key))
-        log_file.write('\n')
-        if key != key0:
-            time.sleep(BACKOFF_TIME*30)
+        if key != key1:
+            time.sleep(BACKOFF_TIME*60)
         counter = 0
+
+
         while key_status == False:
-            row = int(find_next_row_to_process(df, counter, log_file))
+            # This function finds the next row in the data set to process
+            row = int(find_next_row_to_process(df, good_output_filename, bad_output_filename))
+
+            # Print the row currently being processed and the count of rows already processed with this key
             counter += 1
             print("Row: ", row, " - ", counter)
+
+            # Isolate all data points from row
             DOS = df.ix[row, :][0]
             address = df.ix[row, :][1]
             pc = df.ix[row, :][2]
@@ -137,9 +141,18 @@ def main():
             vat_ex = df.ix[row, :][6]
             DOP = df.ix[row, :][7]
             PSD = df.ix[row, :][8]
+
+            # Return provence associated with property
             region = get_region(county)
+
+            # Restructure the address, adding postcode and county
             sa = check_null(address, pc, county)
-            location, lat, long, key_status = get_loc(sa, row, key, log_file, counter)
+
+            # Use Google API to get latitude and longitude information, if possible
+            location, lat, long, key_status = get_loc(sa, row, key)
+
+            # Write all property information to new files, split based on whether they have a longitude
+            # and latitude or not
             if key_status == False:
                 if location:
                     with open(good_output_filename, "a") as file:
@@ -159,10 +172,6 @@ def main():
                              + str(DOP) + ',' + str(PSD) + ',' +
                              str(region)).replace('nan', ''))
                         file.write('\n')
-
-                if counter % 100 == 0:
-                    log_file.write("Completed {} of {} address".format(counter, 2500))
-                    log_file.write('\n')
 
 
 if __name__ == "__main__":
