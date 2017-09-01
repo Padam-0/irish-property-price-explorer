@@ -1,0 +1,2570 @@
+uid,ed,ed_num
+0,Ballintemple,0
+4,Muinebeag Urban,1
+5,Sliguff,2
+11,Muinebeag Rural,3
+13,Ballymoon,4
+16,Fennagh,5
+39,Ballon,6
+40,Kilbride,7
+43,Rathrush,8
+52,Ballymurphy,9
+53,Johnstown,10
+54,Carlow Rural,11
+56,Killedmond,12
+57,Kyle,13
+61,Borris,14
+72,Ballinacarrig,15
+78,Burtonhall,16
+79,Graigue,17
+84,Ballaghmoon,18
+86,Carlow Urban,19
+89,Clogrenan,20
+92,Killerrig,21
+101,Tullowbeg,22
+117,Graigue Urban,23
+121,Templepeter,24
+125,Old Leighlin,25
+134,Clonegall,26
+137,Clonmore,27
+161,Hacketstown,28
+175,Grangeford,29
+178,Leighlinbridge,30
+182,Rathornan,31
+187,Myshall,32
+190,Shangarry,33
+196,Agha,34
+197,Nurney,35
+231,Rathvilly,36
+232,Rahill,37
+240,Kineagh,38
+247,Williamstown,39
+248,Ridge,40
+255,Tinnahinch,41
+256,Glynn,42
+259,Kellistown,43
+265,Tullow Urban,44
+270,Tullow Rural,45
+285,Tankardstown,46
+286,Rath,47
+321,Haroldstown,48
+334,Killinure,49
+359,Arvagh,50
+368,Bailieborough,51
+388,Carnagarve,52
+410,Kingscourt,53
+411,Skeagh,54
+426,Larah South,55
+431,Bellananagh,56
+435,Crossdoney,57
+437,Cavan Urban,58
+438,Drumcarban,59
+442,Killykeen,60
+444,Cavan Rural,61
+445,Ballyconnell,62
+448,Bilberry,63
+457,Carn,64
+460,Ardue,65
+473,Drumcarn,66
+474,Ballyhaise,67
+484,Ballyjamesduff,68
+500,Graddum,69
+506,Castlerahan,70
+510,Kilnaleck,71
+511,Crosskeys,72
+512,Lurgan,73
+514,Ballymachugh,74
+529,Waterloo,75
+540,Bawnboy,76
+541,Templeport,77
+544,Kilconny,78
+546,Belturbet Urban,79
+559,Castlesaunderson,80
+569,Tuam,81
+570,Eskey,82
+572,Butler's Bridge,83
+577,Canningstown,84
+578,Corraneary,85
+579,Denn,86
+580,Moynehall,87
+608,Larah North,88
+614,Killashandra,89
+616,Virginia,90
+625,Scrabby,91
+629,Carrafin,92
+631,Corr,93
+683,Milltown,94
+684,Stradone,95
+757,Bruce Hall,96
+762,Munterconnaught,97
+765,Clonervy,98
+818,Cootehill Rural,99
+819,Rakenny,100
+821,Cootehill Urban,101
+822,Tullyvin East,102
+824,Tullyvin West,103
+826,Ashfield,104
+856,Doogary,105
+857,Dunmakeever,106
+858,Derrylahan,107
+859,Kilcogy,108
+866,Springfield,109
+876,Derrin,110
+891,Enniskeen,111
+896,Lisagoan,112
+899,Columbkille,113
+901,Mullanalaghta,114
+913,Mullagh,115
+914,Crossbane,116
+939,Redhill,117
+940,Shercock,118
+943,Knappagh,119
+944,Taghart,120
+954,Drung,121
+964,Swanlinbar,122
+965,Tircahan,123
+1000,Killinkere,124
+1049,Termon,125
+1051,Ballyglass,126
+1061,Cloghera,127
+1072,Caher,128
+1073,Rathborney,129
+1074,Drumcreehy,130
+1077,Gleninagh,131
+1079,Templemaley,132
+1081,Abbey,133
+1083,Boherglass,134
+1084,Coolreagh,135
+1086,Fahymore,136
+1088,O'Briensbridge,137
+1090,Kilseily,138
+1091,Drumline,139
+1093,Sixmilebridge,140
+1096,Cratloe,141
+1102,Derrynagittagh,142
+1103,Loughea,143
+1104,Cloonusker,144
+1105,Moyarta,145
+1106,Rahona,146
+1113,Carran,147
+1114,Clareabbey,148
+1118,Doora,149
+1137,Kiltenanlea,150
+1153,Kinturk,151
+1155,Corrofin,152
+1156,Ruan,153
+1169,Dysert,154
+1175,Muckanagh,155
+1178,Mountievers,156
+1198,Drumellihy,157
+1199,Crusheen,158
+1204,Rathclooney,159
+1208,Killilagh,160
+1218,Doonbeg,161
+1226,Killard,162
+1233,Ennis Rural,163
+1242,Ennis No. 2 Urban,164
+1286,Kilnamona,165
+1353,Spancelhill,166
+1369,Killanniv,167
+1460,Kilchreest,168
+1518,Killone,169
+1530,Killadysert,170
+1695,Ennistimon,171
+1698,Ballagh,172
+1716,Ayle,173
+1719,Breanrisk,174
+1721,Ballyea,175
+1722,Cloonanaha,176
+1729,Kilballyowen,177
+1736,Kilfenora,178
+1740,Kilkee,179
+1762,None,None
+1777,Knocknagore,180
+1784,Querrin,181
+1787,Kilfearagh,182
+1842,Kilkishen,183
+1846,Killaloe,184
+1871,Ballina,185
+1883,Kilcloher,186
+1886,Kilmihil,187
+1891,Glenmore,188
+1894,Kilrush Urban,189
+1896,Kilrush Rural,190
+1906,Clooncoorha,191
+1908,Creegh,192
+1932,Cooraclare,193
+1933,Killimer,194
+1934,Tullycreen,195
+1936,Killofin,196
+1937,Kilshanny,197
+1941,Killaspugonane,198
+1945,Moy,199
+1950,Liscannor,200
+1981,Magherareagh,201
+1989,Ballysteen,202
+2012,Lisdoonvarna,203
+2018,Cloghaun,204
+2019,Lurraga,205
+2030,Clondagad,206
+2033,Liscasey,207
+2036,Ballycannan,208
+2037,Killeely,209
+2043,Ballyvaskin,210
+2044,Milltown Malbay,211
+2051,Annagh,212
+2055,Castleconnell,213
+2056,Mountshannon,214
+2057,Kilmurry,215
+2058,Knocknaboley,216
+2063,Newmarket,217
+2064,Tomfinlough,218
+2065,Urlan,219
+2069,Clenagh,220
+2084,Ogonnelloe,221
+2090,Abbey A,222
+2101,Cloonadrum,223
+2104,Quin,224
+2133,Clooney,225
+2148,Scarriff,226
+2331,Rossroe,227
+2343,Dangan,228
+2367,Cloontra,229
+2375,Beagh,230
+2376,Ballyblood,231
+2378,Tulla,232
+2393,Oughtmama,233
+2396,Drummaan,234
+2406,Clonmoyle,235
+2407,Templebreedy,236
+2408,Corkbeg,237
+2409,Kilbonane,238
+2416,Turner's Cross D,239
+2418,Ballinadee,240
+2419,Ballincollig,241
+2458,Ovens,242
+2766,Ballymoney,243
+2767,Teadies,244
+2775,Kinneigh,245
+2776,Bealanageary,246
+2778,Cleanrath,247
+2780,Derryfineen,248
+2781,Dunderrow,249
+2784,Ballymartle,250
+2786,Ballygarvan,251
+2787,Templemichael,252
+2798,Ballinlough B,253
+2799,Ballinlough C,254
+2800,Mahon C,255
+2801,Mahon B,256
+2808,Ballinlough A,257
+2830,Tramore A,258
+2837,Tramore B,259
+2844,Knockrea A,260
+2845,Ballinspittle,261
+2847,Knockrea B,262
+2851,Turner's Cross B,263
+2872,Ballycottin,264
+2880,Kinsale Urban,265
+2881,Ballybane,266
+2882,Ballydehob,267
+2884,Kilcoe,268
+2892,Skull,269
+2896,Ballyfeard,270
+2897,Kilpatrick,271
+2906,Carrigaline,272
+2918,Liscleary,273
+2919,Douglas,274
+2924,Ballyhooly,275
+2927,Kilcummer,276
+2941,Kilmacdonogh,277
+2946,Gortnatubbrid,278
+2947,Slievereagh,279
+2948,Ullanes,280
+2949,Ballynoe,281
+2951,Pouladuff B,282
+2952,Pouladuff A,283
+2953,Ballyphenane B,284
+2955,Ballyphenane A,285
+2975,The Lough,286
+2990,Fair Hill B,287
+2993,The Glen B,288
+2994,Rathcooney,289
+2996,The Glen A,290
+3016,Mayfield,291
+3057,Tullagh,292
+3063,Skibbereen Rural,293
+3082,Bandon,294
+3083,Templemartin,295
+3084,Ballymodan,296
+3090,Knockroe,297
+3092,Inishannon,298
+3102,Kilbrogan,299
+3134,Abbeymahon,300
+3141,Gillabbey B,301
+3161,Baurleigh,302
+3193,Butlerstown,303
+3211,Brinny,304
+3218,Cashel,305
+3231,Banteer,306
+3233,Clonmeen,307
+3234,Gortmore,308
+3238,Bantry Urban,309
+3241,Sheepshead,310
+3243,Seefin,311
+3246,Caheragh,312
+3255,Glenagarriff,313
+3259,Kealkill,314
+3266,Bantry Rural,315
+3268,Gortnascreeny,316
+3279,Glanlough,317
+3289,Bear,318
+3290,Curryglass,319
+3291,Adrigole,320
+3292,Kilcatherine,321
+3294,Coulagh,322
+3296,Kilmonoge,323
+3313,Dripsey,324
+3318,Kilcullen,325
+3319,Gowlane,326
+3321,Bishopstown E,327
+3323,Bishopstown B,328
+3324,Bishopstown D,329
+3325,Bishopstown C,330
+3338,Inishkenny,331
+3360,Bishopstown,332
+3371,Bishopstown A,333
+3429,Commons,334
+3433,Blackpool B,335
+3439,Farranferris A,336
+3442,Farranferris B,337
+3454,Blackpool A,338
+3492,Mahon A,339
+3508,Monkstown Urban,340
+3530,City Hall B,341
+3611,Matehy,342
+3613,Blarney,343
+3621,Sunday's Well B,344
+3626,Whitechurch,345
+3628,St. Mary's,346
+3679,Gurranabraher B,347
+3690,Skagh,348
+3691,Buttevant,349
+3698,Templemary,350
+3699,Doneraile,351
+3700,Imphrick,352
+3705,Churchtown,353
+3712,Dromore,354
+3718,Killeenleagh,355
+3721,Carrig,356
+3730,Shanakiel,357
+3732,Cannaway,358
+4040,Carrignavar,359
+4043,Killeagh,360
+4056,Carrigrohane Beg,361
+4061,Carrigtohill,362
+4094,Lisgoold,363
+4139,Midleton Rural,364
+4165,Castlelyons,365
+4167,Fermoy Rural,366
+4168,Kilcor,367
+4176,Castlemagner,368
+4177,Ightermurragh,369
+4183,Mogeely,370
+4192,Castlemartyr,371
+4213,Killaconenagh,372
+4225,Castletownroche,373
+4233,Castlehaven North,374
+4236,Rathluirc,375
+4240,Ardskeagh,376
+4242,Tobernea,377
+4263,Dromcolliher,378
+4299,Colmanswell,379
+4309,Springfort,380
+4329,Churchfield,381
+4331,Knocknaheeny,382
+4351,Glasheen C,383
+4355,Clonakilty Urban,384
+4366,Clonakilty Rural,385
+4370,Ardfield,386
+4372,Coolcraheen,387
+4377,Rathbarry,388
+4390,Templeomalus,389
+4397,Kilkerranmore,390
+4418,Rossmore,391
+4432,Kilnagross,392
+4478,Moviddy,393
+4479,Cloyne,394
+4503,Inch,395
+4513,Kilberrihert,396
+4514,Aghinagh,397
+4515,Magourney,398
+4523,Aglish,399
+4528,Cobh Rural,400
+4529,Cobh Urban,401
+4723,Centre A,402
+4768,Knockmourne,403
+4775,Curraglass,404
+4778,Greenmount,405
+4780,Evergreen,406
+4782,Shandon B,407
+4783,Gillabbey A,408
+4789,St. Patrick's B,409
+4791,St. Patrick's A,410
+4792,Turner's Cross C,411
+4794,Shandon A,412
+4796,South Gate B,413
+4797,South Gate A,414
+4803,Montenotte A,415
+4805,Tramore C,416
+4806,Gillabbey C,417
+4816,Sunday's Well A,418
+4823,Centre B,419
+4835,City Hall A,420
+4843,Gurranabraher A,421
+4876,Turner's Cross A,422
+4918,Fair Hill C,423
+4930,Gurranabraher E,424
+4936,Tivoli B,425
+4938,Gurranabraher D,426
+4943,Courtmacsherry,427
+4969,Crookhaven,428
+4972,Warrenscourt,429
+5039,St. Patrick's C,430
+5043,Skahanagh,431
+5044,Streamhill,432
+5069,Firmount,433
+5091,Lehenagh,434
+5132,Browningstown,435
+5328,Gurranabraher C,436
+5516,Bredagh,437
+5517,Garranes,438
+5519,Dromdaleague South,439
+5530,Dromdaleague North,440
+5541,Drinagh,441
+5544,Carrigbaun,442
+5558,Dromina,443
+5566,Templenacarriga,444
+5568,Dunmanway South,445
+5572,Garrown,446
+5573,Dunmanway North,447
+5581,Manch,448
+5587,Ballingurteen,449
+5592,Milane,450
+5594,Aultagh,451
+5618,Dunbeacon,452
+5619,Durrus West,453
+5622,Knocks,454
+5629,Castletown,455
+5630,Bengour,456
+5637,Fair Hill A,457
+5658,Farranferris C,458
+5690,Coole,459
+5739,Roskeen,460
+5741,Rathcormack,461
+5752,Castle Hyde,462
+5761,Killathy,463
+5824,Allow,464
+5825,Knocktemple,465
+5832,Bawncross,466
+5833,Clondrohid,467
+5836,Kilfaughnabeg,468
+5844,Derry,469
+5846,Myross,470
+5849,Riverstown,471
+5850,Caherlag,472
+6058,Kilshannig,473
+6060,Glanworth West,474
+6080,Glasheen A,475
+6081,Glasheen B,476
+6122,Kilcaskan,477
+6138,Ballynaglogh,478
+6139,Glenville,479
+6171,Goleen,480
+6200,Knockantota,481
+6202,Blackpool,482
+6210,Greenfort,483
+6250,Coomlogane,484
+6251,Ardagh,485
+6261,Knockavilly,486
+6295,Kanturk,487
+6296,Greenane,488
+6332,Coolclogh,489
+6335,Castlecor,490
+6355,Kilbrin,491
+6356,Rathclarin,492
+6357,Kilbrittain,493
+6363,Coolmain,494
+6377,Kildinan,495
+6378,Kildorrery,496
+6379,Farahy,497
+6396,Monanimy,498
+6407,Clonpriest,499
+6441,Teerelton,500
+6442,Carrigboy,501
+6446,Kilworth,502
+6452,Leitrim,503
+6464,Kinsale Rural,504
+6490,Ballymackean,505
+6566,Leighmoney,506
+6656,Doonasleen,507
+6657,Knockraha,508
+6665,Garryvoe,509
+6686,Templebodan,510
+6692,Knockskagh,511
+6693,Cloonkeen,512
+6697,Shreelane,513
+6713,Liscarroll,514
+6714,Cape Clear,515
+6719,Mashanaglass,516
+6745,Tincoora,517
+6747,Macroom Urban,518
+6749,Rahalisk,519
+6750,Macloneigh,520
+6759,Inchigeelagh,521
+6769,Kilnamartery,522
+6839,Candroma,523
+6860,Mallow North Urban,524
+6861,Mallow Rural,525
+6868,Mallow South Urban,526
+6897,Rathcool,527
+6917,Keale,528
+7020,Clenor,529
+7027,Ballyclogh,530
+7043,Meens,531
+7049,Rahan,532
+7054,Ballynamona,533
+7057,Rosnalee,534
+7086,Caherduggan,535
+7090,Boherboy,536
+7119,Kilmaclenine,537
+7148,Kilcorney,538
+7159,Montenotte B,539
+7225,Rostellan,540
+7333,Ballyspillane,541
+7411,Milford,542
+7414,Drishane,543
+7421,Caherbarnagh,544
+7436,Mitchelstown,545
+7450,Kilphelan,546
+7453,Marshalstown,547
+7454,Derryvillane,548
+7464,Kilbeheny,549
+7470,Kilgullane,550
+7518,Monkstown Rural,551
+7547,Tivoli A,552
+7580,Nad,553
+7582,Barleyhill,554
+7594,Glenlara,555
+7600,Barnacurra,556
+7615,Newtown,557
+7618,Nohavel,558
+7620,Ballygroman,559
+7691,Kinure,560
+7840,Cullen,561
+8041,Clonfert West,562
+8042,Rosscarbery,563
+8046,Cahermore,564
+8058,Castleventry,565
+8070,Mountrivers,566
+8080,Lowertown,567
+8086,Dunmanus,568
+8097,Toormore,569
+8147,Shanballymore,570
+8188,Castlehaven South,571
+8201,Aghadown North,572
+8203,Cloghdonnell,573
+8205,Woodfort,574
+8207,Aghadown South,575
+8266,Togher B,576
+8267,Timoleague,577
+8275,Kilmaloda East,578
+8303,Togher A,579
+8345,Tullylease,580
+8404,Watergrasshill,581
+8408,Gortroe,582
+8442,Mardyke,583
+8556,Youghal Urban,584
+8557,Youghal Rural,585
+8593,Kinsalebeg,586
+8684,Annagary,587
+8699,Ardara,588
+8703,Dawros,589
+8705,Inishkeel,590
+8707,Glengesh,591
+8711,Aran,592
+8716,Clonleigh South,593
+8717,Ballintra,594
+8718,Cavangarden,595
+8723,Knock,596
+8724,Stranorlar,597
+8725,Dooish,598
+8733,Goland,599
+8747,Altnapaste,600
+8763,Gleneely,601
+8768,Ballyliffin,602
+8774,Ballyshannon Urban,603
+8776,Gubacreeny,604
+8790,Bundoran Rural,605
+8793,Ballyshannon Rural,606
+8795,Cliff,607
+8804,Carricknaboy,608
+8807,Clogher,609
+8808,Birdstown,610
+8809,Burt,611
+8815,Killybegs,612
+8817,Dunkineely,613
+8824,Magheraclogher,614
+8828,Buncrana Urban,615
+8829,Buncrana Rural,616
+8882,Fahan,617
+8886,Mintiaghs,618
+8892,Desertegny,619
+8917,Bundoran Urban,620
+9023,Rutland,621
+9033,Carndonagh,622
+9039,Glentogher,623
+9080,Glennagannon,624
+9088,Kilcar,625
+9089,Glencolumbkille,626
+9091,Crowkeeragh,627
+9093,Killea,628
+9099,Cranford,629
+9101,Carrickart,630
+9113,Carrowkeel,631
+9115,Castlefinn,632
+9121,Cloghard,633
+9125,Church Hill,634
+9127,Gartan,635
+9130,Straid,636
+9133,Dunaff,637
+9145,Figart,638
+9146,Convoy,639
+9175,Creeslough,640
+9181,Creenasmear,641
+9182,Ards,642
+9184,Culdaff,643
+9202,Donegal,644
+9217,Tullynaught,645
+9219,Doocharry,646
+9220,Lettermacaward,647
+9221,Rosguill,648
+9233,Lettermore,649
+9240,Dunfanaghy,650
+9249,Cross Roads,651
+9264,Maghery,652
+9265,Dunglow,653
+9278,Corkermore,654
+9307,Rosnakill,655
+9309,Eanymore,656
+9311,Glen,657
+9312,Malinbeg,658
+9315,Turmone,659
+9322,Glenties,660
+9323,Maas,661
+9327,Knockalla,662
+9328,Gortahork,663
+9331,Greencastle,664
+9336,Moville,665
+9351,Inver,666
+9352,Bonnyglen,667
+9360,Largymore,668
+9375,Crownarad,669
+9377,Tieveskeelta,670
+9392,Killygordon,671
+9413,Loughkeel,672
+9419,Malin,673
+9426,Laghy,674
+9428,Letterkenny Rural,675
+9430,Letterkenny Urban,676
+9435,Castlewray,677
+9436,Ballymacool,678
+9439,Corravaddy,679
+9443,Edenacarnan,680
+9446,Gortnavern,681
+9529,Magheraboy,682
+9650,Templedouglas,683
+9737,Killymasny,684
+9774,Kilmacrenan,685
+9879,Clonleigh North,686
+9905,Carthage,687
+9906,Ardmalin,688
+9920,Manorcunningham,689
+9933,Raphoe,690
+9936,Treantaghmucklagh,691
+9941,Kincraigy,692
+9954,Millford,693
+9964,Ballyarr,694
+9967,Glenalla,695
+9979,Tantallon,696
+10002,Castlecary,697
+10009,Kilderry,698
+10025,Three Trees,699
+10042,Castleforward,700
+10043,Newtown Cunningham,701
+10057,Pettigoe,702
+10083,Redcastle,703
+10084,Whitecastle,704
+10089,Rathmelton,705
+10138,Rathmullan,706
+10181,St Johnstown,707
+10210,Lucan-St. Helens,708
+10230,Ayrfield,709
+10237,Harmonstown A,710
+10238,Clontarf West A,711
+10239,Harmonstown B,712
+10240,Beaumont B,713
+10243,Beaumont C,714
+10245,Kilmore D,715
+10256,Beaumont D,716
+10263,Clontarf East A,717
+10360,Clontarf East E,718
+10541,Ashtown A,719
+10550,Castleknock-Park,720
+10569,Cabra East A,721
+10574,Grange A,722
+10597,Balbriggan Rural,723
+10599,Balbriggan Urban,724
+10847,Skerries,725
+10995,Clondalkin-Village,726
+10996,Baldoyle,727
+11001,Grange B,728
+11155,Balgriffin,729
+11176,Malahide East,730
+11182,Ballinteer-Woodpark,731
+11183,Ballinteer-Ludford,732
+11184,Rathfarnham-Butterfield,733
+11189,Ballinteer-Broadford,734
+11205,Dundrum-Sandyford,735
+11214,Ballinteer-Meadowmount,736
+11235,Ballinteer-Meadowbroads,737
+11407,Pembroke East E,738
+11410,Pembroke West B,739
+11411,Pembroke West C,740
+11417,Pembroke East B,741
+11433,Pembroke East D,742
+11443,Pembroke West A,743
+11444,Pembroke East C,744
+11531,Edmondstown,745
+11532,Ballyboden,746
+11536,Rathfarnham-St. Edna's,747
+11537,Ballybough A,748
+11552,Ballyboghil,749
+11556,Lusk,750
+11558,Swords-Lissenhall,751
+11569,Killiney South,752
+11572,Ballybrack,753
+11573,Killiney North,754
+11577,Cabinteely-Kilbogget,755
+11611,Firhouse Village,756
+11676,Carna,757
+11677,Kylemore,758
+11680,Kilmainham A,759
+11681,Decies,760
+11683,Drumfinn,761
+11684,Cherry Orchard C,762
+11957,Clondalkin-Ballymount,763
+11958,Ballymun D,764
+11961,Ballymun C,765
+11969,Ballymun B,766
+11975,Airport,767
+11977,Ballygall A,768
+11987,Ballygall C,769
+11991,Ballymun A,770
+12013,Cabinteely-Granitefield,771
+12014,Sutton,772
+12015,Beaumont F,773
+12022,Whitehall D,774
+12026,Beaumont E,775
+12028,Beaumont A,776
+12108,Dundrum-Sweetmount,777
+12186,Foxrock-Deansgrange,778
+12187,Blackrock-Central,779
+12189,Blackrock-Carysfort,780
+12190,Blackrock-Williamstown,781
+12191,Blackrock-Monkstown,782
+12192,Stillorgan-Priory,783
+12195,Blackrock-Templehill,784
+12197,Cabinteely-Pottery,785
+12201,Stillorgan-Leopardstown,786
+12210,Blackrock-Newpark,787
+12226,Blackrock-Stradbrook,788
+12263,Foxrock-Beechpark,789
+12343,Blackrock-Glenomena,790
+12360,Blackrock-Seapoint,791
+12462,Dun Laoghaire-Monkstown Farm,792
+12499,Blackrock-Booterstown,793
+12579,Dun Laoghaire Sallynoggin West,794
+12681,Blanchardstown-Coolmine,795
+12683,Blanchardstown-Abbotstown,796
+12684,Blanchardstown-Corduff,797
+12689,Blanchardstown-Mulhuddart,798
+12704,Blanchardstown-Delwood,799
+12720,Blanchardstown-Roselawn,800
+12815,Blanchardstown-Blakestown,801
+12999,Inchicore B,802
+13017,Clondalkin-Monastery,803
+13035,Bohernabreena,804
+13128,Saggart,805
+13129,Rathcoole,806
+13133,Cabinteely-Loughlinstown,807
+13139,Foxrock-Carrickmines,808
+13308,Cabra East C,809
+13312,Cabra West B,810
+13317,Cabra East B,811
+13318,Cabra West A,812
+13319,Cabra West C,813
+13349,Wood Quay A,814
+13432,Cabra West D,815
+13459,Castleknock-Knockmaroon,816
+13468,Glencullen,817
+13729,Lucan North,818
+13932,Palmerstown West,819
+14084,Ashtown B,820
+14232,Chapelizod,821
+14309,Cherry Orchard A,822
+14330,Churchtown Nutgrove,823
+14335,Churchtown-Orwell,824
+14337,Churchtown-Castle,825
+14338,Churchtown-Landscape,826
+14356,Churchtown-Woodlawn,827
+14393,Rathfarnham-Hermitage,828
+14399,Clonskeagh-Farranboley,829
+14522,Tallaght-Jobstown,830
+14526,Tallaght-Kiltipper,831
+14562,Tallaght-Fettercairn,832
+14623,Turnapin,833
+14629,Clondalkin-Moorfield,834
+14631,Clondalkin-Dunawley,835
+14633,Clondalkin-Rowlagh,836
+14788,Clondalkin-Cappaghmore,837
+14823,Tallaght-Oldbawn,838
+14946,Lucan-Heights,839
+15200,Walkinstown A,840
+15479,Dunboyne,841
+15633,Priorswood E,842
+15636,Priorswood A,843
+15662,Priorswood B,844
+16194,Clonskeagh-Milltown,845
+16195,Clonskeagh-Windy Arbour,846
+16200,Clonskeagh-Belfield,847
+16229,Clonskeagh-Roebuck,848
+16242,Dundrum-Taney,849
+16258,Rathmines East B,850
+16320,Clontarf East B,851
+16322,Clontarf East D,852
+16334,Clontarf East C,853
+16336,Clontarf West C,854
+16532,Priorswood D,855
+16558,North Dock B,856
+16786,Kilmore B,857
+16790,Kilmore C,858
+16804,Kilmore A,859
+16887,Kimmage B,860
+16888,Crumlin D,861
+16890,Crumlin C,862
+16899,Kimmage E,863
+16900,Kimmage A,864
+16901,Kimmage C,865
+16911,Crumlin B,866
+16942,Kimmage D,867
+17029,Crumlin F,868
+17035,Kilmainham B,869
+17067,Crumlin E,870
+17188,Walkinstown C,871
+17229,Terenure-Greentrees,872
+17257,Walkinstown B,873
+17296,Dalkey-Bullock,874
+17298,Dalkey Hill,875
+17299,Dalkey-Coliemore,876
+17302,Dalkey Upper,877
+17404,Priorswood C,878
+17410,Rathmines East C,879
+17414,Rathmines East A,880
+17425,Rathfarnham,881
+17428,Stillorgan-Mount Merrion,882
+17439,Ushers C,883
+17661,Grange C,884
+17666,Grange E,885
+17884,Grace Park,886
+17887,Clontarf West B,887
+17978,Crumlin A,888
+18293,Botanic B,889
+18297,Drumcondra South C,890
+18298,Drumcondra South A,891
+18300,Botanic C,892
+18301,Ballybough B,893
+18305,Drumcondra South B,894
+18322,Whitehall A,895
+18521,Inns Quay A,896
+18716,Rotunda B,897
+18717,Mountjoy B,898
+18718,North City,899
+18719,Rotunda A,900
+18724,Mountjoy A,901
+18763,Inns Quay C,902
+18771,Dun Laoghaire-Glasthule,903
+18775,North Dock C,904
+18817,Dun Laoghaire-West Central,905
+18864,Royal Exchange A,906
+18865,South Dock,907
+18866,Mansion House A,908
+18875,Royal Exchange B,909
+18876,Saint Kevin's,910
+18887,Mansion House B,911
+19008,Pembroke East A,912
+19024,Arran Quay E,913
+19025,Arran Quay D,914
+19029,Arran Quay C,915
+19031,Arran Quay B,916
+19035,Inns Quay B,917
+19056,Arran Quay A,918
+19115,Bray No 3,919
+19187,Merchants Quay C,920
+19188,Merchants Quay E,921
+19189,Merchants Quay A,922
+19190,Phoenix Park,923
+19192,Ushers F,924
+19195,Merchants Quay D,925
+19196,Wood Quay B,926
+19199,Inchicore A,927
+19204,Ushers B,928
+19207,Merchants Quay B,929
+19211,Ushers E,930
+19221,Ballymun F,931
+19231,Merchants Quay F,932
+19235,Ushers A,933
+19266,North Dock A,934
+19275,Ushers D,935
+19376,Kilmainham C,936
+19397,Dun Laoghaire-Glenageary,937
+19398,Dun Laoghaire-Salthill,938
+19400,Dun Laoghaire-East Central,939
+19411,Dun Laoghaire-Sallynoggin South,940
+19478,Dun Laoghaire-Mount Town,941
+19501,Dundrum-Balally,942
+19606,Dalkey-Avondale,943
+19634,Dundrum-Kilmacud,944
+19745,Stillorgan-Kilmacud,945
+20115,Clontarf West D,946
+20163,Clontarf West E,947
+20215,Finglas South D,948
+20216,Finglas South B,949
+20217,Finglas South C,950
+20221,Finglas South A,951
+20222,Dubber,952
+20225,Finglas North C,953
+20231,Finglas North B,954
+20235,Finglas North A,955
+20250,Ballygall B,956
+20286,Ballygall D,957
+20321,The Ward,958
+20813,Rathfarnham-Ballyroan,959
+20855,Firhouse-Knocklyon,960
+20915,Foxrock-Torquay,961
+21083,Garristown,962
+21093,Ardcath,963
+21095,Botanic A,964
+21118,Ballymun E,965
+21574,DÃÂÃÂºn Laoghaire-Sandycove,966
+21598,Dun Laoghaire-Sallynoggin East,967
+21687,Stillorgan-Deerpark,968
+21813,Templeogue-Limekiln,969
+21814,Rathmines West A,970
+21818,Terenure A,971
+21988,Howth,972
+22272,Raheny-Greendale,973
+22274,Raheny-Foxfield,974
+22276,Grange D,975
+22701,Rathmines West E,976
+22723,Tallaght-Kilnamanagh,977
+22724,Tallaght-Kingswood,978
+22761,Kilsallaghan,979
+22795,Templeogue-Kimmage Manor,980
+22818,Terenure B,981
+22922,Kinsaley,982
+22974,Firhouse-Ballycullen,983
+23056,Templeogue-Cypress,984
+23282,Shankhill-Rathmichael,985
+23320,Holmpatrick,986
+23322,Lucan-Esker,987
+24444,Rush,988
+24538,Malahide-West,989
+24543,Swords-Seatown,990
+24912,Portmarnock North,991
+25562,Blanchardstown-Tyrrelstown,992
+25653,Hollywood,993
+25655,Balscaddan,994
+25745,Newcastle,995
+25860,Clonmethan,996
+25916,Palmerstown Village,997
+26149,Tallaght-Millbrook,998
+26323,Portmarnock South,999
+26579,Raheny St. Assam,1000
+26588,Edenmore,1001
+26966,Rathmines East D,1002
+26981,Rathmines West B,1003
+27253,Ballinteer-Marley,1004
+27254,Tibradden,1005
+27265,Rathfarnham Village,1006
+27864,Rathmines West F,1007
+27866,Rathmines West D,1008
+28060,Rathmines West C,1009
+29045,Whitehall B,1010
+29050,Whitehall C,1011
+29373,Shankill-Rathsallagh,1012
+29374,Shankill-Shanganagh,1013
+29881,Stillorgan-Merville,1014
+30402,Swords Village,1015
+30404,Swords-Forrest,1016
+30407,Swords-Glasmore,1017
+31349,Tallaght-Springfield,1018
+31352,Tallaght-Avonbeg,1019
+31355,Tallaght-Belgarde,1020
+31356,Tallaght-Killinardan,1021
+31365,Tallaght-Tymon,1022
+31473,Tallaght-Glenview,1023
+31496,Ballinascorney,1024
+31868,Templeogue Village,1025
+31879,Templeogue-Orwell,1026
+31885,Templeogue-Osprey,1027
+31950,Terenure D,1028
+32040,Terenure C,1029
+32451,Terenure-Cherryfield,1030
+32510,Terenure-St. James,1031
+32848,Abbey East,1032
+32851,Ryehill,1033
+32852,Abbey West,1034
+32853,Clonbrock,1035
+32854,Ahascragh,1036
+32855,Annaghdown,1037
+32858,Knockboy,1038
+32863,Castletaylor,1039
+32864,Ballygarraun,1040
+32866,Skehanagh,1041
+32867,Ardrahan,1042
+32872,Loughrea Rural,1043
+32873,Athenry,1044
+32875,Tuam Rural,1045
+32891,Kiltullagh,1046
+32914,Tiaquin,1047
+32918,Aughrim,1048
+32920,Belleville,1049
+32922,Moyode,1050
+32923,Greethill,1051
+32934,Graigabbey,1052
+32955,Kilconierin,1053
+32972,Castleffrench,1054
+32973,Ballinasloe Urban,1055
+32974,Killaan,1056
+32981,Kilquain,1057
+32983,Derrew,1058
+32991,Mount Bellew,1059
+33002,Derryglassaun,1060
+33008,Eyrecourt,1061
+33012,Killimor,1062
+33015,Laurencetown,1063
+33032,Oatfield,1064
+33033,Killure,1065
+33046,Lismanny,1066
+33051,Caltra,1067
+33053,Ballinasloe Rural,1068
+33064,Kiltormer,1069
+33065,Shankill,1070
+33068,Clonbern,1071
+33074,Cappalusk,1072
+33086,Kilconnell,1073
+33088,Kellysgrove,1074
+33092,Ballymacward,1075
+33094,Culliagh,1076
+33108,Killoran,1077
+33114,Drumacoo,1078
+33116,Ballybaan,1079
+33117,Mervue,1080
+33140,Ballybrit,1081
+33155,Bunowen,1082
+33159,Doonloughan,1083
+33164,Killeroran,1084
+33176,Ballymoe,1085
+33177,Barna,1086
+33181,Knocknacarragh,1087
+33213,Hillsbrook,1088
+33214,St Nicholas,1089
+33221,Raford,1090
+33222,Claddagh,1091
+33223,Beaghmore,1092
+33224,Kilcoona,1093
+33227,Killallaghtan,1094
+33232,Carnmore,1095
+33233,Crumpaun,1096
+33235,Moyrus,1097
+33237,Kilcummin,1098
+33238,Castleblakeney,1099
+33250,Carrowbrowne,1100
+33251,Claregalway,1101
+33253,Liscananaun,1102
+33271,Lisheenavalla,1103
+33289,Lackaghbeg,1104
+33296,Clarinbridge,1105
+33299,Stradbally,1106
+33309,Cleggan,1107
+33311,Clifden,1108
+33315,Derrylea,1109
+33343,Cloonbur,1110
+33349,Cong,1111
+33351,Ballinderry,1112
+33352,Cummer,1113
+33360,Killower,1114
+33361,Ballinduff,1115
+33371,Sailearna,1116
+33372,Craughwell,1117
+33388,Kilconickny,1118
+33404,Creggs,1119
+33405,Glennamaddy,1120
+33408,Rahoon,1121
+33433,Dunmore South,1122
+33434,Doonbally,1123
+33436,Addergoole,1124
+33440,Aille,1125
+33454,Furbo,1126
+33460,Nun's Island,1127
+33464,Eyre Square,1128
+33465,Murrough,1129
+33471,Taylor's Hill,1130
+33476,Shantalla,1131
+33477,Castlegar,1132
+33509,Wellpark,1133
+33517,Salthill,1134
+33521,Oughterard,1135
+33525,Menlough,1136
+33570,Rockbarton,1137
+33600,Raheen,1138
+33601,Ballinastack,1139
+33606,Gort,1140
+33615,Loughrea Urban,1141
+33616,Kiltartan,1142
+33644,Rinvyle,1143
+33657,Killinny,1144
+33666,Killursa,1145
+33667,Headford,1146
+33674,Killeany,1147
+33688,Shrule,1148
+33707,ÃÂÃÂrainn,1149
+33708,Cill AinnÃÂÃÂ­n,1150
+33731,Rahasane,1151
+33734,Killeenavarra,1152
+33738,Bencorr,1153
+33745,Bullaun,1154
+33753,Kinvarra,1155
+33767,Doorus,1156
+33901,Ballynakill,1157
+33902,Gorumna,1158
+33905,Mountain,1159
+33910,Drumkeary,1160
+33947,Lackalea,1161
+33995,Castleboy,1162
+34002,Kilteskill,1163
+34010,Bracklagh,1164
+34013,Kilreekill,1165
+34068,Monivea,1166
+34089,Tullokyne,1167
+34091,Moycullen,1168
+34114,Sliabh an Aonaigh,1169
+34130,Cooloo,1170
+34179,Oranmore,1171
+34231,Ballynacourty,1172
+34322,Wormhole,1173
+34344,Cappard,1174
+34347,Portumna,1175
+34353,Kilmalinoge,1176
+34366,Pallas,1177
+34400,Renmore,1178
+34421,Lough Atalia,1179
+34506,Turlough,1180
+34511,Roundstone,1181
+34622,Dalgan,1182
+34623,Spiddal,1183
+34644,Claretuam,1184
+34666,Kilmoylan,1185
+34669,Foxhall,1186
+34680,Ballynapark,1187
+34686,Killeen,1188
+34692,Belclare,1189
+34743,Deerpark,1190
+34770,Kilcroan,1191
+34771,Island,1192
+34779,Templetogher,1193
+34782,Woodford,1194
+34784,Abbeydorney,1195
+34787,Ballincloher,1196
+34791,Moynsha,1197
+34792,Ballinvoher,1198
+34795,Banna,1199
+34796,Tubrid,1200
+34802,Ballynorig,1201
+34803,Ballynahaglish,1202
+34810,Clogherbrien,1203
+34813,Ballinskelligs,1204
+34821,St. Finan's,1205
+34823,Killehenny,1206
+34864,Gullane,1207
+34866,Kilquann,1208
+34868,Drommartin,1209
+34869,Ballyduff,1210
+34872,Dunurlin,1211
+34874,Marhin,1212
+34877,Aghadoe,1213
+34878,Ballyheige,1214
+34882,Kerryhead,1215
+34897,Lislaughtin,1216
+34902,Dunloe,1217
+34904,Cloghane,1218
+34906,Castleisland,1219
+34907,Caherdaniel,1220
+34911,Bahaghs,1221
+34913,Emlagh,1222
+34917,Castlequin,1223
+34921,Teeranearagh,1224
+34924,Valencia,1225
+34934,Knockglass,1226
+34935,Caragh,1227
+34937,Castlecove,1228
+34942,Castlegregory,1229
+34949,Deelis,1230
+34975,Crinny,1231
+34978,Scartaglin,1232
+34994,Kiltallagh,1233
+34996,Boolteens,1234
+35001,Kilgarrylander,1235
+35010,Causeway,1236
+35012,Killury,1237
+35027,Killorglin,1238
+35028,Glin,1239
+35030,Dunquin,1240
+35031,Dingle,1241
+35061,Brandon,1242
+35067,Trienearagh,1243
+35068,Duagh,1244
+35077,Molahiffe,1245
+35080,Tralee Rural,1246
+35081,Glanbehy,1247
+35093,Curraghbeg,1248
+35095,Clydagh,1249
+35096,Coom,1250
+35098,Lack,1251
+35099,Killinane,1252
+35101,Kenmare,1253
+35143,Cappagh,1254
+35161,Ardea,1255
+35181,Kilgarvan,1256
+35186,Reen,1257
+35194,Kilfeighny,1258
+35200,Glanlee,1259
+35205,Flesk,1260
+35206,Killarney Urban,1261
+35207,Killarney Rural,1262
+35316,Coolies,1263
+35337,Brewsterfield,1264
+35341,Lahard,1265
+35369,Muckross,1266
+35501,Kilgobnet,1267
+35521,Dromin,1268
+35552,Kilmeany,1269
+35554,Brosna,1270
+35555,Knocknagashel,1271
+35566,Glanmore,1272
+35569,Minard,1273
+35570,Kinard,1274
+35575,Ballyconry,1275
+35576,Ennismore,1276
+35577,Listowel Urban,1277
+35578,Listowel Rural,1278
+35586,Kilshenane,1279
+35629,Rathea,1280
+35672,Cloontubbrid,1281
+35683,Shronowen,1282
+35698,Lixnaw,1283
+35707,Kiltomy,1284
+35735,Newtownsandes,1285
+35742,Tarmon,1286
+35747,Portmagee,1287
+35750,Rathmore,1288
+35769,Darrynane,1289
+35778,Sneem,1290
+35784,Tahilla,1291
+35785,Tarbert,1292
+35794,Tralee Urban,1293
+35840,Ballyseedy,1294
+35894,Arabela,1295
+36013,Blennerville,1296
+36028,Ratass,1297
+36063,Baurtregaum,1298
+36098,Doon,1299
+36188,Loughcurrane,1300
+36211,Kilmeage North,1301
+36217,Droighead Nua Rural,1302
+36225,Athy Rural,1303
+36235,Burtown,1304
+36240,Ballylynan,1305
+36269,Kilberry,1306
+36300,Moone,1307
+36324,Barrowhouse,1308
+36365,Ballitore,1309
+36366,Narraghmore,1310
+36367,Ballymore Eustace,1311
+36373,Ballysax East,1312
+36374,Carnalway,1313
+36375,Ballynadrumney,1314
+36376,Cadamstown,1315
+36377,Kilrainy,1316
+36378,Ballyshannon,1317
+36384,Carbury,1318
+36387,Windmill Cross,1319
+36391,Drehid,1320
+36406,Donore Electoral Division,1321
+36407,Castledermot,1322
+36408,Graney,1323
+36433,Celbridge,1324
+36435,Donaghcumper,1325
+36773,Kildare,1326
+36774,Clane,1327
+36800,Balraheen,1328
+36827,Bodenstown,1329
+36847,Donadea,1330
+36886,Robertstown,1331
+36887,Timahoe South,1332
+36889,Inchaquire,1333
+36890,Usk,1334
+36899,Timahoe North,1335
+36902,Kill,1336
+36917,Kilcock,1337
+37068,Ballybrackan,1338
+37073,Kildangan,1339
+37080,Lackagh,1340
+37095,Thomastown,1341
+37101,Monasterevin,1342
+37104,Dunmurry,1343
+37107,Maynooth,1344
+37114,Droighead Nua Urban,1345
+37170,Ballysax West,1346
+37188,Leixlip,1347
+37249,Kilmeage South,1348
+37250,Rathernan,1349
+37255,Kilteel,1350
+37431,Dunmanoge,1351
+37533,Rodanstown,1352
+37659,Feighcullen,1353
+37699,Quinsborough,1354
+37714,Hartstown,1355
+37718,Naas Rural,1356
+37719,Killashee,1357
+37753,Oldconnell,1358
+37761,Ladytown,1359
+37809,Downings,1360
+38064,Fontstown,1361
+38065,Morristownbiller,1362
+38481,Cloncurry,1363
+38502,Rathangan,1364
+38512,Bracknagh,1365
+38516,Lullymore,1366
+38535,Killinthomas,1367
+38628,Straffan,1368
+38663,Kilrush,1369
+38666,Pollardstown,1370
+38686,Kilkieran,1371
+38688,Ballyhale,1372
+38694,Kiltorcan,1373
+38697,Ballyragget,1374
+38706,Ballyconra,1375
+38712,Outrath,1376
+38713,Bennettsbridge,1377
+38714,Woolengrange,1378
+38716,Tullaherin,1379
+38720,Kilkenny Rural,1380
+38721,Danesfort,1381
+38724,Callan Rural,1382
+38731,Coolaghmore,1383
+38735,Scotsborough,1384
+38744,Earlstown,1385
+38751,Modeshil,1386
+38764,Knocktopher,1387
+38767,Jerpointchurch,1388
+38770,Clogh,1389
+38771,Castlecomer,1390
+38773,Moneenroe,1391
+38806,Tubbridbrittain,1392
+38814,Ullid,1393
+38817,Pollrone,1394
+38818,St Canice's,1395
+38823,Dunkitt,1396
+38833,Graiguenamanagh,1397
+38838,Inistioge,1398
+38840,Pilltown,1399
+38850,Balleen,1400
+38861,Clara,1401
+38866,Stonyford,1402
+38869,Ballincrea,1403
+38873,Ballybeagh,1404
+38874,Freshford,1405
+38876,Glashare,1406
+38879,Gowran,1407
+38884,Castlebanny,1408
+38888,Boolyglass,1409
+38893,Kilmanagh,1410
+38909,Ballycallan,1411
+38924,Kells,1412
+38940,Templeorum,1413
+38941,Urlingford,1414
+38949,Tullaghanbrogue,1415
+38951,Fiddown,1416
+38954,Killahy,1417
+38974,Burnchurch,1418
+38984,Tullaroan,1419
+38992,Grange,1420
+39002,Kilcolumb,1421
+39005,Paulstown,1422
+39032,Galmoy,1423
+39048,Dunbell,1424
+39084,Portnascully,1425
+39107,Rathpatrick,1426
+39110,Muckalee,1427
+39136,Kilfane,1428
+39140,Kilbeacon,1429
+39143,Kilkeasy,1430
+39146,Kilmaganny,1431
+39169,Tiscoffin,1432
+39180,Lisdowney,1433
+39182,Bramblestown,1434
+39189,Goresbridge,1435
+39221,Marley,1436
+39222,Breaghwy,1437
+39231,Mothell,1438
+39239,Aghaviller,1439
+39253,Dunmore,1440
+39259,Farranshoneen,1441
+39282,Ennisnag,1442
+39314,Mount Sion,1443
+39316,Tullaghought,1444
+39330,New Ross Urban,1445
+39335,Kilmakevoge,1446
+39346,Rossinan,1447
+39370,The Rower,1448
+39401,Tubbrid,1449
+39424,Abbeyleix,1450
+39433,Ballinakill,1451
+39444,Portlaoise Rural,1452
+39445,Ballyroan,1453
+39465,Attanagh,1454
+39466,Killermogh,1455
+39468,Cuffsborough,1456
+39469,Kildellig,1457
+39474,Arless,1458
+39476,Turra,1459
+39477,Ballickmoyler,1460
+39490,Ballybrittas,1461
+39491,Jamestown,1462
+39495,Sallyford,1463
+39500,Kilcoke,1464
+39501,Brisha,1465
+39502,Ballyfin,1466
+39503,O'More's Forest,1467
+39509,Rathaspick,1468
+39519,Borris-in-Ossory,1469
+39520,Moneymore,1470
+39524,Arderin,1471
+39528,Clonaslee,1472
+39531,Castlecuffe,1473
+39536,Ardough,1474
+39540,Cullahill,1475
+39541,Durrow,1476
+39542,Aughmacart,1477
+39561,Emo,1478
+39563,Errill,1479
+39569,Rathsaran,1480
+39571,Garrymore,1481
+39573,Portarlington,1482
+39586,Mountmellick Rural,1483
+39590,Mountmellick Urban,1484
+39620,Shaen,1485
+39649,Mountrath,1486
+39650,Cardtown,1487
+39681,Clonin,1488
+39682,Clonkeen,1489
+39683,Trumra,1490
+39693,Portarlington North,1491
+39699,Hammerlane,1492
+39748,Kilmullen,1493
+39861,Clondarrig,1494
+39998,Ballycarroll,1495
+40139,Cullenagh,1496
+40145,Kyle South,1497
+40146,Rathdowney,1498
+40154,Grantstown,1499
+40158,Meelick,1500
+40160,Rearymore,1501
+40161,Rosenallis,1502
+40192,Ballyadams,1503
+40199,Moyanna,1504
+40209,Luggacurren,1505
+40211,Doonane,1506
+40214,Fossy,1507
+40218,Ballylehane,1508
+40224,Annaduff,1509
+40226,Aghacashel,1510
+40227,Aghavas,1511
+40231,Ballinamore,1512
+40242,Cloverhill,1513
+40248,Garadice,1514
+40252,Beihy,1515
+40253,Newtown Forbes,1516
+40254,Carrick-on Shannon,1517
+40261,Keshcarrigan,1518
+40263,Gortnagullion,1519
+40265,Roosky,1520
+40268,Drumnsa,1521
+40311,Gowel,1522
+40314,Carrigallen East,1523
+40315,Carrigallen West,1524
+40321,Drumreilly North,1525
+40331,Corrala,1526
+40337,Keeldra,1527
+40338,Yugan,1528
+40339,Mahanagh,1529
+40341,Drumahaire,1530
+40351,Killanummery,1531
+40364,Garvagh/Arigna,1532
+40367,Drumod,1533
+40384,Drumshanbo,1534
+40385,Drumkeeran,1535
+40397,Tumna North,1536
+40403,Fenagh,1537
+40404,Rowan,1538
+40406,Glencar,1539
+40407,Glenade,1540
+40408,Cloonclare,1541
+40409,Glenfarn,1542
+40410,Breandrum,1543
+40419,Kiltubbrid,1544
+40422,Manorhamilton,1545
+40423,Kiltyclogher,1546
+40426,Kinlough,1547
+40429,Tullaghan,1548
+40460,Glenboy,1549
+40466,Lurganboy,1550
+40475,Rinn,1551
+40478,Mohill,1552
+40500,Cattan,1553
+40505,Newtowngore,1554
+40521,Melvin,1555
+40522,Ballaghameehan,1556
+40525,Glenaniff,1557
+40541,Abbeyfeale,1558
+40542,Dromtrasna,1559
+40551,Rathronan,1560
+40567,Adare South,1561
+40568,Abbey B,1562
+40574,Dromard,1563
+40575,Adare North,1564
+40592,Clarina,1565
+40594,Dunnaman,1566
+40597,Croagh,1567
+40603,Ballyvarra,1568
+40604,Ballysimon,1569
+40626,Singland B,1570
+40663,Knockaderry,1571
+40666,Kilscannell,1572
+40670,Ardpatrick,1573
+40671,Kilcornan,1574
+40672,Askeaton West,1575
+40673,Askeaton East,1576
+40674,Shannon B,1577
+40681,Nantinan,1578
+40682,Aughinish,1579
+40688,Lismakeery,1580
+40689,Iveruss,1581
+40698,Athlacca,1582
+40699,Ballintober,1583
+40701,Ballinacurra B,1584
+40702,John's B,1585
+40703,Dock C,1586
+40705,Ballingarry,1587
+40712,Cloncagh,1588
+40715,Roxborough,1589
+40718,Ballycummin,1590
+40720,Mohernagh,1591
+40721,Dunmoylan West,1592
+40722,Ballylanders,1593
+40723,Darragh,1594
+40725,Ballybricken,1595
+40735,Farranshone,1596
+40743,Limerick South Rural,1597
+40751,Caherconlish West,1598
+40752,Broadford,1599
+40755,Mountplummer,1600
+40759,Bruff,1601
+40760,Knockainy,1602
+40761,Crean,1603
+40777,Uregare,1604
+40787,Rockhill,1605
+40788,Bruree,1606
+40792,Coolrus,1607
+40811,Limerick North Rural,1608
+40833,Cappamore,1609
+40836,Doon West,1610
+40871,Kilfinny,1611
+40872,Mahoonagh,1612
+41017,Coolraine,1613
+41026,Ballynanty,1614
+41095,Kilpeacon,1615
+41096,Crecora,1616
+41099,Patrickswell,1617
+41107,Ballynabanoge,1618
+41108,Abbeyville,1619
+41110,Croom,1620
+41118,Doon South,1621
+41128,Glengar,1622
+41250,Castle A,1623
+41251,Castle C,1624
+41265,Castle B,1625
+41271,Castle D,1626
+41273,Fedamore,1627
+41279,Feenagh,1628
+41282,Kilmeedy,1629
+41283,Danganbeg,1630
+41285,Shanagolden,1631
+41294,Galbally,1632
+41295,Riversdale,1633
+41297,Singland A,1634
+41299,Abbey D,1635
+41302,Kilfergus,1636
+41315,Hospital,1637
+41326,Glentworth B,1638
+41332,Kildimo,1639
+41334,Ballynacarriga,1640
+41347,Kilfinnane,1641
+41349,Kilflyn,1642
+41354,Kilmallock,1643
+41357,Emlygrennan,1644
+41362,Bulgaden,1645
+41368,Templemolaga,1646
+41372,Anglesborough,1647
+41385,Ballymacshaneboy,1648
+41388,Glenbrohane,1649
+41389,Ballyagran,1650
+41410,Kilteely,1651
+41417,Knocklong,1652
+41419,Duntryleague,1653
+41421,Market,1654
+41422,Glentworth C,1655
+41423,Shannon A,1656
+41426,Prospect A,1657
+41430,Dock D,1658
+41434,Dock A,1659
+41439,Ballinacurra A,1660
+41440,Dock B,1661
+41444,St. Laurence,1662
+41455,Rathbane,1663
+41462,Galvone A,1664
+41474,Glentworth A,1665
+41476,Prospect B,1666
+41487,Abbey C,1667
+41495,John's C,1668
+41497,Custom House,1669
+41554,Rathkeale Urban,1670
+41821,Monagay,1671
+41830,Mountcollins,1672
+41852,Glenstal,1673
+41853,Abington,1674
+41867,Newcastle Rural,1675
+41928,Oola,1676
+41933,Templebredon,1677
+41937,Grean,1678
+41939,Caherconlish East,1679
+41947,Pallaskenry,1680
+42048,Ballyallinan,1681
+42062,Shanid,1682
+42082,Templeglentan,1683
+42090,Killeely B,1684
+42092,Glengort,1685
+42096,Firry,1686
+42097,Abbeylara,1687
+42099,Agharra,1688
+42103,Ardagh East,1689
+42108,Ardagh West,1690
+42114,Lislea,1691
+42117,Drumgort,1692
+42119,Ballinamuck East,1693
+42122,Ballinalee,1694
+42123,Moatfarrell,1695
+42127,Longford Number 1 Urban,1696
+42131,Aghaboy,1697
+42134,Drummeel,1698
+42136,Edgeworthstown,1699
+42140,Ballinamuck West,1700
+42143,Ballymahon,1701
+42182,Ledwithstown,1702
+42183,Winetown,1703
+42193,Forgney,1704
+42198,Kilglass,1705
+42199,Cloondara,1706
+42204,Kilcommock,1707
+42205,Cloonee,1708
+42208,Creevy,1709
+42210,Drumlish,1710
+42222,Killoe,1711
+42269,Ballymuigh,1712
+42295,Crossagstown,1713
+42300,Granard Urban,1714
+42316,Granard Rural,1715
+42322,Coolamber,1716
+42324,Bunlahy,1717
+42346,Moydow,1718
+42349,Mountdavis,1719
+42352,Corboy,1720
+42355,Rathcline,1721
+42375,Longford Rural,1722
+42381,Longford Number 2 Urban,1723
+42399,Moyne,1724
+42409,Cashel East,1725
+42410,Cashel West,1726
+42417,Caldragh,1727
+42443,Drumcar,1728
+42446,Castlebellingham,1729
+42447,Ardee Rural,1730
+42487,Tallanstown,1731
+42493,Stabannan,1732
+42540,St. Peter's,1733
+42541,Termonfeckin,1734
+42545,Haggardstown,1735
+42575,Carlingford,1736
+42584,Jenkinstown,1737
+42587,Greenore,1738
+42590,Rathcor,1739
+42623,Mansfieldstown,1740
+42624,Dromiskin,1741
+42651,Collon,1742
+42654,Dunleer,1743
+42670,Darver,1744
+42674,Fair Gate,1745
+42675,St. Laurence Gate,1746
+42688,West Gate,1747
+42805,Monasterboice,1748
+43042,Dysart,1749
+43179,Dundalk No. 4 Urban,1750
+43180,Dundalk Rural,1751
+43195,Dundalk No. 1 Urban,1752
+43197,Dundalk No. 2 Urban,1753
+43200,Faughart,1754
+43216,Dundalk No. 3 Urban,1755
+43248,Ravensdale,1756
+43284,Louth,1757
+43353,Castlering,1758
+43358,Ballymascanlan,1759
+43403,Creggan Upper,1760
+43465,Barronstown,1761
+43554,Mullary,1762
+43599,Killanny,1763
+43609,Drummullagh,1764
+43657,Slievemore,1765
+43665,Achill,1766
+43666,Doogea,1767
+43667,Balla,1768
+43681,Ballina Urban,1769
+43687,Ardnaree South Rural,1770
+43692,Ardnaree North,1771
+43699,Lackan North,1772
+43700,Ardnaree South Urban,1773
+43703,Ballina Rural,1774
+43720,Swineford,1775
+43724,Ballynagoraher,1776
+43746,Mount Falcon,1777
+43748,Attymass West,1778
+43789,Carrowmore,1779
+43803,Kilfian South,1780
+43861,Rathhill,1781
+43871,Ballindine,1782
+43877,Ballinrobe,1783
+43879,Neale,1784
+43887,Hollymount,1785
+43904,Ballycastle,1786
+43909,Ballyhaunis,1787
+43911,Coolnaha,1788
+43920,Aghamore,1789
+43921,Course,1790
+43931,Loughanboy,1791
+43932,Bekan,1792
+43947,Knock South,1793
+43950,Manulla,1794
+43951,Bellavary,1795
+43952,Bangor,1796
+43954,Belmullet,1797
+43967,An Geata MÃÂÃÂ³r Theas,1798
+43971,An Geata MÃÂÃÂ³r Thuaidh,1799
+43972,Bohola,1800
+43973,Strade,1801
+43974,Toocananagh,1802
+43978,Cloonmore,1803
+43979,Lackan South,1804
+43980,Castlebar Urban,1805
+43981,Castlebar Rural,1806
+44039,Pontoon,1807
+44080,Ballyhean,1808
+44094,Islandeady,1809
+44097,Burren,1810
+44136,Kilbeagh,1811
+44137,Sonnagh,1812
+44140,Achonry West,1813
+44152,Claremorris,1814
+44154,Kilvine,1815
+44161,Rosslee,1816
+44166,Culnacleha,1817
+44174,Burriscarra,1818
+44177,Caraun,1819
+44188,Mayo,1820
+44217,Houndswood,1821
+44221,Crossmolina North,1822
+44222,Crossmolina South,1823
+44236,Fortland,1824
+44242,Sraheen,1825
+44244,Toomore,1826
+44246,Callow,1827
+44266,Cuildoo,1828
+44275,Newbrook,1829
+44276,Kilcommon,1830
+44277,Coonard,1831
+44287,Kilkelly,1832
+44289,Urlaur,1833
+44294,Kiltamagh,1834
+44296,Kilmovee,1835
+44298,Kilalla,1836
+44302,Kilmaine,1837
+44308,Killedan,1838
+44310,Brackloon,1839
+44318,Knock North,1840
+44337,Kilsallagh,1841
+44338,Louisburgh,1842
+44342,Aillemore,1843
+44359,Newport West,1844
+44368,Westport Urban,1845
+44371,Newport East,1846
+44372,Derryloughan,1847
+44375,Glenhest,1848
+44404,Tumgesh,1849
+44433,Ballyovey,1850
+44470,Kilmaclasser,1851
+44471,Tawnynagry,1852
+44475,Kilmeena,1853
+44477,Westport Rural,1854
+44498,Croaghpatrick,1855
+44513,Aghagower North,1856
+44556,Drummin,1857
+44589,Donaghmore,1858
+44600,Ratoath,1859
+44604,Kilbrew,1860
+44829,Grennanstown,1861
+44830,Athboy,1862
+44855,Cloghbrack,1863
+44903,Castlejordan,1864
+44904,Killaconnigan,1865
+44919,Killyon,1866
+44953,Kentstown,1867
+44956,Dunshaughlin,1868
+44965,Julianstown,1869
+45107,Stamullin,1870
+45109,Hill of Down,1871
+45110,Ardnamullan,1872
+45143,Duleek,1873
+45183,Drumcondra,1874
+45185,Navan Rural,1875
+45189,Culmullin,1876
+45406,Bective,1877
+45407,Kilmessan,1878
+45408,Galtrim,1879
+45416,Skreen,1880
+45518,Innfield,1881
+45563,Dunfierth,1882
+45591,Rathmolyon,1883
+45612,Girley,1884
+45614,Rathfeigh,1885
+45626,Kilskeer,1886
+45650,Kilmainham,1887
+45651,Ceanannas MÃÂÃÂ³r Rural,1888
+45657,Cruicetown,1889
+45671,Maperath,1890
+45677,Castlekeeran,1891
+45688,Staholmog,1892
+45698,Teltown,1893
+45705,Balrathboyne,1894
+45735,Moynalty,1895
+45743,Martry,1896
+45754,Ballinlough,1897
+45762,Burry,1898
+45801,Kilmore,1899
+45803,Gallow,1900
+45808,Kildalkey,1901
+45824,Killallon,1902
+45831,Tara,1903
+45838,Kilcooly,1904
+45901,Killary,1905
+45902,Castlerickard,1906
+45992,Ardbraccan,1907
+46061,Painestown,1908
+46071,Donaghpatrick,1909
+46146,Clonmacduff,1910
+46189,Ardmulchan,1911
+46734,Nobber,1912
+46738,Carrickleck,1913
+46739,Oldcastle,1914
+46748,Stonefield,1915
+46948,Slane,1916
+46960,Mellifont,1917
+46978,Stackallan,1918
+47076,Summerhill,1919
+47089,Laracor,1920
+47137,Trim Rural,1921
+47341,Bellanode,1922
+47345,Ballybay Rural,1923
+47349,Ballybay Urban,1924
+47354,Creeve,1925
+47356,Anny,1926
+47358,Crossalare,1927
+47359,Carrickmacross Urban,1928
+47361,Carrickmacross Rural,1929
+47363,Enagh,1930
+47387,Ballymackney,1931
+47388,Drumcarrow,1932
+47405,Drumboory,1933
+47406,Drumgurra,1934
+47407,Bocks,1935
+47412,Loughfea,1936
+47425,Castleblaney Rural,1937
+47426,Castleblaney Urban,1938
+47430,Carrickatee,1939
+47432,Cremartin,1940
+47449,Cormeen,1941
+47457,Castleshane,1942
+47458,Clones Urban,1943
+47459,Clones Rural,1944
+47462,Newbliss,1945
+47478,Clontibret,1946
+47480,Killynenagh,1947
+47481,Figullar,1948
+47482,Anketell Grove,1949
+47485,Emyvale,1950
+47492,Glaslough,1951
+47498,Inishkeen,1952
+47499,Kiltybegs,1953
+47507,Caddagh,1954
+47508,Monaghan Rural,1955
+47513,Sheskin,1956
+47521,Rackwallace,1957
+47526,Tehallan,1958
+47534,Donaghmoyne,1959
+47537,Tullycorbet,1960
+47617,Killeevan,1961
+47622,Aghabog,1962
+47623,Drumhillagh,1963
+47624,Dawsongrove,1964
+47628,Currin,1965
+47630,Scotstown,1966
+47635,Tedavnet,1967
+47637,Geashill,1968
+47641,Ballycumber,1969
+47644,Srah,1970
+47647,Banagher,1971
+47649,Lusmagh,1972
+47652,Shannonharbour,1973
+47660,Birr Urban,1974
+47663,Cangort,1975
+47667,Birr Rural,1976
+47671,Derryad,1977
+47676,Kilcolman,1978
+47677,Dromoyle,1979
+47695,Knockbarron,1980
+47696,Lumcloon,1981
+47697,Kinnitty,1982
+47722,Cloghan,1983
+47735,Eglish,1984
+47744,Tullamore Urban,1985
+47769,Kilcumeragh,1986
+47781,Bawn,1987
+47803,Clonbullogue,1988
+47805,Clonmacnoise,1989
+47807,Clonygowan,1990
+47809,Esker,1991
+47810,Daingean,1992
+47825,Kilclonfert,1993
+47835,Mountbriscoe,1994
+47842,Edenderry Urban,1995
+47845,Monasteroris,1996
+47894,Edenderry Rural,1997
+47930,Ferbane,1998
+47938,Moyclare,1999
+47944,Rathfeston,2000
+47947,O'Dempsey,2001
+47951,Drumcullen,2002
+47952,Derrinboy,2003
+47953,Kilcormac,2004
+47956,Killooley,2005
+47971,Cullenwaine,2006
+47974,Dunkerrin,2007
+47987,Ballyshear,2008
+48006,Ballyburly,2009
+48012,Ballymacwilliam,2010
+48013,Croghan,2011
+48024,Shannonbridge,2012
+48026,Shinrone,2013
+48028,Ballincor,2014
+48035,Tullamore Rural,2015
+48054,Screggan,2016
+48056,Killeigh,2017
+48131,Cappancur,2018
+48166,Silverbrook,2019
+48251,Tinnycross,2020
+48281,Raheenakeeran,2021
+48285,Lough Allen/Altagowlan,2022
+48286,Athleague West,2023
+48287,Athleague East,2024
+48290,Athlone West Rural,2025
+48300,Roscommon Rural,2026
+48302,Athlone East Urban,2027
+48307,Crannagh,2028
+48310,Carnagh,2029
+48314,Ballaghaderreen,2030
+48316,Drumdaff,2031
+48320,Edmonstown,2032
+48326,Fairymount,2033
+48342,Bellanagare,2034
+48344,Kilcolagh,2035
+48346,Esternow,2036
+48355,Frenchpark,2037
+48356,Cloonfower,2038
+48360,Castleteheen,2039
+48363,Ballyfarnan,2040
+48365,Taghboy,2041
+48370,Cloontuskert,2042
+48383,Cloonygormican,2043
+48385,Kilteevan,2044
+48386,Mote,2045
+48388,Boyle Rural,2046
+48395,Kilmacumsy,2047
+48403,Crossna,2048
+48413,Rushfield,2049
+48415,Breedoge,2050
+48427,Rockingham,2051
+48431,Oakport,2052
+48433,Kilbryan,2053
+48438,Keadew,2054
+48456,Tivannagh,2055
+48466,Cloonteem,2056
+48470,Killummod,2057
+48478,Fuerty,2058
+48481,Carrowduff,2059
+48483,Castlereagh,2060
+48486,Lisgarve/Mantua,2061
+48506,Loughglinn,2062
+48515,Artagh North,2063
+48536,Buckill,2064
+48540,Coolougher,2065
+48552,Baslick,2066
+48571,Kilbride South,2067
+48573,Rosmoylan,2068
+48578,Lissonuffy,2069
+48581,Dunamon,2070
+48586,Turrock,2071
+48589,Elphin,2072
+48613,Aughrim West,2073
+48621,Kilbride North,2074
+48626,Lismaha,2075
+48658,Kilglass South,2076
+48666,Kiltoom,2077
+48669,Scregg,2078
+48682,Lecarrow,2079
+48686,Artagh South,2080
+48695,Creagh,2081
+48700,Lackan,2082
+48705,Kilglass North,2083
+48745,Cloonfinlough,2084
+48746,Strokestown,2085
+48757,Annaghmore,2086
+48760,Ballygarden,2087
+48767,Bumlin,2088
+48771,Killavackan,2089
+48791,Termonbarry,2090
+48805,Ogulla,2091
+48808,Tulsk,2092
+48811,Castleplunket,2093
+48818,Aclare,2094
+48820,Temple,2095
+48821,Templevanny,2096
+48822,Aghanagh,2097
+48823,Lissadill West,2098
+48824,Sligo North,2099
+48830,Ballintogher East,2100
+48831,Ballintogher West,2101
+48833,Drumcolumb,2102
+48836,Collooney,2103
+48837,Ballysadare East,2104
+48855,Kilmacowen,2105
+48862,Ballysadare West,2106
+48875,Ballymote,2107
+48880,Knockaree,2108
+48883,Streamstown,2109
+48887,Drumfin,2110
+48888,Drumrat,2111
+48890,Sligo East,2112
+48891,Bricklieve,2113
+48902,Kilshalvy,2114
+48913,Killaraght,2115
+48914,Kilmactranny,2116
+48915,Calry,2117
+48918,Lissadill East,2118
+48924,Lakeview,2119
+48925,Cliffony North,2120
+48927,Cloonacool,2121
+48931,Carrickbanagher,2122
+48950,Coolaney,2123
+48956,Carrownaskeagh,2124
+48960,Achonry East,2125
+48961,Toberpatrick East,2126
+48967,Drumcliff East,2127
+48968,Carney,2128
+48969,Easky East,2129
+48970,Easky West,2130
+48979,Castleconor West,2131
+49005,Ballynashee,2132
+49006,Killadoon,2133
+49012,Lissadill North,2134
+49014,Rossinver West,2135
+49015,Cliffony South,2136
+49024,Kilfree,2137
+49025,Cuilmore,2138
+49026,Coolavin,2139
+49043,Drumcliff West,2140
+49078,Templeboy South,2141
+49081,Sligo West,2142
+49178,Tobercurry,2143
+49201,Toberpatrick West,2144
+49390,Templeboy North,2145
+49391,Aughris,2146
+49392,Banada,2147
+49410,Glendarragh,2148
+49421,Derrycastle,2149
+49475,Ballyporeen,2150
+49477,Burncourt,2151
+49484,Bansha,2152
+49486,Templeneiry,2153
+49493,Birdhill,2154
+49494,Kilcomenty,2155
+49497,Greenhall,2156
+49501,Nodstown,2157
+49504,Ardmayle,2158
+49505,Nenagh Rural,2159
+49506,Borrisokane,2160
+49507,Uskane,2161
+49518,Borrisoleigh,2162
+49526,Mortlestown,2163
+49529,Clogheen,2164
+49538,Killadriffe,2165
+49569,Drumwood,2166
+49573,Carrick-on-Suir Urban,2167
+49578,Carrickbeg Urban,2168
+49599,Carrick-on-Suir Rural,2169
+49622,Garrangibbon,2170
+49637,Cashel Rural,2171
+49652,Gaile,2172
+49654,Magorban,2173
+49660,Tullamain,2174
+49665,Clonoulty West,2175
+49678,Ballysheehan,2176
+49681,Killeenasteena,2177
+49720,Tullaghorton,2178
+49724,Clonmel East Urban,2179
+49725,Inishlounaght,2180
+49727,Clonmel Rural,2181
+49728,Clonmel West Urban,2182
+49736,Lisronagh,2183
+49753,Ballyclerahan,2184
+49758,Kilcash,2185
+49785,Kilsheelan,2186
+49796,Kilmacomma,2187
+49847,Tullaghmelan,2188
+49904,Colman,2189
+49959,Kilronan,2190
+49970,Cloghjordan,2191
+49981,Templeharry,2192
+49982,Kilbarron,2193
+49984,Rathlynin,2194
+49985,Kilmucklin,2195
+49986,Monsea,2196
+49990,Donohll,2197
+49998,Oughterleague,2198
+49999,Tipperary Rural,2199
+50000,Emly,2200
+50005,Peppardstown,2201
+50011,Cloneen,2202
+50012,Ardsallagh,2203
+50020,Clonbeg,2204
+50021,Golden,2205
+50024,Ballycarron,2206
+50034,Foilnaman,2207
+50036,Thurles Rural,2208
+50037,Fennor,2209
+50038,Gurteen,2210
+50051,Templemore,2211
+50063,Latteragh,2212
+50064,Kilkeary,2213
+50072,Ballycahill,2214
+50075,Ballymurreen,2215
+50076,Roscrea,2216
+50092,Newport,2217
+50097,Graystown,2218
+50098,New Bermingham,2219
+50107,Ballykisteen,2220
+50123,Littleton,2221
+50125,Lorrha West,2222
+50128,Lattin,2223
+50135,Terryglass,2224
+50156,Moycarky,2225
+50168,Finnoe,2226
+50172,Mullinahone,2227
+50173,Youghalarra,2228
+50174,Twomileborris,2229
+50195,Holycross,2230
+50219,Rahelty,2231
+50228,Carrigatogher,2232
+50231,Bruis,2233
+50235,Killoscully,2234
+50236,Ballygibbon,2235
+50238,Upperchurch,2236
+50253,Knigh,2237
+50257,Aghancon,2238
+50259,Timoney,2239
+50262,Killavinoge,2240
+50282,Ballynaclogh,2241
+50292,Templetouhy,2242
+50305,Kilvemnon,2243
+50312,Poyntstown,2244
+50318,Kilnarath,2245
+50339,Gortkelly,2246
+50341,Kilnaneave,2247
+50358,Lorrha East,2248
+50380,Shronell,2249
+50391,Killenaule,2250
+50412,Crohane,2251
+50424,Bourney East,2252
+50431,Ardcrony,2253
+50448,Drom,2254
+50458,Gorteen,2255
+50462,Bourney West,2256
+50467,Burgesbeg,2257
+50506,Ballyphilip,2258
+50520,Ballylusky,2259
+50561,Anner,2260
+50607,Solloghodbeg,2261
+50608,Keereen,2262
+50609,Dromana,2263
+50610,Annestown,2264
+50615,Ardmore,2265
+50629,Seskinan,2266
+50630,Reisk,2267
+50633,Mocollop,2268
+50634,Castlerichard,2269
+50635,Gortnapeaky,2270
+50637,Grange South,2271
+50640,Ballylaneen,2272
+50641,Graignagower,2273
+50644,Knockmahon,2274
+50646,Ballybeg South,2275
+50647,Killoteran,2276
+50650,Tramore,2277
+50652,Carriglea,2278
+50654,Cappoquin,2279
+50673,Ross,2280
+50674,Fenoagh,2281
+50677,Carrickbeg Rural,2282
+50678,Faithlegg,2283
+50680,Ballymaclode,2284
+50681,Clashmore,2285
+50682,Grallagh,2286
+50683,Ballyheeny,2287
+50685,Clonea,2288
+50691,Kilbarry,2289
+50693,Dungarvan No 1 Urban,2290
+50694,Dungarvan Rural,2291
+50695,Dungarvan No 2 Urban,2292
+50705,Ringville,2293
+50798,Colligan,2294
+50816,Bohadoon,2295
+50870,Rathmoylan,2296
+50902,Kilculliheen,2297
+50909,Ferrybank,2298
+50926,Grange Upper,2299
+50930,Kilbarrymeaden,2300
+50932,Gardenmorris,2301
+50935,Kilmacthomas,2302
+50936,Fews,2303
+50939,Georgestown,2304
+50940,FoxÃÂ¢ÃÂÃÂs Castle,2305
+50960,Kilmeadan,2306
+50975,Kilcockan,2307
+50982,Comeragh,2308
+50985,Mountkennedy,2309
+50986,Lismore Urban,2310
+50987,Lismore Rural,2311
+51012,Mothel,2312
+51014,Ballymacart,2313
+51021,Ballyhack,2314
+51024,Portlaw,2315
+51063,Tallow,2316
+51067,Kilwatermoy West,2317
+51100,Drumcannon,2318
+51101,Islandikane,2319
+51119,Ballintruckle,2320
+51260,Pembrokestown,2321
+51330,Gracedieu,2322
+51331,Poleberry,2323
+51332,Park,2324
+51344,Military Road,2325
+51347,Slievekeale,2326
+51348,Cleaboy,2327
+51351,Ballybeg North,2328
+51357,Ticor South,2329
+51361,Grange North,2330
+51374,Lisduggan,2331
+51378,Ticor North,2332
+51386,The Glen,2333
+51411,Roanmore,2334
+51418,Shortcourse,2335
+51426,Morrison's Road,2336
+51431,Kingsmeadow,2337
+51448,Morrison's Avenue East,2338
+51508,Custom House A,2339
+51534,Woodstown,2340
+51569,Larchville,2341
+51577,Newport's Square,2342
+51629,Morrison's Avenue West,2343
+51853,Custom House B,2344
+52026,Moydrum,2345
+52028,Athlone East Rural,2346
+52050,Athlone West Urban,2347
+52111,Tubbrit,2348
+52265,Glassan,2349
+52335,Ardnagragh,2350
+52418,Ballynagore,2351
+52420,Ballinalack,2352
+52424,Ballymore,2353
+52430,Umma,2354
+52434,Kilbixy,2355
+52436,Emper,2356
+52442,Coolure,2357
+52444,Collinstown,2358
+52447,Fore West,2359
+52454,Faughalstown,2360
+52471,Killua,2361
+52485,Kilcumny,2362
+52489,Fore East,2363
+52498,Killulagh,2364
+52502,Glore,2365
+52503,Delvin,2366
+52506,Ballyhealy,2367
+52515,Copperalley,2368
+52520,Clonarney,2369
+52522,Bracklin,2370
+52525,Rosmead,2371
+52535,Noughaval,2372
+52538,Auburn,2373
+52539,Kilbeggan,2374
+52560,Ardnaglew,2375
+52567,Killucan,2376
+52586,Derrymore,2377
+52588,Huntingdon,2378
+52591,Raharney,2379
+52617,Kinnegad,2380
+52661,Griffinstown,2381
+52669,Ballyboggan,2382
+52704,Street,2383
+52705,Boherquill,2384
+52708,Enniscoffey,2385
+52709,Moate,2386
+52711,Kilcumreragh,2387
+52718,Mount Temple,2388
+52719,Castledaly,2389
+52751,Bellanalack,2390
+52760,Templepatrick,2391
+52762,Mullingar Rural,2392
+52764,Mullingar South Urban,2393
+52767,Mullingar North Urban,2394
+52784,Owel,2395
+52817,Castle,2396
+52855,Woodland,2397
+52927,Finnea,2398
+52947,Hopestown,2399
+52952,Middleton,2400
+52978,Russellstown,2401
+52979,Taghmon,2402
+53013,Carrick,2403
+53024,Heathstown,2404
+53057,Ballymorin,2405
+53080,Belvidere,2406
+53099,Clonfad,2407
+53119,Stonehall,2408
+53236,Knockdrin,2409
+53342,Multyfarnham,2410
+53352,Ballynaskeagh,2411
+53353,Riverdale,2412
+53358,Rathconrath,2413
+53359,Rathowen,2414
+53362,Glenlough,2415
+53370,Castlelost,2416
+53384,Gaybrook,2417
+53401,Ballykilmore,2418
+53411,Adamstown,2419
+53412,Carrickbyrne,2420
+53419,Ardamine,2421
+53429,Bolaboy,2422
+53430,Ballycanew,2423
+53431,Tintern,2424
+53433,Ballygarrett,2425
+53438,Courtown,2426
+53450,Templeludigan,2427
+53451,Bannow,2428
+53457,Wexford Rural,2429
+53468,Wexford No 2 Urban,2430
+53470,Castle Talbot,2431
+53472,Castle Ellis,2432
+53493,Ballyvaldon,2433
+53500,Ballyhoge,2434
+53505,Bridgetown,2435
+53518,Lady's Island,2436
+53519,Kilscoran,2437
+53523,Wexford No 3 Urban,2438
+53524,Newtownbarry,2439
+53529,Cranemore,2440
+53535,Moyacomb,2441
+53550,Artramon,2442
+53551,Cahore,2443
+53554,Kilcomb,2444
+53564,Balloughter,2445
+53569,Kilmokea,2446
+53574,Killesk,2447
+53586,Ardcavan,2448
+53616,Aughwilliam,2449
+53624,Duncormick,2450
+53629,Clongeen,2451
+53631,Clonroche,2452
+53633,Coolgreany,2453
+53684,Monaseed,2454
+53685,Kilnahue,2455
+53691,Ballycarney,2456
+53692,Ardcolm,2457
+53711,Templetown,2458
+53724,Rathroe,2459
+53727,Kilcowan,2460
+53729,Killag,2461
+53733,Harristown,2462
+53747,Enniscorthy Rural,2463
+53751,Bree,2464
+53762,Ballyhuskard,2465
+53775,Ferns,2466
+53807,The Leap,2467
+53871,Killurin,2468
+53897,Edermine,2469
+53928,Kiltealy,2470
+53938,Clonleigh,2471
+53963,Killoughrum,2472
+54013,The Harrow,2473
+54018,Tinnacross,2474
+54029,Kilbora,2475
+54030,Tombrack,2476
+54039,Ballybeg,2477
+54052,Fethard,2478
+54074,Old Ross,2479
+54075,Ballymitty,2480
+54078,Horetown,2481
+54088,Gorey Rural,2482
+54089,Gorey Urban,2483
+54125,Ballynestragh,2484
+54145,Monamolin,2485
+54151,Ballyellis,2486
+54188,Wells,2487
+54253,Limerick,2488
+54298,Huntingtown,2489
+54306,Wingfield,2490
+54311,Ford,2491
+54327,Killenagh,2492
+54392,Coolboy,2493
+54452,Ballylarkin,2494
+54458,Killinick,2495
+54467,Tacumshin,2496
+54483,Tomhaggard,2497
+54493,Killincooly,2498
+54526,St. Helen's,2499
+54535,Rosslare,2500
+54548,Mayglass,2501
+54574,Wexford No 1 Urban,2502
+54585,New Ross Rural,2503
+54588,Ballyanne,2504
+54599,Dysartmoon,2505
+54613,Rosbercon,2506
+54648,Rochestown,2507
+54707,Oldcourt,2508
+54759,Whitemoor,2509
+54815,Newbawn,2510
+54823,Kilcormick,2511
+54993,Harperstown,2512
+55001,Forth,2513
+55107,Oldtown,2514
+55109,Arklow No 1 Urban,2515
+55113,Arklow No 2 Urban,2516
+55225,Arklow Rural,2517
+55267,Avoca,2518
+55370,Glenealy,2519
+55371,Killiskey,2520
+55399,Ballycullen,2521
+55401,Wicklow Rural,2522
+55411,Coolballintaggart,2523
+55417,Ballinaclash,2524
+55422,Ballinacor,2525
+55433,Ballinglen,2526
+55441,Kilpipe,2527
+55449,Ballyarthur,2528
+55450,Cronebane,2529
+55466,Dunganstown South,2530
+55467,Kilmacanoge,2531
+55468,Baltinglass,2532
+55474,Stratford,2533
+55493,Carrigeen,2534
+55519,Blessington,2535
+55520,Burgage,2536
+55619,Bray No 2,2537
+55627,Bray No 1,2538
+55676,Rathmichael (Bray),2539
+56008,Ennereilly,2540
+56013,Dunganstown East,2541
+56022,Dunganstown West,2542
+56035,Carnew,2543
+56050,Shillelagh,2544
+56052,Delgany,2545
+56053,Kilcoole,2546
+56078,Greystones,2547
+56152,Donard,2548
+56159,Gilltown,2549
+56160,Dunlavin,2550
+56167,Tober,2551
+56171,Enniskerry,2552
+56177,Powerscourt,2553
+56220,Brockagh,2554
+56242,Rathsallagh,2555
+56243,The Grange,2556
+56652,Newcastle Lower,2557
+56664,Newcastle Upper,2558
+56700,Humewood,2559
+56757,Rathdrum,2560
+56838,Togher,2561
+56839,Calary,2562
+56851,Moneystown,2563
+56859,Aghowle,2564
+56862,Tinahely,2565
+56878,Wicklow Urban,2566
+56956,Money,2567
