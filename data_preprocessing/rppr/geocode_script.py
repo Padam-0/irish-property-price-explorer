@@ -65,6 +65,7 @@ def get_loc(sa, row, key):
 
 
 # This function maps counties to their respective provence
+
 def get_region(county):
     counties = {
         'Connacht': ['Galway', 'Leitrim', 'Mayo', 'Roscommon', 'Sligo'],
